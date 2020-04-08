@@ -2,13 +2,12 @@ import 'package:covidmt/shared/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
-class CardDadosConsolidados extends StatelessWidget {
+class CardSRAGDadosConsolidados extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Screen.getWidth(context),
       child: Card(
-        margin: EdgeInsets.only(left: 20, right: 8),
+        margin: EdgeInsets.all(12),
         elevation: 3,
         color: Color(0xffF0F0F0),
         child: Column(
