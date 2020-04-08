@@ -5,34 +5,42 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Screen.getWidth(context),
-      height: Screen.getHeigh(context) / 3.5,
+      height: 220,
       decoration: BoxDecoration(
           color: Color(0xff1E347C),
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(35))),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           SizedBox(
-            height: Screen.getHeigh(context) / 10,
+            height: 80,
           ),
-          Text(
-            "Mato Grosso",
-            style: TextStyle(
-                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w400),
+          Center(
+            child: Text(
+              "Mato Grosso",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 32,
+                  fontWeight: FontWeight.w400),
+            ),
           ),
           SizedBox(
             height: 5,
           ),
-          Text(
-            "Situação epidemologica SRAG e COVID-19",
-            style: TextStyle(
-                color: Colors.white, fontSize: 10, fontWeight: FontWeight.w500),
+          Center(
+            child: Text(
+              "Situação epidemologica SRAG e COVID-19",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500),
+            ),
           ),
           SizedBox(
             height: 30,
           ),
           Padding(
-            padding: EdgeInsets.only(left: Screen.getWidth(context) / 2),
+            padding: const EdgeInsets.only(right: 12),
             child: Text(
               "Ultima atualização:",
               style: TextStyle(
@@ -41,8 +49,11 @@ class Header extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(
+            height: 8,
+          ),
           Padding(
-            padding: EdgeInsets.only(left: Screen.getWidth(context) / 2),
+            padding: const EdgeInsets.only(right: 12),
             child: Text(
               "Boletim Informativo n:",
               style: TextStyle(

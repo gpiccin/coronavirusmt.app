@@ -13,33 +13,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffE5E5E5),
       body: Container(
-        width: Screen.getWidth(context),
-        height: Screen.getHeigh(context),
+        color: Colors.yellow,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Header(),
-            Padding(
-              padding:
-                  EdgeInsets.only(left: Screen.getWidth(context) / 6, top: 15),
-              child: Text(
-                "SRAG - Síndrome respiratória aguda ",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600),
+            Container(
+                height: 100, color: Colors.blue, child: Text("abcfdsafas")),
+            Container(
+              color: Colors.black,
+              height: 10,
+              child: ListView(
+                children: <Widget>[],
               ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CardDadosConsolidados(),
-            SizedBox(
-              height: 10,
-            ),
-            CardGraficoPrincipal(),
+            )
           ],
         ),
       ),
