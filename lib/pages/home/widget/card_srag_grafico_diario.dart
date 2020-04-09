@@ -1,3 +1,4 @@
+import 'package:covidmt/pages/home/widget/sars_chart.dart';
 import 'package:flutter/material.dart';
 
 class CardSRAGGraficoDiario extends StatelessWidget {
@@ -18,6 +19,7 @@ class CardSRAGGraficoDiario extends StatelessWidget {
               style: TextStyle(color: Colors.black, fontSize: 10),
             ),
           ),
+          SragChart()
         ],
       ),
     ));

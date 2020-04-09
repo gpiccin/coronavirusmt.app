@@ -17,7 +17,7 @@ class CardSRAGDadosConsolidados extends StatelessWidget {
               padding: const EdgeInsets.only(left: 13.0, top: 10),
               child: Text(
                 "SRAG entre  01/01/2020 até 06/04/2020",
-                style: TextStyle(color: Colors.black, fontSize: 10),
+                style: TextStyle(color: Colors.black, fontSize: 14),
               ),
             ),
             Padding(
@@ -29,16 +29,16 @@ class CardSRAGDadosConsolidados extends StatelessWidget {
                     "4,76x ",
                     style: TextStyle(
                       color: Colors.red,
-                      fontSize: 10,
+                      fontSize: 14,
                     ),
                   ),
                   Text(
                     " a mais",
-                    style: TextStyle(color: Colors.greenAccent, fontSize: 10),
+                    style: TextStyle(color: Colors.greenAccent, fontSize: 14),
                   ),
                   Text(
                     " que os casos confirmados",
-                    style: TextStyle(color: Colors.black, fontSize: 10),
+                    style: TextStyle(color: Colors.black, fontSize: 14),
                   ),
                 ],
               ),
@@ -51,7 +51,7 @@ class CardSRAGDadosConsolidados extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       " COVID-19 + SRAG = ",
-                      style: TextStyle(color: Colors.black, fontSize: 10),
+                      style: TextStyle(color: Colors.black, fontSize: 14),
                     ),
                     SizedBox(
                       child: AutoSizeText(

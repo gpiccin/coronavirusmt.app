@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:covidmt/shared/screen.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +46,7 @@ class Header extends StatelessWidget {
               "Ultima atualização:",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 10,
+                fontSize: 12,
               ),
             ),
           ),
@@ -58,7 +59,7 @@ class Header extends StatelessWidget {
               "Boletim Informativo n:",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 10,
+                fontSize: 12,
               ),
             ),
           ),
