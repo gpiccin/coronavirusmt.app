@@ -1,4 +1,3 @@
-import 'package:covidmt/shared/screen.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
