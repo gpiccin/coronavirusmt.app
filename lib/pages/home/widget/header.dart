@@ -1,21 +1,17 @@
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:covidmt/shared/screen.dart';
+import 'package:covidmt/ui/ui_style.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220,
+      height: 140,
       decoration: BoxDecoration(
-          color: Color(0xff1E347C),
+          color: headerBackgroundColor,
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(35))),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
-          SizedBox(
-            height: 80,
-          ),
           Center(
             child: Text(
               "Mato Grosso",
