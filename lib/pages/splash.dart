@@ -1,4 +1,5 @@
 import 'package:covidmt/pages/home/home.dart';
+import 'package:covidmt/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -53,10 +54,7 @@ Widget _splashScreen() {
               ),
               Text(
                 "COVID MT",
-                style: TextStyle(
-                    fontSize: 90,
-                    fontFamily: "Russo One",
-                    color: Color(0xfff1E347C)),
+                style: tituloSplashStyle,
               ),
               SizedBox(
                 height: 30,

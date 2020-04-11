@@ -1,3 +1,6 @@
+import 'package:covidmt/model/tipo_doenca.dart';
+import 'package:covidmt/model/tipo_registro.dart';
+
 class Boletim {
   int numeroBoletim;
   DateTime dataRegistro;

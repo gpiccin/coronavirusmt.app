@@ -10,3 +10,9 @@ const cardIndicadorSecundarioStyle =
     TextStyle(fontSize: 16.0, fontWeight: FontWeight.w300);
 const subHeaderStyle = TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500);
 const headerStyle = TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500);
+
+const tituloSplashStyle =
+    TextStyle(fontSize: 50, fontFamily: "Russo One", color: Color(0xfff1E347C));
+
+const tituloChart = TextStyle(color: Color(0xff939393), fontSize: 10);
+const sideTituloChart = const TextStyle(color: Color(0xff939393), fontSize: 10);

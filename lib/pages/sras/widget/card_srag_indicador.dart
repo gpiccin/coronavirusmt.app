@@ -1,3 +1,4 @@
+import 'package:covidmt/pages/sras/srars_panel.dart';
 import 'package:covidmt/ui/card_style.dart';
 import 'package:covidmt/ui/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class CardSRAGIndicador extends StatelessWidget {
       elevation: cardElevation,
       color: cardBackgroundColor,
       child: InkWell(
-        onTap: () => {print('something')},
+        onTap: () => {Navigator.push(context, SrarsPage())},
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,6 +1,6 @@
-import 'package:covidmt/pages/home/widget/card_srag_indicador.dart';
 import 'package:covidmt/pages/home/widget/grid_covid_indicadores.dart';
 import 'package:covidmt/pages/home/widget/header.dart';
+import 'package:covidmt/pages/sras/widget/card_srag_indicador.dart';
 import 'package:covidmt/ui/text_styles.dart';
 import 'package:covidmt/ui/ui_style.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +13,10 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final double defaultPadding = 12.0;
 
+  Future<bool> _onBackPressed() async {
+    print('moon walking..');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,47 +25,54 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: headerBackgroundColor,
         elevation: 0,
       ),
-      body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Header(),
-            Expanded(
-              child: Container(
-                child: ListView(padding: EdgeInsets.all(0), children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(this.defaultPadding),
-                    child: Container(
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(
-                            this.defaultPadding, this.defaultPadding, 0, 0),
-                        child: Text(
-                          "COVID-19",
-                          style: headerStyle,
+      body: WillPopScope(
+        onWillPop: _onBackPressed,
+        child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Header(),
+              Expanded(
+                child: Container(
+                  child:
+                      ListView(padding: EdgeInsets.all(0), children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(this.defaultPadding),
+                      child: Container(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              this.defaultPadding, this.defaultPadding, 0, 0),
+                          child: Text(
+                            "COVID-19",
+                            style: headerStyle,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(
-                        this.defaultPadding, 0, this.defaultPadding, 0),
-                    child: GridCovidIndicadores(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(
-                        this.defaultPadding + 4, 0, this.defaultPadding + 4, 0),
-                    child: Divider(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(
-                        this.defaultPadding, 0, this.defaultPadding, 0),
-                    child: CardSRAGIndicador("SRAG - 01/01/2020 até 09/04/2020",
-                        "362", "438", "438"),
-                  ),
-                ]),
-              ),
-            )
-          ],
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          this.defaultPadding, 0, this.defaultPadding, 0),
+                      child: GridCovidIndicadores(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(this.defaultPadding + 4, 0,
+                          this.defaultPadding + 4, 0),
+                      child: Divider(),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          this.defaultPadding, 0, this.defaultPadding, 0),
+                      child: CardSRAGIndicador(
+                          "SRAG - 01/01/2020 até 09/04/2020",
+                          "362",
+                          "438",
+                          "438"),
+                    ),
+                  ]),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
