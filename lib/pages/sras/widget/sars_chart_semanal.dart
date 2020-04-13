@@ -7,12 +7,12 @@ import 'package:covidmt/ui/ui_style.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class SragChart extends StatefulWidget {
+class SragChartSemanal extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => SragChartState();
 }
 
-class SragChartState extends State<SragChart> {
+class SragChartState extends State<SragChartSemanal> {
   List<BarChartGroupData> data = [];
   List<int> meses = [];
   Srars_controller srars_controller;

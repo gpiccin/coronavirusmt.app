@@ -1,8 +1,8 @@
-import 'package:covidmt/pages/sras/widget/sars_chart_semanal.dart';
+import 'package:covidmt/pages/sras/widget/sars_chart_mensal.dart';
 
 import 'package:flutter/material.dart';
 
-class CardSRAGGraficoDiario extends StatelessWidget {
+class CardSRAGGraficoMensal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,11 +16,15 @@ class CardSRAGGraficoDiario extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 13.0, top: 10),
             child: Text(
-              "SRAG por dia",
+              "SRAG por meses",
               style: TextStyle(color: Colors.black, fontSize: 10),
             ),
           ),
-          SragChartSemanal()
+          SizedBox(
+            height: 5,
+          ),
+//          SragChartMensal()
+          SragChartMensal()
         ],
       ),
     ));

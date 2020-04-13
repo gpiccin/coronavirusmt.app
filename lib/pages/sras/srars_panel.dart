@@ -1,4 +1,5 @@
 import 'package:covidmt/pages/sras/widget/card_srag_grafico_diario.dart';
+import 'package:covidmt/pages/sras/widget/card_srag_grafico_mesal.dart';
 import 'package:covidmt/ui/ui_style.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,13 @@ class SrarsPage extends MaterialPageRoute<Null> {
                 ),
               ),
               body: Column(
-                children: <Widget>[CardSRAGGraficoDiario()],
+                children: <Widget>[
+                  CardSRAGGraficoDiario(),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  CardSRAGGraficoMensal()
+                ],
               ));
         });
 }
