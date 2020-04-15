@@ -14,7 +14,7 @@ class SragChartSemanal extends StatefulWidget {
 
 class SragChartState extends State<SragChartSemanal> {
   List<BarChartGroupData> data = [];
-  List<int> meses = [];
+  List<int> semanas = [];
   Srars_controller srars_controller;
   final double intervalo_chart = 30;
 
@@ -28,7 +28,7 @@ class SragChartState extends State<SragChartSemanal> {
     srars_controller = Srars_controller();
     data = srars_controller.carregaGraficoSemanas(
         TempoRelatorioSars.TWO_WEKENDS, chartColorSars);
-    meses = this.srars_controller.getRetornaSemanas();
+    semanas = this.srars_controller.getRetornaSemanas();
   }
 
   @override
@@ -55,7 +55,7 @@ class SragChartState extends State<SragChartSemanal> {
                   textStyle: tituloChart,
                   margin: 5,
                   getTitles: (double value) {
-                    switch (this.meses[value.toInt()]) {
+                    switch (this.semanas[value.toInt()]) {
                       case 1:
                         return '2 Semanas atras';
                       case 2:

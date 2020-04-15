@@ -76,6 +76,7 @@ class Srars_controller {
   // }
 
   List<BarChartGroupData> carregaGraficoSemanas(int qtdDias, Color color) {
+    
     this.carregaDados();
     semanas = [];
     List<Boletim> lista = this.getListaSras();
@@ -115,6 +116,7 @@ class Srars_controller {
   List<int> getRetornaSemanas() => this.semanas;
 
   List<FlSpot> carregaGraficoMensais(int qtdDias, Color color) {
+
     this.carregaDados();
     meses = [];
     List<Boletim> lista = this.getListaSras();
