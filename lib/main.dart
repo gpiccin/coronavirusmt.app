@@ -1,9 +1,7 @@
 import 'package:covidmt/pages/splash.dart';
-import 'package:covidmt/shared/repository/Repositorie.dart';
 import 'package:flutter/material.dart';
 
-Future<void> main() async {
-  await AppRepositoriy.getDadosBoletim();
+main() async {
   runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Covid MT',
