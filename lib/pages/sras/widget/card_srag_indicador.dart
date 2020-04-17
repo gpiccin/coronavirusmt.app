@@ -22,7 +22,10 @@ class CardSRAGIndicador extends StatelessWidget {
       elevation: cardElevation,
       color: cardBackgroundColor,
       child: InkWell(
-        onTap: () => {Navigator.push(context, SrarsPage())},
+        onTap: () => {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SrarsPage()))
+        },
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,7 +76,7 @@ class CardSRAGIndicador extends StatelessWidget {
                                     .merge(cardIndicadorSecundarioStyle),
                               ),
                               Text(
-                                "430",
+                                quantidadeDeCasosMaisCOVID,
                                 style: cardIndicadorSecundarioStyle.merge(
                                     TextStyle(
                                         color: Colors.red,
@@ -98,7 +101,7 @@ class CardSRAGIndicador extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      "Total no período de: 01/01/2020 até 09/04/2020",
+                      title,
                       style: cardLegendaStyle,
                     ),
                     SizedBox(

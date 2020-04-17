@@ -1,102 +1,89 @@
-import 'package:covidmt/model/boletim.dart';
-import 'package:covidmt/model/tipo_doenca.dart';
-import 'package:covidmt/model/tipo_registro.dart';
+import 'package:covidmt/model/srars_model.dart';
+
 import 'package:covidmt/shared/charts/column_chart.dart';
+import 'package:covidmt/shared/repository/app_repository.dart';
 import 'package:covidmt/shared/tempo_relatorio_sras.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class Srars_controller {
-  List<Boletim> listaCasos;
-
+  List<SrasModel> listaCasos = [];
+  SrasModel ultimoCaso;
   List<double> listaGraficosMeses = [];
   List<int> semanas = [];
   List<int> meses = [];
   double qtdCasosSemanaAnterior;
   DateTime diaAtual = DateTime.now();
-  List<Boletim> carregaDados() {
-    listaCasos = new List<Boletim>();
-    int day = 0;
-    int mesAtual = 1;
-    for (int i = 1; i <= 30; i++) {
-      Boletim boletim = new Boletim(
-          numeroBoletim: 1,
-          cidade: "Cuiaba",
-          qtdCasos: (i * 2 >= 150 ? i * 1 - 50 : i * 3),
-          tipoDoenca: TipoDoenca.SRARS,
-          tipoRegistro: TipoRegistro.NOTIFICADOS,
-          dataRegistro: DateTime(2020, mesAtual, i, 0, 0, 0));
+  bool isCarregando = true;
 
-      listaCasos.add(boletim);
-      if (i == 30) {
-        mesAtual += 1;
-        i = 1;
-        if (mesAtual == diaAtual.month) break;
+  double numMaxSarsSemanal = 0;
+
+  carregaDados() async {
+    if (listaCasos.length == 0) {
+      var itens = await AppRepository.getDadosSars();
+
+      for (int i = 0; i < itens.length; i++) {
+        SrasModel srars = SrasModel.fromJson(itens[i]);
+        listaCasos.add(srars);
       }
     }
-    for (int i = 1; i <= diaAtual.day; i++) {
-      Boletim boletim = new Boletim(
-          numeroBoletim: 1,
-          cidade: "Cuiaba",
-          qtdCasos: (i * 6 >= 150 ? i * 6 : i * 6),
-          tipoDoenca: TipoDoenca.SRARS,
-          tipoRegistro: TipoRegistro.NOTIFICADOS,
-          dataRegistro: DateTime(2020, diaAtual.month, i, 0, 0, 0));
-
-      listaCasos.add(boletim);
-    }
-
-    listaCasos = carregaListaSras();
-
-    return listaCasos;
   }
 
-  List<Boletim> carregaListaSras() {
-    List<Boletim> lista = new List<Boletim>();
-    lista = listaCasos;
-
-    return lista.where((v) => v.tipoDoenca == TipoDoenca.SRARS).toList();
+  buscarUltimoCasoSars() async {
+    if (ultimoCaso == null) {
+      var itens = await AppRepository.getUltimoRegistroDadosSars();
+      ultimoCaso = SrasModel.fromJson(itens[0]);
+    }
   }
 
   double getMaxNumeroSars() {
-    List<Boletim> lista = carregaListaSras();
-    lista.sort((a, b) => b.qtdCasos.compareTo(a.qtdCasos));
-
-    return lista.first.qtdCasos.toDouble();
+    if (listaCasos.length == 0)
+      return 0;
+    else {
+      return this.listaCasos[listaCasos.length - 1].sragCasosTotal.toDouble();
+    }
   }
 
-  List<Boletim> getListaSras() {
-    listaCasos.sort((a, b) => a.dataRegistro.compareTo(b.dataRegistro));
-    return listaCasos;
-  }
+  // List<SrasModel> getListaSras() {
+  //   listaCasos.sort((a, b) => a.data.compareTo(b.data));
+  //   return listaCasos;
+  // }
 
   // void carregaGraficoSars(TempoRelatorioSars tipo_relatorio, Color color) {
   //   this.carregaDados();
   //   this.carregarGrafico(color);
   // }
 
-  List<BarChartGroupData> carregaGraficoSemanas(int qtdDias, Color color) {
-    
-    this.carregaDados();
+  Future<List<BarChartGroupData>> carregaGraficoSemanas(
+      int qtdDias, Color color) async {
+    if (listaCasos.length == 0) await this.carregaDados();
     semanas = [];
-    List<Boletim> lista = this.getListaSras();
+    List<SrasModel> lista = listaCasos;
     DateTime dataInicial = DateTime.now();
 
     dataInicial = dataInicial.subtract(new Duration(days: qtdDias));
     dataInicial = dataInicial.subtract(new Duration(days: dataInicial.weekday));
 
-    lista =
-        lista.where((data) => data.dataRegistro.isAfter(dataInicial)).toList();
+    lista = lista.where((itens) => itens.data.isAfter(dataInicial)).toList();
 
     int semanaAtual = 1;
     ColumnChart grafico = new ColumnChart();
     semanas.add(semanaAtual);
 
+    int y = 0;
     for (int i = 0; i < lista.length; i++) {
       //print(
       // ' semana $semanaAtual data: ${lista[i].dataRegistro.toString()} qtd casos dia:${lista[i].qtdCasos} ');
-      if (lista[i].dataRegistro.weekday < 7) {
-        grafico.adcionaColuna(0, lista[i].qtdCasos.toDouble(), color);
+      if (lista[i].data.weekday < 7) {
+        grafico.adcionaColuna(
+            0,
+            lista[i].sragCasosNovos != null
+                ? lista[i].sragCasosNovos.toDouble()
+                : lista[i].sragCasosTotal.toDouble(),
+            color);
+        if (numMaxSarsSemanal < grafico.lista_colunas[y].y)
+          numMaxSarsSemanal = grafico.lista_colunas[y].y;
+
         if ((i + 1) == lista.length)
           grafico.agrupaColunas(semanaAtual, 4, grafico.lista_colunas);
       } else {
@@ -104,22 +91,25 @@ class Srars_controller {
         semanaAtual += 1;
 
         grafico.reinicia();
-        grafico.adcionaColuna(0, lista[i].qtdCasos.toDouble(), color);
+        grafico.adcionaColuna(0, lista[i].sragCasosNovos.toDouble(), color);
+        if (numMaxSarsSemanal < grafico.lista_colunas[0].y)
+          numMaxSarsSemanal = grafico.lista_colunas[0].y;
+        y = 0;
         semanas.add(semanaAtual);
       }
+      y += 1;
     }
+    print('numero max columana semanal $numMaxSarsSemanal');
 
-//    List<BarChartGroupData> data = new List<BarChartGroupData>();
     return grafico.retornaListaColunasAgrupadas();
   }
 
   List<int> getRetornaSemanas() => this.semanas;
 
-  List<FlSpot> carregaGraficoMensais(int qtdDias, Color color) {
-
-    this.carregaDados();
+  Future<List<FlSpot>> carregaGraficoMensais(int qtdDias, Color color) async {
+    if (listaCasos.length == 0) await this.carregaDados();
     meses = [];
-    List<Boletim> lista = this.getListaSras();
+    List<SrasModel> lista = listaCasos;
     DateTime dataInicial = DateTime.now();
     DateTime dataAnterior;
 
@@ -131,10 +121,10 @@ class Srars_controller {
 
     calculaValorMinimoSemanaAnterior(dataInicial, lista);
 
-    lista =
-        lista.where((data) => data.dataRegistro.isAfter(dataInicial)).toList();
-    lista.sort((a, b) => a.dataRegistro.compareTo(b.dataRegistro));
-    int mesAtual = lista[0].dataRegistro.month;
+    lista = lista.where((data) => data.data.isAfter(dataInicial)).toList();
+    lista.sort((a, b) => a.data.compareTo(b.data));
+
+    int mesAtual = lista[0].data.month;
 
     double valorSemanal = 0;
     double semana = 0;
@@ -147,12 +137,14 @@ class Srars_controller {
     if (lista.length < 60) qtdEspaco = (lista.length / 12) / 5;
     // meses.add(lista[0].dataRegistro.month);
     for (int i = 0; i < lista.length; i++) {
-      if (lista[i].dataRegistro.month > mesAtual) {
-        mesAtual = lista[i].dataRegistro.month;
+      if (lista[i].data.month > mesAtual) {
+        mesAtual = lista[i].data.month;
       }
 
-      if (lista[i].dataRegistro.weekday < 7) {
-        valorSemanal += lista[i].qtdCasos.toDouble();
+      if (lista[i].data.weekday < 7) {
+        valorSemanal += lista[i].sragCasosNovos != null
+            ? lista[i].sragCasosNovos.toDouble()
+            : lista[i].sragCasosTotal.toDouble();
 
         if ((i + 1) == lista.length) {
           listaGraficosMeses.add(valorSemanal);
@@ -163,7 +155,7 @@ class Srars_controller {
         listaGrafico.add(new FlSpot(semana, valorSemanal));
         listaGraficosMeses.add(valorSemanal);
         //  print('semana: $semana QTD: $valorSemanal   espaço : ${semana}');
-        valorSemanal = lista[i].qtdCasos.toDouble();
+        valorSemanal = lista[i].sragCasosNovos.toDouble();
         mesAtual += 1;
         semana += 1;
       }
@@ -173,9 +165,11 @@ class Srars_controller {
   }
 
   double getMaxNumeroSarsMeses() {
-    listaGraficosMeses?.sort((a, b) => b.compareTo(a));
-
-    return listaGraficosMeses.first;
+    if (listaGraficosMeses.length > 0) {
+      listaGraficosMeses?.sort((a, b) => b.compareTo(a));
+      return listaGraficosMeses.first;
+    } else
+      return 0;
   }
 
   List<int> getNumerosApresentaGraficoMeses() {
@@ -191,7 +185,7 @@ class Srars_controller {
     return numeros;
   }
 
-  List<int> getListaMeses() => meses;
+  List<int> getListaMeses() => meses.length > 0 ? meses : 0;
 
   String getNomeMes(int mes) {
     switch (mes) {
@@ -309,17 +303,17 @@ class Srars_controller {
     }
   }
 
-  calculaValorMinimoSemanaAnterior(DateTime dataInicial, List<Boletim> lista) {
+  calculaValorMinimoSemanaAnterior(
+      DateTime dataInicial, List<SrasModel> lista) {
     DateTime dataAnterior = dataInicial.subtract(new Duration(days: 7));
     print(dataInicial.toString());
     print(dataAnterior.toString());
 
-    lista =
-        lista.where((data) => data.dataRegistro.isAfter(dataAnterior)).toList();
+    lista = lista.where((data) => data.data.isAfter(dataAnterior)).toList();
     double valorSemanalAnterior = 0;
     for (int i = 0; i < lista.length; i++) {
-      if (lista[i].dataRegistro.isBefore(dataInicial)) {
-        valorSemanalAnterior += lista[i].qtdCasos;
+      if (lista[i].data.isBefore(dataInicial)) {
+        valorSemanalAnterior += lista[i].sragCasosNovos;
       } else {
         print('rodou $i vezes, valor $valorSemanalAnterior');
         break;

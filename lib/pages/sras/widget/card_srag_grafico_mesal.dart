@@ -23,7 +23,6 @@ class CardSRAGGraficoMensal extends StatelessWidget {
           SizedBox(
             height: 5,
           ),
-//          SragChartMensal()
           SragChartMensal()
         ],
       ),

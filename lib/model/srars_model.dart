@@ -1,12 +1,12 @@
 class SrasModel {
-  String data;
+  DateTime data;
   int sragCasosTotal;
   int sragCasosNovos;
 
   SrasModel({this.data, this.sragCasosTotal, this.sragCasosNovos});
 
   SrasModel.fromJson(Map<String, dynamic> json) {
-    data = json['data'];
+    data = DateTime.parse(json['data']);
     sragCasosTotal = json['srag_casos_total'];
     sragCasosNovos = json['srag_casos_novos'];
   }

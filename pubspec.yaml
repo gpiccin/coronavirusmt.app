@@ -27,6 +27,7 @@ dependencies:
   auto_size_text: ^2.1.0
   dio: ^3.0.9
   fl_chart: ^0.8.7
+  provider: ^4.0.5
   splashscreen:
 
 dev_dependencies:

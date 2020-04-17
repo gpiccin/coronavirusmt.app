@@ -5,21 +5,29 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
 class AppRepository {
-  static Future<List<SrasModel>> getDadosBoletim() async {
+  static Future<dynamic> getDadosSars() async {
     var client = Dio(BaseOptions(baseUrl: Constants.URL_KEYCOVIDMT));
 
     Response response = await client.post(Constants.KEY_COVIDMT, data: {
       "query":
-          "query {\n  boletims(limit: 1, sort:\"data:desc\") {\n    data\n    srag_casos_total\n    covid_casos_total\n  }\nsummary: boletimsConnection {\n    aggregate {\n      count\n      avg {\n        srag_casos_novos\n        covid_casos_novos\n      }\n    }\n  }\n}"
+          "query{\n  boletims(sort:\"data:asc\", limit: 67){\n    data\n    srag_casos_total\n    srag_casos_novos\n    \n  }\n}"
     });
-    var itens = response.data;
+    await Future.delayed(Duration(milliseconds: 200));
+    var itens = response.data["data"]["boletims"];
 
-    List<SrasModel> lista_boletim_sars = [];
-    for (int i = 0; i < itens.length; i++) {
-      SrasModel srars = SrasModel.fromJson(itens[i]);
-      lista_boletim_sars.add(srars);
-    }
+    return itens;
+  }
 
-    return lista_boletim_sars;
+  static Future<dynamic> getUltimoRegistroDadosSars() async {
+    var client = Dio(BaseOptions(baseUrl: Constants.URL_KEYCOVIDMT));
+
+    Response response = await client.post(Constants.KEY_COVIDMT, data: {
+      "query":
+          "query{\n  boletims(sort:\"data:desc\", limit: 1){\n    data\n    srag_casos_total\n    srag_casos_novos\n    \n  }\n}"
+    });
+    await Future.delayed(Duration(milliseconds: 200));
+    var itens = response.data["data"]["boletims"];
+
+    return itens;
   }
 }
