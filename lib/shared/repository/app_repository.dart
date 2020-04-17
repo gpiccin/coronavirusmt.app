@@ -1,8 +1,7 @@
-import 'package:covidmt/model/boletim.dart';
+import 'package:covidmt/model/boletim_model.dart';
 import 'package:covidmt/model/srars_model.dart';
 import 'package:covidmt/shared/repository/utils/constants.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 class AppRepository {
   static Future<dynamic> getDadosSars() async {
@@ -29,5 +28,14 @@ class AppRepository {
     var itens = response.data["data"]["boletims"];
 
     return itens;
+  }
+
+  static Future<BoletimModel> getBoletim(String referencia) async {
+    var client = Dio(BaseOptions(baseUrl: Constants.URL_KEYCOVIDMT));
+
+    Response response = await client.get(Constants.BOLETINS_PATH_COVIDMT,
+        queryParameters: {"referencia": referencia});
+
+    return BoletimModel.fromJson(response.data[0]);
   }
 }
