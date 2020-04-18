@@ -14,14 +14,13 @@ class SrarsPage extends StatefulWidget {
 class _SrarsPanelState extends State<SrarsPage> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
-  Srars_controller controller = null;
+  SrarsController controller;
 
   iniciaProvider(BuildContext context) async {
-    controller = Provider.of<Srars_controller>(context);
+    controller = Provider.of<SrarsController>(context);
     await controller.carregaDados();
 
     controller.isCarregando = false;

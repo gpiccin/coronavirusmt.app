@@ -1,24 +1,36 @@
 import 'package:covidmt/ui/ui_style.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Header extends StatelessWidget {
+  Header({this.ultimaAtualizacao, this.referencia, this.boletimUrl});
+
+  final String ultimaAtualizacao;
+  final String referencia;
+  final String boletimUrl;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 140,
       decoration: BoxDecoration(
           color: headerBackgroundColor,
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(35))),
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(35),
+              bottomRight: Radius.circular(35))),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          SizedBox(
+            height: 50,
+          ),
           Center(
             child: Text(
-              "Mato Grosso",
-              style: TextStyle(
+              "CORONAVÍRUS EM MT",
+              style: GoogleFonts.rubik(
                   color: Colors.white,
-                  fontSize: 32,
-                  fontWeight: FontWeight.w400),
+                  fontSize: 28,
+                  fontWeight: FontWeight.w500),
             ),
           ),
           SizedBox(
@@ -31,32 +43,6 @@ class Header extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 14,
                   fontWeight: FontWeight.w500),
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 12),
-            child: Text(
-              "Ultima atualização:",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 12),
-            child: Text(
-              "Boletim Informativo n:",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 12,
-              ),
             ),
           ),
         ],

@@ -1,8 +1,5 @@
-import 'package:covidmt/model/boletim.dart';
 import 'package:covidmt/pages/sras/srars_controller.dart';
-import 'package:covidmt/shared/charts/column_chart.dart';
-import 'package:covidmt/shared/tempo_relatorio_sras.dart';
-import 'package:covidmt/ui/text_styles.dart';
+import 'package:covidmt/pages/sras/tempo_relatorio_sras.dart';
 import 'package:covidmt/ui/ui_style.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +13,9 @@ class SragChartMensal extends StatefulWidget {
 class SragChartMensalState extends State<SragChartMensal> {
   List<FlSpot> listaDadosCharts = [];
   List<int> meses = [];
-  List<int> valores_charts_meses = [];
-  Srars_controller srars_controller;
-  final double intervalo_chart = 30;
+  List<int> valoresChartsMeses = [];
+  SrarsController srarsController;
+  final double intervaloChart = 30;
 
   List<Color> gradientColors = [
     const Color(0xff23b6e6),
@@ -31,13 +28,12 @@ class SragChartMensalState extends State<SragChartMensal> {
   }
 
   Future<dynamic> carregaDadosSrarsMensais(BuildContext context) async {
-    srars_controller = Provider.of<Srars_controller>(context);
-    listaDadosCharts = await srars_controller.carregaGraficoMensais(
+    srarsController = Provider.of<SrarsController>(context);
+    listaDadosCharts = await srarsController.carregaGraficoMensais(
         TempoRelatorioSars.TWELVE_WEKENDS, chartColorSars);
 
-    meses = this.srars_controller.getRetornaSemanas();
-    valores_charts_meses =
-        this.srars_controller.getNumerosApresentaGraficoMeses();
+    meses = this.srarsController.getRetornaSemanas();
+    valoresChartsMeses = this.srarsController.getNumerosApresentaGraficoMeses();
   }
 
   @override
@@ -68,7 +64,7 @@ class SragChartMensalState extends State<SragChartMensal> {
   }
 
   mainData() {
-    return this.srars_controller.isCarregando
+    return this.srarsController.isCarregando
         ? CircularProgressIndicator()
         : LineChartData(
             gridData: FlGridData(
@@ -100,16 +96,16 @@ class SragChartMensalState extends State<SragChartMensal> {
                   switch (value.toInt()) {
                     case 1:
                       return this
-                          .srars_controller
-                          .getNomeMes(this.srars_controller.getListaMeses()[0]);
+                          .srarsController
+                          .getNomeMes(this.srarsController.getListaMeses()[0]);
                     case 6:
                       return this
-                          .srars_controller
-                          .getNomeMes(this.srars_controller.getListaMeses()[1]);
+                          .srarsController
+                          .getNomeMes(this.srarsController.getListaMeses()[1]);
                     case 11:
                       return this
-                          .srars_controller
-                          .getNomeMes(this.srars_controller.getListaMeses()[2]);
+                          .srarsController
+                          .getNomeMes(this.srarsController.getListaMeses()[2]);
                   }
                   return '';
                 },
@@ -125,12 +121,12 @@ class SragChartMensalState extends State<SragChartMensal> {
                 getTitles: (value) {
                   if (value.toInt() == 0) {
                     return '0';
-                  } else if (value.toInt() == valores_charts_meses[1]) {
-                    return valores_charts_meses[1].toString();
-                  } else if (value.toInt() == valores_charts_meses[2]) {
-                    return valores_charts_meses[2].toString();
-                  } else if (value.toInt() == valores_charts_meses[3]) {
-                    return valores_charts_meses[3].toString();
+                  } else if (value.toInt() == valoresChartsMeses[1]) {
+                    return valoresChartsMeses[1].toString();
+                  } else if (value.toInt() == valoresChartsMeses[2]) {
+                    return valoresChartsMeses[2].toString();
+                  } else if (value.toInt() == valoresChartsMeses[3]) {
+                    return valoresChartsMeses[3].toString();
                   } else
                     return '';
                 },
@@ -144,7 +140,7 @@ class SragChartMensalState extends State<SragChartMensal> {
             minX: 0,
             maxX: 14,
             minY: 0,
-            maxY: this.srars_controller.getMaxNumeroSarsMeses(),
+            maxY: this.srarsController.getMaxNumeroSarsMeses(),
             lineBarsData: [
               LineChartBarData(
                 //

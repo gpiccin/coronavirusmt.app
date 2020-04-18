@@ -1,9 +1,10 @@
-import 'package:covidmt/shared/repository/app_repository.dart';
+import 'package:covidmt/core/services/api.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('Recupera e converte o boletim 37', () async {
-    var boletim = await AppRepository.getBoletim("37");
+    var boletim = await Api().getBoletim("37");
 
     expect(boletim.referencia, "37");
     expect(boletim.data, DateTime.parse("2020-04-14"));
@@ -30,5 +31,10 @@ void main() {
     expect(boletim.covidIsolamento, 97);
     expect(boletim.covidNovosEmIsolamento, -8);
     expect(boletim.covidPercentualEmIsolamento, 70);
+  });
+
+  test('Recupera a lista de boletins', () async {
+    var boletins = await Api().getBoletins();
+    expect(boletins.length > 0, true);
   });
 }

@@ -1,7 +1,5 @@
-import 'package:covidmt/model/boletim.dart';
 import 'package:covidmt/pages/sras/srars_controller.dart';
-import 'package:covidmt/shared/charts/column_chart.dart';
-import 'package:covidmt/shared/tempo_relatorio_sras.dart';
+import 'package:covidmt/pages/sras/tempo_relatorio_sras.dart';
 import 'package:covidmt/ui/text_styles.dart';
 import 'package:covidmt/ui/ui_style.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -17,8 +15,9 @@ class SragChartState extends State<SragChartSemanal> {
   List<BarChartGroupData> data = [];
   List<int> semanas = [];
 
-  double intervalo_chartSemanal = 3;
-  Srars_controller srars_controller = null;
+  double intervaloChartSemanal = 3;
+  SrarsController srarsController;
+
   @override
   initState() {
     super.initState();
@@ -27,12 +26,12 @@ class SragChartState extends State<SragChartSemanal> {
 
   Future<dynamic> carregaDadosSrars(BuildContext context) async {
     print('inicio chart semanal');
-    srars_controller = Provider.of<Srars_controller>(context);
+    srarsController = Provider.of<SrarsController>(context);
 
-    data = await srars_controller.carregaGraficoSemanas(
+    data = await srarsController.carregaGraficoSemanas(
         TempoRelatorioSars.TWO_WEKENDS, chartColorSars);
     // print('end carrega graficos chart semanal');
-    semanas = this.srars_controller.getRetornaSemanas();
+    semanas = this.srarsController.getRetornaSemanas();
   }
 
   @override
@@ -52,7 +51,7 @@ class SragChartState extends State<SragChartSemanal> {
                   child: BarChart(
                     BarChartData(
                       alignment: BarChartAlignment.center,
-                      maxY: this.srars_controller.numMaxSarsSemanal,
+                      maxY: this.srarsController.numMaxSarsSemanal,
                       barTouchData: const BarTouchData(
                         enabled: false,
                       ),
@@ -82,8 +81,8 @@ class SragChartState extends State<SragChartSemanal> {
                           getTitles: (double value) {
                             return value.toInt().toString();
                           },
-                          interval: this.srars_controller.numMaxSarsSemanal /
-                              intervalo_chartSemanal,
+                          interval: this.srarsController.numMaxSarsSemanal /
+                              intervaloChartSemanal,
                           margin: 8,
                         ),
                       ),

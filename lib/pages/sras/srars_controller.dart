@@ -1,12 +1,14 @@
-import 'package:covidmt/model/srars_model.dart';
+import 'package:covidmt/core/locator.dart';
+import 'package:covidmt/core/model/srars_model.dart';
+import 'package:covidmt/core/services/api.dart';
 
-import 'package:covidmt/shared/charts/column_chart.dart';
-import 'package:covidmt/shared/repository/app_repository.dart';
-import 'package:covidmt/shared/tempo_relatorio_sras.dart';
+import 'package:covidmt/ui/charts/column_chart.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class Srars_controller {
+class SrarsController {
+  Api _api = locator<Api>();
+
   List<SrasModel> listaCasos = [];
   SrasModel ultimoCaso;
   List<double> listaGraficosMeses = [];
@@ -20,7 +22,7 @@ class Srars_controller {
 
   carregaDados() async {
     if (listaCasos.length == 0) {
-      var itens = await AppRepository.getDadosSars();
+      var itens = await _api.getDadosSars();
 
       for (int i = 0; i < itens.length; i++) {
         SrasModel srars = SrasModel.fromJson(itens[i]);
@@ -31,7 +33,7 @@ class Srars_controller {
 
   buscarUltimoCasoSars() async {
     if (ultimoCaso == null) {
-      var itens = await AppRepository.getUltimoRegistroDadosSars();
+      var itens = await _api.getUltimoRegistroDadosSars();
       ultimoCaso = SrasModel.fromJson(itens[0]);
     }
   }
@@ -81,19 +83,19 @@ class Srars_controller {
                 ? lista[i].sragCasosNovos.toDouble()
                 : lista[i].sragCasosTotal.toDouble(),
             color);
-        if (numMaxSarsSemanal < grafico.lista_colunas[y].y)
-          numMaxSarsSemanal = grafico.lista_colunas[y].y;
+        if (numMaxSarsSemanal < grafico.listaColunas[y].y)
+          numMaxSarsSemanal = grafico.listaColunas[y].y;
 
         if ((i + 1) == lista.length)
-          grafico.agrupaColunas(semanaAtual, 4, grafico.lista_colunas);
+          grafico.agrupaColunas(semanaAtual, 4, grafico.listaColunas);
       } else {
-        grafico.agrupaColunas(semanaAtual, 4, grafico.lista_colunas);
+        grafico.agrupaColunas(semanaAtual, 4, grafico.listaColunas);
         semanaAtual += 1;
 
         grafico.reinicia();
         grafico.adcionaColuna(0, lista[i].sragCasosNovos.toDouble(), color);
-        if (numMaxSarsSemanal < grafico.lista_colunas[0].y)
-          numMaxSarsSemanal = grafico.lista_colunas[0].y;
+        if (numMaxSarsSemanal < grafico.listaColunas[0].y)
+          numMaxSarsSemanal = grafico.listaColunas[0].y;
         y = 0;
         semanas.add(semanaAtual);
       }
@@ -111,8 +113,6 @@ class Srars_controller {
     meses = [];
     List<SrasModel> lista = listaCasos;
     DateTime dataInicial = DateTime.now();
-    DateTime dataAnterior;
-
     List<FlSpot> listaGrafico = new List<FlSpot>();
 
     dataInicial = dataInicial.subtract(new Duration(days: 60));
@@ -133,9 +133,7 @@ class Srars_controller {
     addListaTituloMeses(mesAtual);
     listaGrafico.add(new FlSpot(
         semana, this.getRetornaQtdMinimaSemanaAnteriorGraficoMeses()));
-    double qtdEspaco = 0;
-    if (lista.length < 60) qtdEspaco = (lista.length / 12) / 5;
-    // meses.add(lista[0].dataRegistro.month);
+
     for (int i = 0; i < lista.length; i++) {
       if (lista[i].data.month > mesAtual) {
         mesAtual = lista[i].data.month;
@@ -176,11 +174,11 @@ class Srars_controller {
     List<int> numeros = [];
     double max = getMaxNumeroSarsMeses();
     print(max);
-    int valor_dividido = (max / 3).toInt();
+    int valorDividido = max ~/ 3;
     numeros.add(0);
-    numeros.add(valor_dividido);
-    numeros.add(valor_dividido * 2);
-    numeros.add(valor_dividido * 3);
+    numeros.add(valorDividido);
+    numeros.add(valorDividido * 2);
+    numeros.add(valorDividido * 3);
 
     return numeros;
   }

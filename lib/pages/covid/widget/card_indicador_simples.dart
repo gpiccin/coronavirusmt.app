@@ -5,14 +5,16 @@ import 'package:flutter/material.dart';
 
 class CardIndicadorSimples extends StatelessWidget {
   CardIndicadorSimples(
-      this.title, this.indicadorPrincipal, this.indicadorSecundario,
-      [this.color]);
+      {this.title,
+      this.indicadorPrincipal,
+      this.indicadorSecundario,
+      this.color = Colors.black});
 
   final String title;
   final String indicadorPrincipal;
   final String indicadorSecundario;
   final double defaultPadding = 12.0;
-  Color color = Colors.black;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -64,9 +66,9 @@ class CardIndicadorSimples extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.only(right: this.defaultPadding),
                           child: Visibility(
-                            visible: this.indicadorSecundario != "",
+                            visible: this.indicadorSecundario != null,
                             child: Text(
-                              this.indicadorSecundario,
+                              this.indicadorSecundario ?? "",
                               style: TextStyle(color: this.color)
                                   .merge(cardIndicadorSecundarioStyle),
                             ),

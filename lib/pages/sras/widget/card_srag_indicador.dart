@@ -4,16 +4,17 @@ import 'package:covidmt/ui/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CardSRAGIndicador extends StatelessWidget {
-  CardSRAGIndicador(this.title, this.indicadorPrincipal,
-      this.quantidadeDeCasosEmRelacaoAoCOVID, this.quantidadeDeCasosMaisCOVID,
-      [this.color]);
+  CardSRAGIndicador(
+      {this.title,
+      this.indicadorPrincipal,
+      this.quantidadeDeCasosMaisCOVID,
+      this.color});
 
   final String title;
   final String indicadorPrincipal;
   final String quantidadeDeCasosMaisCOVID;
-  final String quantidadeDeCasosEmRelacaoAoCOVID;
   final double defaultPadding = 12.0;
-  Color color = Colors.black;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -70,17 +71,17 @@ class CardSRAGIndicador extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                              Text(
-                                "SRAG + COVID-19 = ",
-                                style: TextStyle(color: this.color)
-                                    .merge(cardIndicadorSecundarioStyle),
-                              ),
+                              Text("SRAG + COVID-19 = ",
+                                  style: cardIndicadorSecundarioStyle.merge(
+                                      TextStyle(
+                                          color: this.color, fontSize: 20))),
                               Text(
                                 quantidadeDeCasosMaisCOVID,
                                 style: cardIndicadorSecundarioStyle.merge(
                                     TextStyle(
-                                        color: Colors.red,
-                                        fontWeight: FontWeight.w600)),
+                                        color: this.color,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500)),
                               ),
                             ],
                           ),
