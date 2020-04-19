@@ -4,19 +4,18 @@ import 'package:covidmt/ui/shared/base_view.dart';
 import 'package:covidmt/ui/shared/ui_typography.dart';
 import 'package:covidmt/ui/shared/ui_helpers.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
-import 'package:covidmt/ui/covid/obito/widget/obitos_acumulados_por_dia_chart.dart';
-import 'package:covidmt/ui/covid/obito/widget/obitos_por_cidade_chart.dart';
-import 'package:covidmt/ui/covid/obito/widget/obitos_por_comorbidade_chart.dart';
-import 'package:covidmt/ui/covid/obito/widget/obitos_por_faixa_etaria_chart.dart';
-import 'package:covidmt/ui/covid/obito/widget/obitos_por_sexo_chart.dart';
-import 'package:covidmt/ui/widget/card_informacao_simples.dart';
+import 'package:covidmt/ui/covid/obito/widgets/obitos_acumulados_por_dia_chart.dart';
+import 'package:covidmt/ui/covid/obito/widgets/obitos_por_cidade_chart.dart';
+import 'package:covidmt/ui/covid/obito/widgets/obitos_por_comorbidade_chart.dart';
+import 'package:covidmt/ui/covid/obito/widgets/obitos_por_faixa_etaria_chart.dart';
+import 'package:covidmt/ui/covid/obito/widgets/obitos_por_sexo_chart.dart';
+import 'package:covidmt/ui/widgets/card_informacao_simples.dart';
 import 'package:flutter/material.dart';
 
 class ObitosPage extends StatelessWidget {
   Widget _headline(String title) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(UIStyle.defaultPadding,
-          UIStyle.defaultPadding + 12, UIStyle.defaultPadding, 0),
+      padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
       child: Text(
         title,
         style: UITypography.headline,
@@ -34,17 +33,13 @@ class ObitosPage extends StatelessWidget {
                 body: Container(
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()
-                      : ListView(children: <Widget>[
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    UIStyle.defaultPadding,
-                                    UIStyle.defaultPadding,
-                                    UIStyle.defaultPadding,
-                                    0),
-                                child: Row(
+                      : Padding(
+                          padding: const EdgeInsets.all(UIStyle.defaultPadding),
+                          child: ListView(children: <Widget>[
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                Row(
                                   children: <Widget>[
                                     Expanded(
                                       flex: 1,
@@ -69,63 +64,26 @@ class ObitosPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                              ),
-                              this._headline("Óbitos acumulados por dia"),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(24, 0, 24, 0),
-                                child: Container(
-                                  height: 200,
-                                  child: ObitosAcumuladosPorDiaChart(
-                                      model.obitosAcumuladosPorDia),
-                                ),
-                              ),
-                              this._headline("Óbitos por faixa etária"),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(24, 0, 24, 0),
-                                child: Container(
-                                  height: 200,
-                                  child: ObitosPorFaixaEtariaChart(
-                                      model.obitosPorFaixaEtaria),
-                                ),
-                              ),
-                              this._headline("Óbitos por cidade"),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(24, 0, 24, 0),
-                                child: Container(
-                                  height: 200,
-                                  child: ObitosPorCidadeChart(
-                                      model.obitosPorCidade),
-                                ),
-                              ),
-                              this._headline("Óbitos por sexo"),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(24, 0, 24, 0),
-                                child: Container(
-                                  height: 200,
-                                  child:
-                                      ObitosPorSexoChart(model.obitosPorSexo),
-                                ),
-                              ),
-                              this._headline("Óbitos por comorbidade"),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(24, 0, 24, 0),
-                                child: Container(
-                                  height: 200,
-                                  child: ObitosPorComorbidade(
-                                      model.obitosPorComorbidade),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 20,
-                              )
-                            ],
-                          ),
-                        ]),
+                                this._headline("Óbitos acumulados por dia"),
+                                ObitosAcumuladosPorDiaChart(
+                                    model.obitosAcumuladosPorDia),
+                                this._headline("Óbitos por faixa etária"),
+                                ObitosPorFaixaEtariaChart(
+                                    model.obitosPorFaixaEtaria),
+                                this._headline("Óbitos por cidade"),
+                                ObitosPorCidadeChart(model.obitosPorCidade),
+                                this._headline("Óbitos por sexo"),
+                                ObitosPorSexoChart(model.obitosPorSexo),
+                                this._headline("Óbitos por comorbidade"),
+                                ObitosPorComorbidade(
+                                    model.obitosPorComorbidade),
+                                SizedBox(
+                                  height: 20,
+                                )
+                              ],
+                            ),
+                          ]),
+                        ),
                 )));
   }
 }

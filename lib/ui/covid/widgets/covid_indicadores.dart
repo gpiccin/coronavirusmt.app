@@ -1,11 +1,11 @@
 import 'package:covidmt/core/models/boletim_model.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
-import 'package:covidmt/ui/covid/obito/page/obitos.dart';
-import 'package:covidmt/ui/widget/card_indicador_simples.dart';
+import 'package:covidmt/ui/covid/obito/obitos.dart';
+import 'package:covidmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
 
-class GridCovidIndicadores extends StatelessWidget {
-  GridCovidIndicadores({this.boletim});
+class CovidIndicadores extends StatelessWidget {
+  CovidIndicadores({this.boletim});
 
   final BoletimModel boletim;
   final double defaultSizeCardSeparation = 8;

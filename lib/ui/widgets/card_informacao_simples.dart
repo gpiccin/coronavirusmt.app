@@ -35,7 +35,7 @@ class CardInformacaoSimples extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(this.defaultPadding,
                     this.defaultPadding, this.defaultPadding, 0),
                 child: FittedBox(
-                  fit: BoxFit.scaleDown,
+                  fit: BoxFit.contain,
                   child: Text(
                     this.title,
                     style: UITypography.title,
@@ -49,14 +49,16 @@ class CardInformacaoSimples extends StatelessWidget {
                       height: 50,
                       child: Align(
                         alignment: Alignment.bottomLeft,
-                        child: Text(
-                          this.indicadorPrincipal,
-                          style: UITypography.indicadorPrincipalStyle
-                              .merge(TextStyle(
-                            color: this.color,
-                            height: 0.5,
-                          )),
-                        ),
+                        child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Text(
+                              this.indicadorPrincipal,
+                              style: UITypography.indicadorPrincipalStyle
+                                  .merge(TextStyle(
+                                color: this.color,
+                                height: 0.5,
+                              )),
+                            )),
                       )),
                   Container(
                     height: 50,
@@ -66,11 +68,13 @@ class CardInformacaoSimples extends StatelessWidget {
                         padding: EdgeInsets.only(left: this.defaultPadding),
                         child: Visibility(
                           visible: this.indicadorSecundario != null,
-                          child: Text(
-                            this.indicadorSecundario ?? "",
-                            style: UITypography.indicadorSecundarioStyle
-                                .merge(TextStyle(color: this.color)),
-                          ),
+                          child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Text(
+                                this.indicadorSecundario ?? "",
+                                style: UITypography.indicadorSecundarioStyle
+                                    .merge(TextStyle(color: this.color)),
+                              )),
                         ),
                       ),
                     ),

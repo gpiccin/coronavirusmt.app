@@ -1,6 +1,6 @@
 import 'package:covidmt/ui/covid/views/boletins.dart';
-import 'package:covidmt/ui/home/views/indicadores.dart';
-import 'package:covidmt/ui/home/widget/header.dart';
+import 'package:covidmt/ui/home/views/situacao_atual.dart';
+import 'package:covidmt/ui/home/widgets/header.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
-    IndicadoresView(),
+    SituacaoAtualView(),
     BoletinsView(),
   ];
 

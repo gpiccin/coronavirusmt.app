@@ -4,25 +4,31 @@ import 'package:covidmt/core/models/key_value.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:flutter/material.dart';
 
-class ObitosAcumuladosPorDiaChart extends StatelessWidget {
+class ObitosPorComorbidade extends StatelessWidget {
+  final double height;
   final bool animate;
   final List<KeyValue> obitos;
 
-  ObitosAcumuladosPorDiaChart(this.obitos, {this.animate = true});
+  ObitosPorComorbidade(this.obitos, {this.height = 200, this.animate = true});
 
   @override
   Widget build(BuildContext context) {
-    return new charts.TimeSeriesChart(_createObitoSeries(),
+    return Container(
+      height: this.height,
+      child: new charts.BarChart(
+        _createObitoSeries(),
         animate: animate,
-        domainAxis: new charts.EndPointsTimeAxisSpec(),
-        defaultRenderer: new charts.LineRendererConfig(
-            includePoints: true, includeLine: true));
+        vertical: false,
+        barRendererDecorator: new charts.BarLabelDecorator<String>(),
+        domainAxis: new charts.OrdinalAxisSpec(),
+      ),
+    );
   }
 
-  List<charts.Series<KeyValue, DateTime>> _createObitoSeries() {
+  List<charts.Series<KeyValue, String>> _createObitoSeries() {
     return [
-      new charts.Series<KeyValue, DateTime>(
-          id: 'Óbitos por acumulados por dia',
+      new charts.Series<KeyValue, String>(
+          id: 'Óbitos por comorbidade',
           domainFn: (KeyValue obito, _) => obito.key,
           measureFn: (KeyValue obito, _) => obito.value,
           data: this.obitos,

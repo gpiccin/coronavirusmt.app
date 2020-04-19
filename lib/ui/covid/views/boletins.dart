@@ -48,14 +48,12 @@ class BoletinsView extends StatelessWidget {
               child: model.state == ViewState.Busy
                   ? UIHelper.loading()
                   : Expanded(
-                      child: Container(
-                        child: ListView.builder(
-                          itemCount: model.boletins.length,
-                          padding: const EdgeInsets.all(16.0),
-                          itemBuilder: (BuildContext context, int i) {
-                            return buildRow(model.boletins.elementAt(i));
-                          },
-                        ),
+                      child: ListView.builder(
+                        itemCount: model.boletins.length,
+                        padding: const EdgeInsets.all(16.0),
+                        itemBuilder: (BuildContext context, int i) {
+                          return buildRow(model.boletins.elementAt(i));
+                        },
                       ),
                     )),
     );

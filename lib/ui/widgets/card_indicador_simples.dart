@@ -25,8 +25,7 @@ class CardIndicadorSimples extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Card(
+    return Card(
       elevation: cardElevation,
       color: cardBackgroundColor,
       child: InkWell(
@@ -39,7 +38,7 @@ class CardIndicadorSimples extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(this.defaultPadding,
                     this.defaultPadding, this.defaultPadding, 0),
                 child: FittedBox(
-                  fit: BoxFit.scaleDown,
+                  fit: BoxFit.contain,
                   child: Text(
                     this.title,
                     style: UITypography.title,
@@ -55,14 +54,16 @@ class CardIndicadorSimples extends StatelessWidget {
                         height: 50,
                         child: Align(
                           alignment: Alignment.bottomLeft,
-                          child: Text(
-                            this.indicadorPrincipal,
-                            style: UITypography.indicadorPrincipalStyle
-                                .merge(TextStyle(
-                              color: this.color,
-                              height: 0.5,
-                            )),
-                          ),
+                          child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Text(
+                                this.indicadorPrincipal,
+                                style: UITypography.indicadorPrincipalStyle
+                                    .merge(TextStyle(
+                                  color: this.color,
+                                  height: 0.5,
+                                )),
+                              )),
                         )),
                   ),
                   Expanded(
@@ -75,11 +76,13 @@ class CardIndicadorSimples extends StatelessWidget {
                           padding: EdgeInsets.only(right: this.defaultPadding),
                           child: Visibility(
                             visible: this.indicadorSecundario != null,
-                            child: Text(
-                              this.indicadorSecundario ?? "",
-                              style: UITypography.indicadorSecundarioStyle
-                                  .merge(TextStyle(color: this.color)),
-                            ),
+                            child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: Text(
+                                  this.indicadorSecundario ?? "",
+                                  style: UITypography.indicadorSecundarioStyle
+                                      .merge(TextStyle(color: this.color)),
+                                )),
                           ),
                         ),
                       ),
@@ -94,6 +97,6 @@ class CardIndicadorSimples extends StatelessWidget {
           ),
         ),
       ),
-    ));
+    );
   }
 }

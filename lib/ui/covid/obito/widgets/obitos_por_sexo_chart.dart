@@ -4,33 +4,36 @@ import 'package:covidmt/core/models/key_value.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:flutter/material.dart';
 
-class ObitosPorFaixaEtariaChart extends StatelessWidget {
+class ObitosPorSexoChart extends StatelessWidget {
+  final double height;
   final bool animate;
   final List<KeyValue> obitos;
 
-  ObitosPorFaixaEtariaChart(this.obitos, {this.animate = true});
+  ObitosPorSexoChart(this.obitos, {this.height = 200, this.animate = true});
 
   @override
   Widget build(BuildContext context) {
-    return new charts.BarChart(
-      _createObitoSeries(),
-      animate: animate,
-      vertical: false,
-      barRendererDecorator: new charts.BarLabelDecorator<String>(),
-      domainAxis: new charts.OrdinalAxisSpec(),
+    return Container(
+      height: this.height,
+      child: new charts.PieChart(_createObitoSeries(),
+          animate: animate,
+          defaultRenderer: new charts.ArcRendererConfig(
+              arcWidth: 20,
+              arcRendererDecorators: [new charts.ArcLabelDecorator()])),
     );
   }
 
   List<charts.Series<KeyValue, String>> _createObitoSeries() {
     return [
       new charts.Series<KeyValue, String>(
-          id: 'Óbitos por faixa etária',
+          id: 'Óbitos por sexo',
           domainFn: (KeyValue obito, _) => obito.key,
           measureFn: (KeyValue obito, _) => obito.value,
           data: this.obitos,
+          labelAccessorFn: (KeyValue obito, _) =>
+              '${obito.key}: ${obito.value}',
           colorFn: (_, __) =>
-              charts.Color.fromHex(code: UIStyle.obitosColorHex),
-          labelAccessorFn: (KeyValue obito, _) => '${obito.value}')
+              charts.Color.fromHex(code: UIStyle.obitosColorHex)),
     ];
   }
 }

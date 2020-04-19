@@ -4,27 +4,32 @@ import 'package:covidmt/core/models/key_value.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:flutter/material.dart';
 
-class ObitosPorCidadeChart extends StatelessWidget {
+class ObitosPorFaixaEtariaChart extends StatelessWidget {
+  final double height;
   final bool animate;
   final List<KeyValue> obitos;
 
-  ObitosPorCidadeChart(this.obitos, {this.animate = true});
+  ObitosPorFaixaEtariaChart(this.obitos,
+      {this.height = 200, this.animate = true});
 
   @override
   Widget build(BuildContext context) {
-    return new charts.BarChart(
-      _createObitoSeries(),
-      animate: animate,
-      vertical: false,
-      barRendererDecorator: new charts.BarLabelDecorator<String>(),
-      domainAxis: new charts.OrdinalAxisSpec(),
+    return Container(
+      height: this.height,
+      child: new charts.BarChart(
+        _createObitoSeries(),
+        animate: animate,
+        vertical: false,
+        barRendererDecorator: new charts.BarLabelDecorator<String>(),
+        domainAxis: new charts.OrdinalAxisSpec(),
+      ),
     );
   }
 
   List<charts.Series<KeyValue, String>> _createObitoSeries() {
     return [
       new charts.Series<KeyValue, String>(
-          id: 'Óbitos por cidade',
+          id: 'Óbitos por faixa etária',
           domainFn: (KeyValue obito, _) => obito.key,
           measureFn: (KeyValue obito, _) => obito.value,
           data: this.obitos,

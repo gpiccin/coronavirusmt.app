@@ -51,14 +51,16 @@ class CardSRAGIndicador extends StatelessWidget {
                         height: 50,
                         child: Align(
                           alignment: Alignment.bottomLeft,
-                          child: Text(
-                            this.indicadorPrincipal,
-                            style: UITypography.indicadorPrincipalStyle
-                                .merge(TextStyle(
-                              height: 0.5,
-                              color: this.color,
-                            )),
-                          ),
+                          child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Text(
+                                this.indicadorPrincipal,
+                                style: UITypography.indicadorPrincipalStyle
+                                    .merge(TextStyle(
+                                  height: 0.5,
+                                  color: this.color,
+                                )),
+                              )),
                         )),
                   ),
                   Expanded(
@@ -69,23 +71,13 @@ class CardSRAGIndicador extends StatelessWidget {
                         alignment: Alignment.bottomRight,
                         child: Padding(
                           padding: EdgeInsets.only(right: this.defaultPadding),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              Text("SRAG + COVID-19 = ",
+                          child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Text(
+                                  "SRAG + COVID-19 = ${this.quantidadeDeCasosMaisCOVID}",
                                   style: UITypography.indicadorSecundarioStyle
                                       .merge(TextStyle(
-                                          color: this.color, fontSize: 20))),
-                              Text(
-                                quantidadeDeCasosMaisCOVID,
-                                style: UITypography.indicadorSecundarioStyle
-                                    .merge(TextStyle(
-                                        color: this.color,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w500)),
-                              ),
-                            ],
-                          ),
+                                          color: this.color, fontSize: 20)))),
                         ),
                       ),
                     ),
