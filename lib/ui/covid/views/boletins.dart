@@ -1,5 +1,5 @@
 import 'package:covidmt/core/enum/viewstate.dart';
-import 'package:covidmt/core/models/boletim_lista_model.dart';
+import 'package:covidmt/core/models/boletim_lista.dart';
 import 'package:covidmt/core/viewmodels/covid/boletins_view_model.dart';
 import 'package:covidmt/ui/shared/base_view.dart';
 import 'package:covidmt/ui/shared/ui_typography.dart';

@@ -1,5 +1,6 @@
 import 'package:covidmt/core/enum/viewstate.dart';
-import 'package:covidmt/core/viewmodels/covid/obitos_view_model.dart';
+import 'package:covidmt/core/viewmodels/covid/confirmados_view_model.dart';
+import 'package:covidmt/ui/covid/confirmados/widgets/confirmados_acumulados_por_dia_chart.dart';
 import 'package:covidmt/ui/shared/base_view.dart';
 import 'package:covidmt/ui/shared/ui_helpers.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
@@ -10,9 +11,10 @@ import 'package:flutter/material.dart';
 class ConfirmadosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BaseView<ObitosViewModel>(
-        onModelReeady: (model) => model.getObitos(),
-        builder: (BuildContext context, ObitosViewModel model, Widget child) =>
+    return BaseView<ConfirmadosViewModel>(
+        onModelReeady: (model) => model.getData(),
+        builder: (BuildContext context, ConfirmadosViewModel model,
+                Widget child) =>
             Scaffold(
                 appBar: UIHelper.pageAppBar("Casos confirmados"),
                 body: Container(
@@ -31,9 +33,8 @@ class ConfirmadosPage extends StatelessWidget {
                                       child: CardInformacaoSimples(
                                           title: "Casos confirmados",
                                           indicadorPrincipal:
-                                              '${model.totalDeObitos}',
-                                          indicadorSecundario: "vítimas",
-                                          color: UIStyle.obitosColor),
+                                              '${model.atual.casosTotais}',
+                                          color: UIStyle.casosColor),
                                     ),
                                     SizedBox(
                                       width: 12,
@@ -41,20 +42,16 @@ class ConfirmadosPage extends StatelessWidget {
                                     Expanded(
                                       flex: 1,
                                       child: CardInformacaoSimples(
-                                          title: "Média de idade",
+                                          title: "Novos casos",
                                           indicadorPrincipal:
-                                              '${model.mediaDeIdade}',
-                                          indicadorSecundario: "anos",
-                                          color: UIStyle.obitosColor),
+                                              '${model.atual.casos}',
+                                          color: UIStyle.casosColor),
                                     ),
                                   ],
                                 ),
-                                UIHelper.headline("Óbitos acumulados por dia"),
-                                ObitosAcumuladosPorDiaChart(
-                                    model.obitosAcumuladosPorDia),
-                                SizedBox(
-                                  height: 20,
-                                )
+                                UIHelper.headline("Crescimento de casos"),
+                                ConfirmadosAcumuladosPorDiaChart(
+                                    model.historicoPorDia),
                               ],
                             ),
                           ]),

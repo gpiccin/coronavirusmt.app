@@ -1,5 +1,5 @@
 import 'package:covidmt/core/locator.dart';
-import 'package:covidmt/core/models/boletim_lista_model.dart';
+import 'package:covidmt/core/models/boletim_lista.dart';
 import 'package:covidmt/core/services/api.dart';
 
 class BoletinsService {

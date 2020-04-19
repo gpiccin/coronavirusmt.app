@@ -1,6 +1,6 @@
 import 'package:covidmt/core/enum/viewstate.dart';
 import 'package:covidmt/core/locator.dart';
-import 'package:covidmt/core/models/boletim_lista_model.dart';
+import 'package:covidmt/core/models/boletim_lista.dart';
 import 'package:covidmt/core/services/boletins_service.dart';
 import 'package:covidmt/core/viewmodels/base_view_model.dart';
 

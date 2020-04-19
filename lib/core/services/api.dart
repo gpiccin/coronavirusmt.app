@@ -1,5 +1,6 @@
-import 'package:covidmt/core/models/boletim_lista_model.dart';
+import 'package:covidmt/core/models/boletim_lista.dart';
 import 'package:covidmt/core/models/boletim_model.dart';
+import 'package:covidmt/core/models/covid_historico.dart';
 import 'package:covidmt/core/models/obito_model.dart';
 import 'package:dio/dio.dart';
 import '../constants.dart';
@@ -43,13 +44,6 @@ class Api {
     return List<Obito>.from(obitos);
   }
 
-  Future<BoletimModel> getBoletim(String referencia) async {
-    Response response = await client.get(Constants.BOLETINS_PATH,
-        queryParameters: {"referencia": referencia});
-
-    return BoletimModel.fromJson(response.data[0]);
-  }
-
   Future<List<BoletimLista>> getBoletins() async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
@@ -61,6 +55,19 @@ class Api {
         .toList();
 
     return List<BoletimLista>.from(boletins);
+  }
+
+  Future<List<CovidHistorico>> getHistoricoDeCovid() async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "query {\n  boletims(sort: \"data:desc\") {\n    data\n    covid_casos_total\n    covid_casos_novos\n  }\n}"
+    });
+
+    var historico = response.data["data"]["boletims"]
+        .map((boletim) => CovidHistorico.fromJson(boletim))
+        .toList();
+
+    return List<CovidHistorico>.from(historico);
   }
 
   Future<BoletimModel> getUltimoBoletim() async {

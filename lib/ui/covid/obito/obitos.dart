@@ -67,9 +67,6 @@ class ObitosPage extends StatelessWidget {
                                 UIHelper.headline("Óbitos por comorbidade"),
                                 ObitosPorComorbidade(
                                     model.obitosPorComorbidade),
-                                SizedBox(
-                                  height: 20,
-                                )
                               ],
                             ),
                           ]),
