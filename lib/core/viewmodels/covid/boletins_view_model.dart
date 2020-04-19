@@ -1,11 +1,11 @@
 import 'package:covidmt/core/enum/viewstate.dart';
 import 'package:covidmt/core/locator.dart';
 import 'package:covidmt/core/model/boletim_lista_model.dart';
-import 'package:covidmt/core/services/boletim_lista_service.dart';
+import 'package:covidmt/core/services/boletins_service.dart';
 import 'package:covidmt/core/viewmodels/base_view_model.dart';
 
-class BoletimListaViewModel extends BaseViewModel {
-  BoletimListaService _boletimService = locator<BoletimListaService>();
+class BoletinsViewModel extends BaseViewModel {
+  BoletinsService _boletimService = locator<BoletinsService>();
 
   List<BoletimLista> get boletins => _boletimService.boletins;
 

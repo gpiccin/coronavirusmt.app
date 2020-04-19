@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-const appBackgroundColor = Color(0xFFFAFAFA);
-const headerBackgroundColor = Color(0xff303F9F);
+class UIStyle {
+  static const appBackgroundColor = Color(0xFFFAFAFA);
+  static const headerBackgroundColor = Color(0xff303F9F);
 
-const chartLineColor = Color(0xffe7e8ec);
-const chartColorSars = Colors.blue;
+  static const chartLineColor = Color(0xffe7e8ec);
+  static const chartColorSars = Colors.blue;
+
+  static const obitosColor = Color(0xFFD32F2F);
+  static const casosColor = Color(0xFF1976d2);
+  static const contaminadosColor = Color(0xFFef6d00);
+  static const recuperadosColor = Color(0xFF4CAF50);
+
+  static const double defaultPadding = 12.0;
+}

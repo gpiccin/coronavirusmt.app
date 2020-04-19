@@ -1,14 +1,16 @@
 import 'package:covidmt/core/enum/viewstate.dart';
 import 'package:covidmt/core/model/boletim_lista_model.dart';
-import 'package:covidmt/core/viewmodels/covid/boletim_lista_view_model.dart';
+import 'package:covidmt/core/viewmodels/covid/boletins_view_model.dart';
 import 'package:covidmt/pages/base_view.dart';
+import 'package:covidmt/ui/text_styles.dart';
+import 'package:covidmt/ui/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BoletinsView extends StatelessWidget {
   final double defaultPadding = 12.0;
 
-  _launchBoletimURL(boletimUrl) async {
+  launchBoletimURL(boletimUrl) async {
     if (await canLaunch(boletimUrl)) {
       await launch(boletimUrl);
     } else {
@@ -16,13 +18,11 @@ class BoletinsView extends StatelessWidget {
     }
   }
 
-  final _biggerFont = const TextStyle(fontSize: 18.0);
-
-  Widget _buildRow(BoletimLista boletim) {
+  Widget buildRow(BoletimLista boletim) {
     return ListTile(
       title: Text(
         "Boletim: ${boletim.referencia}",
-        style: _biggerFont,
+        style: listTileTitle,
       ),
       subtitle: Text(
           "${boletim.data.day}/${boletim.data.month}/${boletim.data.year}"),
@@ -34,33 +34,30 @@ class BoletinsView extends StatelessWidget {
             semanticLabel: 'Acessar',
           ),
           onTap: () {
-            _launchBoletimURL(boletim.link);
+            launchBoletimURL(boletim.link);
           }),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return BaseView<BoletimListaViewModel>(
+    return BaseView<BoletinsViewModel>(
       onModelReeady: (model) => model.getBoletins(),
-      builder:
-          (BuildContext context, BoletimListaViewModel model, Widget child) =>
-              Container(
-                  child: model.state == ViewState.Busy
-                      ? Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : Expanded(
-                          child: Container(
-                            child: ListView.builder(
-                              itemCount: model.boletins.length,
-                              padding: const EdgeInsets.all(16.0),
-                              itemBuilder: (BuildContext context, int i) {
-                                return _buildRow(model.boletins.elementAt(i));
-                              },
-                            ),
-                          ),
-                        )),
+      builder: (BuildContext context, BoletinsViewModel model, Widget child) =>
+          Container(
+              child: model.state == ViewState.Busy
+                  ? UIHelper.loading()
+                  : Expanded(
+                      child: Container(
+                        child: ListView.builder(
+                          itemCount: model.boletins.length,
+                          padding: const EdgeInsets.all(16.0),
+                          itemBuilder: (BuildContext context, int i) {
+                            return buildRow(model.boletins.elementAt(i));
+                          },
+                        ),
+                      ),
+                    )),
     );
   }
 }

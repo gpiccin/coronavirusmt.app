@@ -29,7 +29,7 @@ class SragChartState extends State<SragChartSemanal> {
     srarsController = Provider.of<SrarsController>(context);
 
     data = await srarsController.carregaGraficoSemanas(
-        TempoRelatorioSars.TWO_WEKENDS, chartColorSars);
+        TempoRelatorioSars.TWO_WEKENDS, UIStyle.chartColorSars);
     // print('end carrega graficos chart semanal');
     semanas = this.srarsController.getRetornaSemanas();
   }
@@ -90,7 +90,7 @@ class SragChartState extends State<SragChartSemanal> {
                         show: true,
                         checkToShowHorizontalLine: (value) => value % 10 == 0,
                         getDrawingHorizontalLine: (value) => const FlLine(
-                          color: chartLineColor,
+                          color: UIStyle.chartLineColor,
                           strokeWidth: 1,
                         ),
                       ),

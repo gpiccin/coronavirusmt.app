@@ -30,7 +30,7 @@ class _SrarsPanelState extends State<SrarsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: headerBackgroundColor,
+          backgroundColor: UIStyle.headerBackgroundColor,
           elevation: 0,
           title: Text(
             "Srars",

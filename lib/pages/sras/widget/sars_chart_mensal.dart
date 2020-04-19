@@ -30,7 +30,7 @@ class SragChartMensalState extends State<SragChartMensal> {
   Future<dynamic> carregaDadosSrarsMensais(BuildContext context) async {
     srarsController = Provider.of<SrarsController>(context);
     listaDadosCharts = await srarsController.carregaGraficoMensais(
-        TempoRelatorioSars.TWELVE_WEKENDS, chartColorSars);
+        TempoRelatorioSars.TWELVE_WEKENDS, UIStyle.chartColorSars);
 
     meses = this.srarsController.getRetornaSemanas();
     valoresChartsMeses = this.srarsController.getNumerosApresentaGraficoMeses();
@@ -72,13 +72,13 @@ class SragChartMensalState extends State<SragChartMensal> {
               drawVerticalLine: true,
               getDrawingHorizontalLine: (value) {
                 return FlLine(
-                  color: chartLineColor,
+                  color: UIStyle.chartLineColor,
                   strokeWidth: 1,
                 );
               },
               getDrawingVerticalLine: (value) {
                 return FlLine(
-                  color: chartLineColor,
+                  color: UIStyle.chartLineColor,
                   strokeWidth: 1,
                 );
               },

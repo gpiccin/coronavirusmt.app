@@ -4,12 +4,12 @@ import 'package:covidmt/pages/base_view.dart';
 import 'package:covidmt/pages/covid/widget/grid_covid_indicadores.dart';
 import 'package:covidmt/pages/sras/widget/card_srag_indicador.dart';
 import 'package:covidmt/ui/text_styles.dart';
+import 'package:covidmt/ui/ui_helpers.dart';
+import 'package:covidmt/ui/ui_style.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class IndicadoresView extends StatelessWidget {
-  final double defaultPadding = 12.0;
-
   _launchBoletimURL(boletimUrl) async {
     if (await canLaunch(boletimUrl)) {
       await launch(boletimUrl);
@@ -42,12 +42,12 @@ class IndicadoresView extends StatelessWidget {
                                     _launchBoletimURL(model.boletim.link);
                                   }),
                               Padding(
-                                padding: EdgeInsets.all(this.defaultPadding),
+                                padding: EdgeInsets.all(UIStyle.defaultPadding),
                                 child: Container(
                                   child: Padding(
                                     padding: EdgeInsets.fromLTRB(
-                                        this.defaultPadding,
-                                        this.defaultPadding,
+                                        UIStyle.defaultPadding,
+                                        UIStyle.defaultPadding,
                                         0,
                                         0),
                                     child: Row(
@@ -62,7 +62,8 @@ class IndicadoresView extends StatelessWidget {
                                           padding:
                                               const EdgeInsets.only(right: 4.0),
                                           child: Text(
-                                            "${model.boletim.data.day}/${model.boletim.data.month}/${model.boletim.data.year}",
+                                            UIHelper.fomartDate(
+                                                model.boletim.data),
                                             style: TextStyle(
                                               fontSize: 14,
                                             ),
@@ -81,9 +82,9 @@ class IndicadoresView extends StatelessWidget {
                               ),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(
-                                    this.defaultPadding,
+                                    UIStyle.defaultPadding,
                                     0,
-                                    this.defaultPadding,
+                                    UIStyle.defaultPadding,
                                     0),
                                 child: GridCovidIndicadores(
                                   boletim: model.boletim,
@@ -91,21 +92,21 @@ class IndicadoresView extends StatelessWidget {
                               ),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(
-                                    this.defaultPadding + 4,
+                                    UIStyle.defaultPadding + 4,
                                     0,
-                                    this.defaultPadding + 4,
+                                    UIStyle.defaultPadding + 4,
                                     0),
                                 child: Divider(),
                               ),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(
-                                    this.defaultPadding,
+                                    UIStyle.defaultPadding,
                                     0,
-                                    this.defaultPadding,
+                                    UIStyle.defaultPadding,
                                     0),
                                 child: CardSRAGIndicador(
-                                  title:
-                                      "SRAG - 01/01/2020 até ${model.boletim.data.day}/${model.boletim.data.month}/${model.boletim.data.year}",
+                                  title: "SRAG - 01/01/2020 até " +
+                                      UIHelper.fomartDate(model.boletim.data),
                                   indicadorPrincipal:
                                       model.boletim.sragCasos.toString(),
                                   quantidadeDeCasosMaisCOVID:

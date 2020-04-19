@@ -12,17 +12,12 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 140,
-      decoration: BoxDecoration(
-          color: headerBackgroundColor,
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(35),
-              bottomRight: Radius.circular(35))),
+      color: UIStyle.headerBackgroundColor,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           SizedBox(
-            height: 50,
+            height: 60,
           ),
           Center(
             child: Text(
@@ -45,6 +40,17 @@ class Header extends StatelessWidget {
                   fontWeight: FontWeight.w500),
             ),
           ),
+          SizedBox(
+            height: 40,
+          ),
+          Container(
+            height: 20,
+            decoration: BoxDecoration(
+                color: UIStyle.appBackgroundColor,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(35),
+                    topRight: Radius.circular(35))),
+          )
         ],
       ),
     );

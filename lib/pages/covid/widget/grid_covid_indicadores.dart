@@ -1,4 +1,6 @@
 import 'package:covidmt/core/model/boletim_model.dart';
+import 'package:covidmt/pages/covid/obitos.dart';
+import 'package:covidmt/ui/ui_style.dart';
 import 'package:flutter/material.dart';
 
 import 'card_indicador_simples.dart';
@@ -20,7 +22,7 @@ class GridCovidIndicadores extends StatelessWidget {
               child: CardIndicadorSimples(
                   title: "Casos confirmados",
                   indicadorPrincipal: boletim.covidCasos.toString(),
-                  color: Color(0xFF1976d2)),
+                  color: UIStyle.casosColor),
             ),
             SizedBox(
               width: this.defaultSizeCardSeparation,
@@ -32,7 +34,7 @@ class GridCovidIndicadores extends StatelessWidget {
                   indicadorPrincipal: boletim.covidRecuperados.toString(),
                   indicadorSecundario:
                       boletim.covidPercentualDeRecuperados.toString() + "%",
-                  color: Color(0xFF4CAF50)),
+                  color: UIStyle.recuperadosColor),
             )
           ],
         ),
@@ -45,7 +47,7 @@ class GridCovidIndicadores extends StatelessWidget {
                   indicadorPrincipal: boletim.covidHospitalizados.toString(),
                   indicadorSecundario:
                       boletim.covidPercentualDeHospitalizados.toString() + "%",
-                  color: Color(0xFFFF9800)),
+                  color: UIStyle.contaminadosColor),
             ),
             SizedBox(
               width: this.defaultSizeCardSeparation,
@@ -57,7 +59,7 @@ class GridCovidIndicadores extends StatelessWidget {
                   indicadorPrincipal: boletim.covidIsolamento.toString(),
                   indicadorSecundario:
                       boletim.covidPercentualEmIsolamento.toString() + "%",
-                  color: Color(0xFFFF9800)),
+                  color: UIStyle.contaminadosColor),
             )
           ],
         ),
@@ -70,7 +72,8 @@ class GridCovidIndicadores extends StatelessWidget {
                   indicadorPrincipal: boletim.covidObitos.toString(),
                   indicadorSecundario:
                       boletim.covidPercentualDeObitos.toString() + "%",
-                  color: Color(0xFFD32F2F)),
+                  color: UIStyle.obitosColor,
+                  page: ObitosPage()),
             ),
             SizedBox(
               width: this.defaultSizeCardSeparation,

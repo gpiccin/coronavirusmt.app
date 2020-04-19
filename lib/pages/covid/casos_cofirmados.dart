@@ -6,7 +6,7 @@ class CasosConfirmadosPage extends MaterialPageRoute<Null> {
       : super(builder: (BuildContext context) {
           return Scaffold(
             appBar: AppBar(
-              backgroundColor: headerBackgroundColor,
+              backgroundColor: UIStyle.headerBackgroundColor,
               elevation: 0,
               title: Text(
                 "Casos confirmados",

@@ -1,4 +1,3 @@
-import 'package:covidmt/pages/covid/casos_cofirmados.dart';
 import 'package:covidmt/ui/card_style.dart';
 import 'package:covidmt/ui/text_styles.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +7,21 @@ class CardIndicadorSimples extends StatelessWidget {
       {this.title,
       this.indicadorPrincipal,
       this.indicadorSecundario,
-      this.color = Colors.black});
+      this.color = Colors.black,
+      this.page});
 
   final String title;
   final String indicadorPrincipal;
   final String indicadorSecundario;
   final double defaultPadding = 12.0;
   final Color color;
+  final Widget page;
+
+  openPage(BuildContext context) {
+    if (page != null) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +30,7 @@ class CardIndicadorSimples extends StatelessWidget {
       elevation: cardElevation,
       color: cardBackgroundColor,
       child: InkWell(
-        onTap: () => {Navigator.push(context, CasosConfirmadosPage())},
+        onTap: () => {this.openPage(context)},
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,7 +49,7 @@ class CardIndicadorSimples extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Expanded(
-                    flex: 2,
+                    flex: 1,
                     child: Container(
                         margin: EdgeInsets.only(left: this.defaultPadding),
                         height: 50,
@@ -80,7 +87,7 @@ class CardIndicadorSimples extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: this.defaultPadding,
+                height: this.defaultPadding + 8,
               )
             ],
           ),
