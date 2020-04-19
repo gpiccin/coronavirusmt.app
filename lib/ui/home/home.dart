@@ -1,7 +1,7 @@
-import 'package:covidmt/ui/covid/view/boletins.dart';
-import 'package:covidmt/ui/home/view/indicadores.dart';
+import 'package:covidmt/ui/covid/views/boletins.dart';
+import 'package:covidmt/ui/home/views/indicadores.dart';
 import 'package:covidmt/ui/home/widget/header.dart';
-import 'package:covidmt/ui/base/ui_style.dart';
+import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

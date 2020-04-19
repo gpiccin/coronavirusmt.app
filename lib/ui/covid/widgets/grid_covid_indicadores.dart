@@ -1,5 +1,5 @@
-import 'package:covidmt/core/model/boletim_model.dart';
-import 'package:covidmt/ui/base/ui_style.dart';
+import 'package:covidmt/core/models/boletim_model.dart';
+import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:covidmt/ui/covid/obito/page/obitos.dart';
 import 'package:covidmt/ui/widget/card_indicador_simples.dart';
 import 'package:flutter/material.dart';

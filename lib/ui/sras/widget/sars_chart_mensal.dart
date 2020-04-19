@@ -1,4 +1,4 @@
-import 'package:covidmt/ui/base/ui_style.dart';
+import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:covidmt/ui/sras/srars_controller.dart';
 import 'package:covidmt/ui/sras/tempo_relatorio_sras.dart';
 import 'package:fl_chart/fl_chart.dart';

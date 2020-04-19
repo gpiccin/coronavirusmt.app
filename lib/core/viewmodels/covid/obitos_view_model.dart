@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:covidmt/core/enum/viewstate.dart';
 import 'package:covidmt/core/locator.dart';
-import 'package:covidmt/core/model/key_value.dart';
-import 'package:covidmt/core/model/obito_model.dart';
-import 'package:covidmt/core/service/obitos_service.dart';
-import 'package:covidmt/core/viewmodel/base_view_model.dart';
+import 'package:covidmt/core/models/key_value.dart';
+import 'package:covidmt/core/models/obito_model.dart';
+import 'package:covidmt/core/services/obitos_service.dart';
+import 'package:covidmt/core/viewmodels/base_view_model.dart';
 
 class ObitosViewModel extends BaseViewModel {
   ObitosService _obitoService = locator<ObitosService>();

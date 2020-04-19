@@ -1,10 +1,10 @@
 import 'package:covidmt/core/enum/viewstate.dart';
-import 'package:covidmt/core/viewmodel/covid/indicadores_view_model.dart';
-import 'package:covidmt/ui/base/base_view.dart';
-import 'package:covidmt/ui/covid/widget/grid_covid_indicadores.dart';
-import 'package:covidmt/ui/base/ui_typography.dart';
-import 'package:covidmt/ui/base/ui_helpers.dart';
-import 'package:covidmt/ui/base/ui_style.dart';
+import 'package:covidmt/core/viewmodels/covid/indicadores_view_model.dart';
+import 'package:covidmt/ui/shared/base_view.dart';
+import 'package:covidmt/ui/covid/widgets/grid_covid_indicadores.dart';
+import 'package:covidmt/ui/shared/ui_typography.dart';
+import 'package:covidmt/ui/shared/ui_helpers.dart';
+import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:covidmt/ui/sras/widget/card_srag_indicador.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';

@@ -1,4 +1,4 @@
-import 'package:covidmt/ui/base/ui_style.dart';
+import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:flutter/material.dart';
 
 class CasosConfirmadosPage extends MaterialPageRoute<Null> {

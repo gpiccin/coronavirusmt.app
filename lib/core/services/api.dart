@@ -1,6 +1,6 @@
-import 'package:covidmt/core/model/boletim_lista_model.dart';
-import 'package:covidmt/core/model/boletim_model.dart';
-import 'package:covidmt/core/model/obito_model.dart';
+import 'package:covidmt/core/models/boletim_lista_model.dart';
+import 'package:covidmt/core/models/boletim_model.dart';
+import 'package:covidmt/core/models/obito_model.dart';
 import 'package:dio/dio.dart';
 import '../constants.dart';
 

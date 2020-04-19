@@ -1,9 +1,9 @@
 import 'package:covidmt/core/enum/viewstate.dart';
-import 'package:covidmt/core/viewmodel/covid/obitos_view_model.dart';
-import 'package:covidmt/ui/base/base_view.dart';
-import 'package:covidmt/ui/base/ui_typography.dart';
-import 'package:covidmt/ui/base/ui_helpers.dart';
-import 'package:covidmt/ui/base/ui_style.dart';
+import 'package:covidmt/core/viewmodels/covid/obitos_view_model.dart';
+import 'package:covidmt/ui/shared/base_view.dart';
+import 'package:covidmt/ui/shared/ui_typography.dart';
+import 'package:covidmt/ui/shared/ui_helpers.dart';
+import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:covidmt/ui/covid/obito/widget/obitos_acumulados_por_dia_chart.dart';
 import 'package:covidmt/ui/covid/obito/widget/obitos_por_cidade_chart.dart';
 import 'package:covidmt/ui/covid/obito/widget/obitos_por_comorbidade_chart.dart';

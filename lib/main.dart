@@ -1,5 +1,5 @@
 import 'package:covidmt/core/locator.dart';
-import 'package:covidmt/ui/page/splash.dart';
+import 'package:covidmt/ui/home/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

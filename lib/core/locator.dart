@@ -1,10 +1,10 @@
-import 'package:covidmt/core/service/api.dart';
-import 'package:covidmt/core/service/boletins_service.dart';
-import 'package:covidmt/core/service/boletim_service.dart';
-import 'package:covidmt/core/service/obitos_service.dart';
-import 'package:covidmt/core/viewmodel/covid/boletins_view_model.dart';
-import 'package:covidmt/core/viewmodel/covid/indicadores_view_model.dart';
-import 'package:covidmt/core/viewmodel/covid/obitos_view_model.dart';
+import 'package:covidmt/core/services/api.dart';
+import 'package:covidmt/core/services/boletins_service.dart';
+import 'package:covidmt/core/services/boletim_service.dart';
+import 'package:covidmt/core/services/obitos_service.dart';
+import 'package:covidmt/core/viewmodels/covid/boletins_view_model.dart';
+import 'package:covidmt/core/viewmodels/covid/indicadores_view_model.dart';
+import 'package:covidmt/core/viewmodels/covid/obitos_view_model.dart';
 import 'package:get_it/get_it.dart';
 
 GetIt locator = GetIt.instance;
