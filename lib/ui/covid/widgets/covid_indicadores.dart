@@ -1,4 +1,5 @@
 import 'package:covidmt/core/models/boletim_model.dart';
+import 'package:covidmt/ui/covid/confirmados/confirmados.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:covidmt/ui/covid/obito/obitos.dart';
 import 'package:covidmt/ui/widgets/card_indicador_simples.dart';
@@ -19,9 +20,11 @@ class CovidIndicadores extends StatelessWidget {
             Expanded(
               flex: 1,
               child: CardIndicadorSimples(
-                  title: "Casos confirmados",
-                  indicadorPrincipal: boletim.covidCasos.toString(),
-                  color: UIStyle.casosColor),
+                title: "Casos confirmados",
+                indicadorPrincipal: boletim.covidCasos.toString(),
+                color: UIStyle.casosColor,
+                page: ConfirmadosPage(),
+              ),
             ),
             SizedBox(
               width: this.defaultSizeCardSeparation,

@@ -1,3 +1,4 @@
+import 'package:covidmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
 
 class UIHelper {
@@ -12,6 +13,16 @@ class UIHelper {
   static Widget loading() {
     return Center(
       child: CircularProgressIndicator(),
+    );
+  }
+
+  static Widget headline(String title) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+      child: Text(
+        title,
+        style: UITypography.headline,
+      ),
     );
   }
 

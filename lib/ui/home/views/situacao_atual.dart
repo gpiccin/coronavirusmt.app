@@ -31,67 +31,70 @@ class SituacaoAtualView extends StatelessWidget {
                     )
                   : Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.all(UIStyle.defaultPadding),
+                        padding: const EdgeInsets.fromLTRB(
+                            UIStyle.defaultPadding,
+                            0,
+                            UIStyle.defaultPadding,
+                            UIStyle.defaultPadding),
                         child: Container(
-                          child: ListView(
-                              padding: EdgeInsets.all(0),
-                              children: <Widget>[
-                                GestureDetector(
-                                    child: Row(
-                                      children: <Widget>[],
+                          child:
+                              ListView(padding: EdgeInsets.all(0), children: <
+                                  Widget>[
+                            GestureDetector(
+                                child: Row(
+                                  children: <Widget>[],
+                                ),
+                                onTap: () {
+                                  _launchBoletimURL(model.boletim.link);
+                                }),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Text(
+                                      "COVID-19",
+                                      style: UITypography.headline,
                                     ),
-                                    onTap: () {
-                                      _launchBoletimURL(model.boletim.link);
-                                    }),
-                                Container(
-                                  child: Row(
-                                    children: <Widget>[
-                                      Expanded(
-                                        child: Text(
-                                          "COVID-19",
-                                          style: UITypography.headline,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 4.0),
-                                        child: Text(
-                                            UIHelper.fomartDateDMY(
-                                                model.boletim.data),
-                                            style: UITypography.subtitle),
-                                      ),
-                                      Icon(Icons.event,
-                                          color: Colors.grey, size: 20)
-                                    ],
                                   ),
-                                ),
-                                SizedBox(
-                                  height: UIStyle.defaultPadding,
-                                ),
-                                CovidIndicadores(
-                                  boletim: model.boletim,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(
-                                      UIStyle.defaultPadding + 4,
-                                      0,
-                                      UIStyle.defaultPadding + 4,
-                                      0),
-                                  child: Divider(),
-                                ),
-                                CardSRAGIndicador(
-                                  title: "SRAG - 01/01/2020 até " +
-                                      UIHelper.fomartDateDMY(
-                                          model.boletim.data),
-                                  indicadorPrincipal:
-                                      model.boletim.sragCasos.toString(),
-                                  quantidadeDeCasosMaisCOVID:
-                                      (model.boletim.covidCasos +
-                                              model.boletim.sragCasos)
-                                          .toString(),
-                                  color: Color(0xFF1976d2),
-                                ),
-                              ]),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 4.0),
+                                    child: Text(
+                                        UIHelper.fomartDateDMY(
+                                            model.boletim.data),
+                                        style: UITypography.subtitle),
+                                  ),
+                                  Icon(Icons.event,
+                                      color: Colors.grey, size: 20)
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: UIStyle.defaultPadding,
+                            ),
+                            CovidIndicadores(
+                              boletim: model.boletim,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(
+                                  UIStyle.defaultPadding + 4,
+                                  0,
+                                  UIStyle.defaultPadding + 4,
+                                  0),
+                              child: Divider(),
+                            ),
+                            CardSRAGIndicador(
+                              title: "SRAG - 01/01/2020 até " +
+                                  UIHelper.fomartDateDMY(model.boletim.data),
+                              indicadorPrincipal:
+                                  model.boletim.sragCasos.toString(),
+                              quantidadeDeCasosMaisCOVID:
+                                  (model.boletim.covidCasos +
+                                          model.boletim.sragCasos)
+                                      .toString(),
+                              color: Color(0xFF1976d2),
+                            ),
+                          ]),
                         ),
                       ),
                     )),

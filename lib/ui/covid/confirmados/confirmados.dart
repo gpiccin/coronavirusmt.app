@@ -1,25 +1,20 @@
 import 'package:covidmt/core/enum/viewstate.dart';
 import 'package:covidmt/core/viewmodels/covid/obitos_view_model.dart';
 import 'package:covidmt/ui/shared/base_view.dart';
-import 'package:covidmt/ui/shared/ui_typography.dart';
 import 'package:covidmt/ui/shared/ui_helpers.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:covidmt/ui/covid/obito/widgets/obitos_acumulados_por_dia_chart.dart';
-import 'package:covidmt/ui/covid/obito/widgets/obitos_por_cidade_chart.dart';
-import 'package:covidmt/ui/covid/obito/widgets/obitos_por_comorbidade_chart.dart';
-import 'package:covidmt/ui/covid/obito/widgets/obitos_por_faixa_etaria_chart.dart';
-import 'package:covidmt/ui/covid/obito/widgets/obitos_por_sexo_chart.dart';
 import 'package:covidmt/ui/widgets/card_informacao_simples.dart';
 import 'package:flutter/material.dart';
 
-class ObitosPage extends StatelessWidget {
+class ConfirmadosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<ObitosViewModel>(
         onModelReeady: (model) => model.getObitos(),
         builder: (BuildContext context, ObitosViewModel model, Widget child) =>
             Scaffold(
-                appBar: UIHelper.pageAppBar("Óbitos"),
+                appBar: UIHelper.pageAppBar("Casos confirmados"),
                 body: Container(
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()
@@ -34,7 +29,7 @@ class ObitosPage extends StatelessWidget {
                                     Expanded(
                                       flex: 1,
                                       child: CardInformacaoSimples(
-                                          title: "Óbitos",
+                                          title: "Casos confirmados",
                                           indicadorPrincipal:
                                               '${model.totalDeObitos}',
                                           indicadorSecundario: "vítimas",
@@ -57,16 +52,6 @@ class ObitosPage extends StatelessWidget {
                                 UIHelper.headline("Óbitos acumulados por dia"),
                                 ObitosAcumuladosPorDiaChart(
                                     model.obitosAcumuladosPorDia),
-                                UIHelper.headline("Óbitos por faixa etária"),
-                                ObitosPorFaixaEtariaChart(
-                                    model.obitosPorFaixaEtaria),
-                                UIHelper.headline("Óbitos por cidade"),
-                                ObitosPorCidadeChart(model.obitosPorCidade),
-                                UIHelper.headline("Óbitos por sexo"),
-                                ObitosPorSexoChart(model.obitosPorSexo),
-                                UIHelper.headline("Óbitos por comorbidade"),
-                                ObitosPorComorbidade(
-                                    model.obitosPorComorbidade),
                                 SizedBox(
                                   height: 20,
                                 )

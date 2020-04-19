@@ -13,6 +13,8 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(0),
+      margin: EdgeInsets.all(0),
       color: UIStyle.headerBackgroundColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -44,13 +46,13 @@ class Header extends StatelessWidget {
             height: 40,
           ),
           Container(
-            height: 20,
+            height: 25,
             decoration: BoxDecoration(
                 color: UIStyle.appBackgroundColor,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(35),
                     topRight: Radius.circular(35))),
-          )
+          ),
         ],
       ),
     );
