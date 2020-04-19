@@ -1,12 +1,18 @@
 import 'package:covidmt/core/models/boletim_lista.dart';
 import 'package:covidmt/core/models/boletim_model.dart';
 import 'package:covidmt/core/models/covid_historico.dart';
+import 'package:covidmt/core/models/covid_por_cidade.dart';
+import 'package:covidmt/core/models/covid_por_faixa_etaria.dart';
 import 'package:covidmt/core/models/obito_model.dart';
 import 'package:dio/dio.dart';
 import '../constants.dart';
 
 class Api {
   var client = Dio(BaseOptions(baseUrl: Constants.BASE_URL_PATH));
+
+  String _dateParam(DateTime data) {
+    return '${data.year}-${data.month.toString().padLeft(2, '0')}-${data.day.toString().padLeft(2, '0')}';
+  }
 
   Future<dynamic> getDadosSars() async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
@@ -68,6 +74,40 @@ class Api {
         .toList();
 
     return List<CovidHistorico>.from(historico);
+  }
+
+  Future<List<CovidPorCidade>> getCovidPorCidade(DateTime data) async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "query {\n  casosPorCidades(where: {data:\"${this._dateParam(data)}\"}, sort: \"covid_casos_total:desc\") {\n    covid_casos_total\n    cidade {nome}\n  }\n}"
+    });
+
+    var casosPorCidade = response.data["data"]["casosPorCidades"]
+        .map((cidade) => CovidPorCidade.fromJson(cidade))
+        .toList();
+
+    return List<CovidPorCidade>.from(casosPorCidade);
+  }
+
+  Future<List<CovidPorFaixaEtaria>> getCovidPorFaixaEtaria(
+      DateTime data) async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "query {\n  casosPorFaixaEtarias(where: {data:\"${this._dateParam(data)}\"}) {\n    covid_casos_total\n    faixa_etaria {faixa ordem}\n  }\n}"
+    });
+
+    var casosPorFaixaEtaria = response.data["data"]["casosPorFaixaEtarias"]
+        .map((faixa) => CovidPorFaixaEtaria.fromJson(faixa))
+        .toList();
+
+    return List<CovidPorFaixaEtaria>.from(casosPorFaixaEtaria);
+  }
+
+  Future<BoletimModel> getBoletim(String referencia) async {
+    Response response = await client.get(Constants.BOLETINS_PATH,
+        queryParameters: {"referencia": referencia});
+
+    return BoletimModel.fromJson(response.data[0]);
   }
 
   Future<BoletimModel> getUltimoBoletim() async {

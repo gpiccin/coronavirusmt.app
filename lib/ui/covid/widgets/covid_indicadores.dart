@@ -23,7 +23,7 @@ class CovidIndicadores extends StatelessWidget {
                 title: "Casos confirmados",
                 indicadorPrincipal: boletim.covidCasos.toString(),
                 color: UIStyle.casosColor,
-                page: ConfirmadosPage(),
+                page: ConfirmadosPage(boletim.data),
               ),
             ),
             SizedBox(

@@ -8,18 +8,31 @@ import 'package:covidmt/core/viewmodels/base_view_model.dart';
 class ConfirmadosViewModel extends BaseViewModel {
   CovidService _covidService = locator<CovidService>();
 
-  List<CovidHistorico> get historico => _covidService.historico;
   CovidHistorico get atual => _covidService.historico.first;
 
+  List<KeyValue> get covidPorCidade {
+    return _covidService.covidPorCidade
+        .map((caso) => KeyValue(key: caso.cidade, value: caso.casosTotais))
+        .toList();
+  }
+
+  List<KeyValue> get covidPorFaixaEtaria {
+    return _covidService.covidPorFaixaEtaria
+        .map((caso) => KeyValue(key: caso.faixa, value: caso.casosTotais))
+        .toList();
+  }
+
   List<KeyValue> get historicoPorDia {
-    return historico
+    return _covidService.historico
         .map((caso) => KeyValue(key: caso.data, value: caso.casosTotais))
         .toList();
   }
 
-  getData() async {
+  getData(DateTime data) async {
     setState(ViewState.Busy);
     await _covidService.getHistoricoDeCovid();
+    await _covidService.getCovidPorCidade(data);
+    await _covidService.getCovidPorFaixaEtaria(data);
     setState(ViewState.Idle);
   }
 }

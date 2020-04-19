@@ -1,18 +1,23 @@
 import 'package:covidmt/core/enum/viewstate.dart';
 import 'package:covidmt/core/viewmodels/covid/confirmados_view_model.dart';
 import 'package:covidmt/ui/covid/confirmados/widgets/confirmados_acumulados_por_dia_chart.dart';
+import 'package:covidmt/ui/covid/confirmados/widgets/confirmados_por_cidade_chart.dart';
+import 'package:covidmt/ui/covid/confirmados/widgets/confirmados_por_faixa_etaria_chart.dart';
 import 'package:covidmt/ui/shared/base_view.dart';
 import 'package:covidmt/ui/shared/ui_helpers.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
-import 'package:covidmt/ui/covid/obito/widgets/obitos_acumulados_por_dia_chart.dart';
 import 'package:covidmt/ui/widgets/card_informacao_simples.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmadosPage extends StatelessWidget {
+  final DateTime data;
+
+  ConfirmadosPage(this.data);
+
   @override
   Widget build(BuildContext context) {
     return BaseView<ConfirmadosViewModel>(
-        onModelReeady: (model) => model.getData(),
+        onModelReeady: (model) => model.getData(data),
         builder: (BuildContext context, ConfirmadosViewModel model,
                 Widget child) =>
             Scaffold(
@@ -42,7 +47,7 @@ class ConfirmadosPage extends StatelessWidget {
                                     Expanded(
                                       flex: 1,
                                       child: CardInformacaoSimples(
-                                          title: "Novos casos",
+                                          title: "Novos casos em 1 dia",
                                           indicadorPrincipal:
                                               '${model.atual.casos}',
                                           color: UIStyle.casosColor),
@@ -52,6 +57,15 @@ class ConfirmadosPage extends StatelessWidget {
                                 UIHelper.headline("Crescimento de casos"),
                                 ConfirmadosAcumuladosPorDiaChart(
                                     model.historicoPorDia),
+                                UIHelper.headline("Casos por faixa etária"),
+                                ConfirmadosPorFaixaEtariaChart(
+                                    model.covidPorFaixaEtaria),
+                                UIHelper.headline(
+                                    "Top 10 cidades em número de casos"),
+                                ConfirmadosPorCidadeChart(
+                                  model.covidPorCidade,
+                                  height: 400,
+                                ),
                               ],
                             ),
                           ]),

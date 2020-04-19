@@ -1,7 +1,6 @@
 import 'package:covidmt/core/enum/viewstate.dart';
 import 'package:covidmt/core/viewmodels/covid/obitos_view_model.dart';
 import 'package:covidmt/ui/shared/base_view.dart';
-import 'package:covidmt/ui/shared/ui_typography.dart';
 import 'package:covidmt/ui/shared/ui_helpers.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:covidmt/ui/covid/obito/widgets/obitos_acumulados_por_dia_chart.dart';
