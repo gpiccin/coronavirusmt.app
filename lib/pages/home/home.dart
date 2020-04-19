@@ -37,8 +37,8 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            title: Text('Cenário atual'),
+            icon: Icon(Icons.show_chart),
+            title: Text('Situação atual'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.library_books),

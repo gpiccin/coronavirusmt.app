@@ -3,11 +3,11 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:covidmt/core/model/key_value.dart';
 import 'package:flutter/material.dart';
 
-class ObitosPorFaixaEtariaChart extends StatelessWidget {
+class ObitosPorComorbidade extends StatelessWidget {
   final bool animate;
   final List<KeyValue> obitos;
 
-  ObitosPorFaixaEtariaChart(this.obitos, {this.animate = true});
+  ObitosPorComorbidade(this.obitos, {this.animate = true});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class ObitosPorFaixaEtariaChart extends StatelessWidget {
   List<charts.Series<KeyValue, String>> createObitoSeries() {
     return [
       new charts.Series<KeyValue, String>(
-          id: 'Óbitos por faixa etária',
+          id: 'Óbitos por comorbidade',
           domainFn: (KeyValue obito, _) => obito.key,
           measureFn: (KeyValue obito, _) => obito.value,
           data: this.obitos,

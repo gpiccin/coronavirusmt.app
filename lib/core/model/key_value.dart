@@ -1,7 +1,7 @@
 class KeyValue {
-  String key;
-  double value;
-  String tag;
+  dynamic key;
+  dynamic value;
+  dynamic tag;
 
   KeyValue({this.key, this.value, this.tag});
 }

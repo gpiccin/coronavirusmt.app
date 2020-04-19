@@ -62,7 +62,7 @@ class IndicadoresView extends StatelessWidget {
                                           padding:
                                               const EdgeInsets.only(right: 4.0),
                                           child: Text(
-                                            UIHelper.fomartDate(
+                                            UIHelper.fomartDateDMY(
                                                 model.boletim.data),
                                             style: TextStyle(
                                               fontSize: 14,
@@ -106,7 +106,8 @@ class IndicadoresView extends StatelessWidget {
                                     0),
                                 child: CardSRAGIndicador(
                                   title: "SRAG - 01/01/2020 até " +
-                                      UIHelper.fomartDate(model.boletim.data),
+                                      UIHelper.fomartDateDMY(
+                                          model.boletim.data),
                                   indicadorPrincipal:
                                       model.boletim.sragCasos.toString(),
                                   quantidadeDeCasosMaisCOVID:

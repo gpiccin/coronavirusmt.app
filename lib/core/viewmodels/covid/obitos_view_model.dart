@@ -14,21 +14,70 @@ class ObitosViewModel extends BaseViewModel {
   int get mediaDeIdade =>
       obitos.map((m) => m.idade).reduce((a, b) => a + b) ~/ obitos.length;
 
-  Map<String, List<Obito>> get obitosPorCidade =>
-      groupBy(obitos, (obito) => obito.cidade);
+  int get totalDeObitos => obitos.length;
+
+  List<KeyValue> get obitosAcumuladosPorDia {
+    var grupoPorDia = groupBy(obitos, (obito) => obito.data).entries.toList();
+
+    grupoPorDia.sort((a, b) => a.value[0].data.compareTo(b.value[0].data));
+
+    var keyValues = grupoPorDia
+        .map((obitos) => KeyValue(key: obitos.key, value: obitos.value.length))
+        .toList();
+
+    for (var i = 0; i < keyValues.length; i++) {
+      if (i == 0) continue;
+
+      keyValues[i].value += keyValues[i - 1].value;
+    }
+
+    return keyValues;
+  }
+
+  List<KeyValue> get obitosPorComorbidade {
+    var grupoPorComorbidade =
+        groupBy(obitos, (obito) => obito.comorbidade).entries.toList();
+
+    grupoPorComorbidade
+        .sort((a, b) => b.value.length.compareTo(a.value.length));
+
+    return grupoPorComorbidade
+        .map((obitos) => KeyValue(key: obitos.key, value: obitos.value.length))
+        .toList();
+  }
+
+  List<KeyValue> get obitosPorSexo {
+    var grupoPorSexo = groupBy(obitos, (obito) => obito.sexo).entries.toList();
+
+    grupoPorSexo.sort((a, b) => b.value.length.compareTo(a.value.length));
+
+    return grupoPorSexo
+        .map((obitos) => KeyValue(key: obitos.key, value: obitos.value.length))
+        .toList();
+  }
+
+  List<KeyValue> get obitosPorCidade {
+    var grupoPorCidade =
+        groupBy(obitos, (obito) => obito.cidade).entries.toList();
+
+    grupoPorCidade.sort((a, b) => b.value.length.compareTo(a.value.length));
+
+    return grupoPorCidade
+        .map((obitos) => KeyValue(key: obitos.key, value: obitos.value.length))
+        .toList();
+  }
 
   List<KeyValue> get obitosPorFaixaEtaria {
-    var obitosPorFaixa =
+    var grupoPorFaixaEtaria =
         groupBy(obitos, (obito) => obito.faixaEtaria.toString())
             .entries
             .toList();
 
-    obitosPorFaixa.sort((a, b) =>
+    grupoPorFaixaEtaria.sort((a, b) =>
         a.value[0].ordemDaFaixaEtaria.compareTo(b.value[0].ordemDaFaixaEtaria));
 
-    return obitosPorFaixa
-        .map((obitos) =>
-            KeyValue(key: obitos.key, value: obitos.value.length.toDouble()))
+    return grupoPorFaixaEtaria
+        .map((obitos) => KeyValue(key: obitos.key, value: obitos.value.length))
         .toList();
   }
 
