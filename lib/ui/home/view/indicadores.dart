@@ -1,5 +1,5 @@
 import 'package:covidmt/core/enum/viewstate.dart';
-import 'package:covidmt/core/viewmodels/covid/indicadores_view_model.dart';
+import 'package:covidmt/core/viewmodel/covid/indicadores_view_model.dart';
 import 'package:covidmt/ui/base/base_view.dart';
 import 'package:covidmt/ui/covid/widget/grid_covid_indicadores.dart';
 import 'package:covidmt/ui/base/ui_typography.dart';

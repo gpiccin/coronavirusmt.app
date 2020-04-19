@@ -1,6 +1,6 @@
 import 'package:covidmt/ui/base/card_style.dart';
-import 'package:covidmt/ui/pages/sras/srars_panel.dart';
 import 'package:covidmt/ui/base/ui_typography.dart';
+import 'package:covidmt/ui/sras/srars_panel.dart';
 import 'package:flutter/material.dart';
 
 class CardSRAGIndicador extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:covidmt/core/enum/viewstate.dart';
-import 'package:covidmt/core/viewmodels/covid/obitos_view_model.dart';
+import 'package:covidmt/core/viewmodel/covid/obitos_view_model.dart';
 import 'package:covidmt/ui/base/base_view.dart';
 import 'package:covidmt/ui/base/ui_typography.dart';
 import 'package:covidmt/ui/base/ui_helpers.dart';

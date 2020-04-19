@@ -1,5 +1,5 @@
 import 'package:covidmt/core/locator.dart';
-import 'package:covidmt/core/viewmodels/covid/obitos_view_model.dart';
+import 'package:covidmt/core/viewmodel/covid/obitos_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

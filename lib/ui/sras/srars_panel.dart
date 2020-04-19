@@ -1,6 +1,6 @@
-import 'package:covidmt/ui/pages/sras/widget/card_srag_grafico_diario.dart';
-import 'package:covidmt/ui/pages/sras/widget/card_srag_grafico_mesal.dart';
 import 'package:covidmt/ui/base/ui_style.dart';
+import 'package:covidmt/ui/sras/widget/card_srag_grafico_diario.dart';
+import 'package:covidmt/ui/sras/widget/card_srag_grafico_mesal.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

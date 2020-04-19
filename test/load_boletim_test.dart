@@ -1,4 +1,4 @@
-import 'package:covidmt/core/services/api.dart';
+import 'package:covidmt/core/service/api.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 

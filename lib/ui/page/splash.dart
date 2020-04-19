@@ -1,4 +1,4 @@
-import 'package:covidmt/ui/pages/home/home.dart';
+import 'package:covidmt/ui/home/page/home.dart';
 import 'package:covidmt/ui/base/ui_typography.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';

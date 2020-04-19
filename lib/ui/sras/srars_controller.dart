@@ -1,6 +1,6 @@
 import 'package:covidmt/core/locator.dart';
 import 'package:covidmt/core/model/srars_model.dart';
-import 'package:covidmt/core/services/api.dart';
+import 'package:covidmt/core/service/api.dart';
 
 import 'package:covidmt/ui/charts/column_chart.dart';
 import 'package:fl_chart/fl_chart.dart';
