@@ -1,6 +1,8 @@
 import 'package:covidmt/ui/home/home.dart';
+import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:covidmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 class SplashScreenPage extends StatefulWidget {
@@ -29,49 +31,47 @@ Widget _splashScreen() {
       Scaffold(
           backgroundColor: Colors.white,
           bottomNavigationBar: BottomAppBar(
-            child: Text(
-              "Vamos vencer essa luta",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: "Russo One",
-                  color: Color(0xfff1E347C)),
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Text(
+                "Dados oficiais da Secretário de Saúde de MT",
+                textAlign: TextAlign.center,
+                style: UITypography.title,
+              ),
             ),
             elevation: 1,
           ),
           body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                height: 200,
-                width: 500,
+                height: 150,
+                width: 300,
                 //color: Colors.red,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: new AssetImage('assets/images/covid.jpeg'))),
-              ),
-              Text(
-                "COVID MT",
-                style: UITypography.splashTitle,
+                        fit: BoxFit.contain,
+                        image: new AssetImage('assets/images/virus.png'))),
               ),
               SizedBox(
                 height: 30,
               ),
               Text(
-                "Boletim informativo",
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
+                "CORONAVÍRUS MT",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.rubik(
+                    color: UIStyle.headerBackgroundColor,
+                    fontSize: 32,
+                    fontWeight: FontWeight.w600),
               ),
               Text(
-                "Dados oficiais Secretário de Saúde MT",
-                style: TextStyle(fontSize: 17, color: Colors.black),
-              ),
-              SizedBox(
-                height: 20,
+                "Vamos vencer esta luta!",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.rubik(
+                    color: UIStyle.headerBackgroundColor,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500),
               ),
             ],
           ))
