@@ -2,6 +2,7 @@ import 'package:covidmt/core/locator.dart';
 import 'package:covidmt/core/models/covid_historico.dart';
 import 'package:covidmt/core/models/covid_por_cidade.dart';
 import 'package:covidmt/core/models/covid_por_faixa_etaria.dart';
+import 'package:covidmt/core/models/covid_por_tipo_de_leito.dart';
 import 'package:covidmt/core/services/api.dart';
 
 class CovidService {
@@ -16,6 +17,9 @@ class CovidService {
   List<CovidPorFaixaEtaria> _covidPorFaixaEtaria;
   List<CovidPorFaixaEtaria> get covidPorFaixaEtaria => _covidPorFaixaEtaria;
 
+  List<CovidPorTipoDeLeito> _covidPorTipoDeLeito;
+  List<CovidPorTipoDeLeito> get covidPorTipoDeLeito => _covidPorTipoDeLeito;
+
   getHistoricoDeCovid() async => _historico = await _api.getHistoricoDeCovid();
 
   getCovidPorCidade(DateTime data) async =>
@@ -27,4 +31,7 @@ class CovidService {
     _covidPorFaixaEtaria
         .sort((a, b) => a.ordemDaFaixaEtaria.compareTo(b.ordemDaFaixaEtaria));
   }
+
+  getCovidPorTipoDeLeito(DateTime data) async =>
+      _covidPorTipoDeLeito = await _api.getCovidPorTipoDeLeito(data);
 }

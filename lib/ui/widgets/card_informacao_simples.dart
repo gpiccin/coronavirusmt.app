@@ -17,12 +17,6 @@ class CardInformacaoSimples extends StatelessWidget {
   final Color color;
   final Widget page;
 
-  openPage(BuildContext context) {
-    if (page != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => page));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(

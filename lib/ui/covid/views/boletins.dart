@@ -10,7 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 class BoletinsView extends StatelessWidget {
   final double defaultPadding = 12.0;
 
-  launchBoletimURL(boletimUrl) async {
+  _launchBoletimURL(boletimUrl) async {
     if (await canLaunch(boletimUrl)) {
       await launch(boletimUrl);
     } else {
@@ -18,7 +18,7 @@ class BoletinsView extends StatelessWidget {
     }
   }
 
-  Widget buildRow(BoletimLista boletim) {
+  Widget _buildRow(BoletimLista boletim) {
     return ListTile(
       title: Text(
         "Boletim: ${boletim.referencia}",
@@ -34,7 +34,7 @@ class BoletinsView extends StatelessWidget {
             semanticLabel: 'Acessar',
           ),
           onTap: () {
-            launchBoletimURL(boletim.link);
+            _launchBoletimURL(boletim.link);
           }),
     );
   }
@@ -52,7 +52,7 @@ class BoletinsView extends StatelessWidget {
                         itemCount: model.boletins.length,
                         padding: const EdgeInsets.all(16.0),
                         itemBuilder: (BuildContext context, int i) {
-                          return buildRow(model.boletins.elementAt(i));
+                          return _buildRow(model.boletins.elementAt(i));
                         },
                       ),
                     )),

@@ -5,6 +5,7 @@ import 'package:covidmt/core/services/covid_service.dart';
 import 'package:covidmt/core/services/obitos_service.dart';
 import 'package:covidmt/core/viewmodels/covid/boletins_view_model.dart';
 import 'package:covidmt/core/viewmodels/covid/confirmados_view_model.dart';
+import 'package:covidmt/core/viewmodels/covid/hospitalizados_view_model.dart';
 import 'package:covidmt/core/viewmodels/covid/indicadores_view_model.dart';
 import 'package:covidmt/core/viewmodels/covid/obitos_view_model.dart';
 import 'package:get_it/get_it.dart';
@@ -25,5 +26,6 @@ void setupLocator() {
   locator.registerFactory(() => BoletinsViewModel());
   locator.registerFactory(() => ObitosViewModel());
   locator.registerFactory(() => ConfirmadosViewModel());
+  locator.registerFactory(() => HospitalizadosViewModel());
   // locator.registerFactory(() => CommentsModel());
 }

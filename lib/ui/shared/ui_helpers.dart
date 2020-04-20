@@ -16,6 +16,16 @@ class UIHelper {
     );
   }
 
+  static showSnackBar(BuildContext context, Widget content,
+      {SnackBarBehavior behavior = SnackBarBehavior.fixed}) {
+    final scaffold = Scaffold.of(context);
+    scaffold.showSnackBar(SnackBar(
+      duration: Duration(seconds: 1),
+      content: content,
+      behavior: behavior,
+    ));
+  }
+
   static Widget headline(String title) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),

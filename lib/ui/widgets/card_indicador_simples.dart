@@ -1,4 +1,5 @@
 import 'package:covidmt/ui/shared/card_style.dart';
+import 'package:covidmt/ui/shared/ui_helpers.dart';
 import 'package:covidmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,10 @@ class CardIndicadorSimples extends StatelessWidget {
   openPage(BuildContext context) {
     if (page != null) {
       Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+      return;
     }
+
+    UIHelper.showSnackBar(context, Text("Sem detalhes até o momento."));
   }
 
   @override

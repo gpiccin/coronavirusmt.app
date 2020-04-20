@@ -1,4 +1,5 @@
 import 'package:covidmt/ui/shared/card_style.dart';
+import 'package:covidmt/ui/shared/ui_helpers.dart';
 import 'package:covidmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,9 @@ class CardSRAGIndicador extends StatelessWidget {
       elevation: cardElevation,
       color: cardBackgroundColor,
       child: InkWell(
-        onTap: () => {},
+        onTap: () => {
+          UIHelper.showSnackBar(context, Text("Sem detalhes até o momento."))
+        },
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,5 +1,6 @@
 import 'package:covidmt/core/models/boletim_model.dart';
 import 'package:covidmt/ui/covid/confirmados/confirmados.dart';
+import 'package:covidmt/ui/covid/hospitalizados/hospitalizados.dart';
 import 'package:covidmt/ui/shared/ui_style.dart';
 import 'package:covidmt/ui/covid/obito/obitos.dart';
 import 'package:covidmt/ui/widgets/card_indicador_simples.dart';
@@ -49,7 +50,8 @@ class CovidIndicadores extends StatelessWidget {
                   indicadorPrincipal: boletim.covidHospitalizados.toString(),
                   indicadorSecundario:
                       boletim.covidPercentualDeHospitalizados.toString() + "%",
-                  color: UIStyle.contaminadosColor),
+                  color: UIStyle.contaminadosColor,
+                  page: HospitalizadosPage(boletim.data)),
             ),
             SizedBox(
               width: this.defaultSizeCardSeparation,

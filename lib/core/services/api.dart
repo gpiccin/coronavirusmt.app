@@ -3,6 +3,7 @@ import 'package:covidmt/core/models/boletim_model.dart';
 import 'package:covidmt/core/models/covid_historico.dart';
 import 'package:covidmt/core/models/covid_por_cidade.dart';
 import 'package:covidmt/core/models/covid_por_faixa_etaria.dart';
+import 'package:covidmt/core/models/covid_por_tipo_de_leito.dart';
 import 'package:covidmt/core/models/obito_model.dart';
 import 'package:dio/dio.dart';
 import '../constants.dart';
@@ -101,6 +102,20 @@ class Api {
         .toList();
 
     return List<CovidPorFaixaEtaria>.from(casosPorFaixaEtaria);
+  }
+
+  Future<List<CovidPorTipoDeLeito>> getCovidPorTipoDeLeito(
+      DateTime data) async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "query {\n  casosPorTipoDeLeitos(where: {data:\"${this._dateParam(data)}\"}) {\n    covid_casos_total\n    leito { valor }\n    rede { valor }\n  }\n}"
+    });
+
+    var casosPorTipoDeLeito = response.data["data"]["casosPorTipoDeLeitos"]
+        .map((caso) => CovidPorTipoDeLeito.fromJson(caso))
+        .toList();
+
+    return List<CovidPorTipoDeLeito>.from(casosPorTipoDeLeito);
   }
 
   Future<BoletimModel> getBoletim(String referencia) async {
