@@ -1,5 +1,5 @@
 import 'package:coronavirusmt/core/locator.dart';
-import 'package:coronavirusmt/core/viewmodels/base_view_model.dart';
+import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

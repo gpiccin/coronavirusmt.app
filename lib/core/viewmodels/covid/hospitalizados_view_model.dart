@@ -3,7 +3,7 @@ import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/locator.dart';
 import 'package:coronavirusmt/core/models/covid_por_tipo_de_leito.dart';
 import 'package:coronavirusmt/core/services/covid_service.dart';
-import 'package:coronavirusmt/core/viewmodels/base_view_model.dart';
+import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 
 class HospitalizadosViewModel extends BaseViewModel {
   CovidService _covidService = locator<CovidService>();

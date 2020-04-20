@@ -3,7 +3,7 @@ import 'package:coronavirusmt/core/locator.dart';
 import 'package:coronavirusmt/core/models/covid_historico.dart';
 import 'package:coronavirusmt/core/models/key_value.dart';
 import 'package:coronavirusmt/core/services/covid_service.dart';
-import 'package:coronavirusmt/core/viewmodels/base_view_model.dart';
+import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 
 class ConfirmadosViewModel extends BaseViewModel {
   CovidService _covidService = locator<CovidService>();
