@@ -1,4 +1,4 @@
-import 'package:covidmt/ui/sras/widget/sars_chart_semanal.dart';
+import 'package:coronavirusmt/ui/sras/widget/sars_chart_semanal.dart';
 import 'package:flutter/material.dart';
 
 class CardSRAGGraficoDiario extends StatelessWidget {

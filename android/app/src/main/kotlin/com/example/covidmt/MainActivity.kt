@@ -1,4 +1,4 @@
-package com.example.covidmt
+package com.piccin.coronavirusmt
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

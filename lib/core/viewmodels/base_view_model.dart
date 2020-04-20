@@ -1,4 +1,4 @@
-import 'package:covidmt/core/enum/viewstate.dart';
+import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:flutter/material.dart';
 
 class BaseViewModel extends ChangeNotifier {

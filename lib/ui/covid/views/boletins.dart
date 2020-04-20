@@ -1,9 +1,9 @@
-import 'package:covidmt/core/enum/viewstate.dart';
-import 'package:covidmt/core/models/boletim_lista.dart';
-import 'package:covidmt/core/viewmodels/covid/boletins_view_model.dart';
-import 'package:covidmt/ui/shared/base_view.dart';
-import 'package:covidmt/ui/shared/ui_typography.dart';
-import 'package:covidmt/ui/shared/ui_helpers.dart';
+import 'package:coronavirusmt/core/enum/viewstate.dart';
+import 'package:coronavirusmt/core/models/boletim_lista.dart';
+import 'package:coronavirusmt/core/viewmodels/covid/boletins_view_model.dart';
+import 'package:coronavirusmt/ui/shared/base_view.dart';
+import 'package:coronavirusmt/ui/shared/ui_typography.dart';
+import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 

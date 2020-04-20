@@ -1,7 +1,7 @@
 /// Horizontal bar chart example
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:covidmt/core/models/key_value.dart';
-import 'package:covidmt/ui/shared/ui_style.dart';
+import 'package:coronavirusmt/core/models/key_value.dart';
+import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmadosPorFaixaEtariaChart extends StatelessWidget {

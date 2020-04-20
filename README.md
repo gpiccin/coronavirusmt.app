@@ -1,4 +1,4 @@
-# covidmt
+# coronavirusmt
 
 A new Flutter project.
 

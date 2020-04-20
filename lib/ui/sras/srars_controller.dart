@@ -1,8 +1,8 @@
-import 'package:covidmt/core/locator.dart';
-import 'package:covidmt/core/models/srars_model.dart';
-import 'package:covidmt/core/services/api.dart';
+import 'package:coronavirusmt/core/locator.dart';
+import 'package:coronavirusmt/core/models/srars_model.dart';
+import 'package:coronavirusmt/core/services/api.dart';
 
-import 'package:covidmt/ui/charts/column_chart.dart';
+import 'package:coronavirusmt/ui/charts/column_chart.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:covidmt/ui/shared/ui_typography.dart';
+import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
 
 class UIHelper {

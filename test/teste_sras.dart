@@ -1,4 +1,4 @@
-import 'package:covidmt/core/services/api.dart';
+import 'package:coronavirusmt/core/services/api.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

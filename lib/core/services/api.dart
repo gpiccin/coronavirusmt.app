@@ -1,10 +1,10 @@
-import 'package:covidmt/core/models/boletim_lista.dart';
-import 'package:covidmt/core/models/boletim_model.dart';
-import 'package:covidmt/core/models/covid_historico.dart';
-import 'package:covidmt/core/models/covid_por_cidade.dart';
-import 'package:covidmt/core/models/covid_por_faixa_etaria.dart';
-import 'package:covidmt/core/models/covid_por_tipo_de_leito.dart';
-import 'package:covidmt/core/models/obito_model.dart';
+import 'package:coronavirusmt/core/models/boletim_lista.dart';
+import 'package:coronavirusmt/core/models/boletim_model.dart';
+import 'package:coronavirusmt/core/models/covid_historico.dart';
+import 'package:coronavirusmt/core/models/covid_por_cidade.dart';
+import 'package:coronavirusmt/core/models/covid_por_faixa_etaria.dart';
+import 'package:coronavirusmt/core/models/covid_por_tipo_de_leito.dart';
+import 'package:coronavirusmt/core/models/obito_model.dart';
 import 'package:dio/dio.dart';
 import '../constants.dart';
 

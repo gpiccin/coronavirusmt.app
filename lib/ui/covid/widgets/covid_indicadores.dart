@@ -1,9 +1,9 @@
-import 'package:covidmt/core/models/boletim_model.dart';
-import 'package:covidmt/ui/covid/confirmados/confirmados.dart';
-import 'package:covidmt/ui/covid/hospitalizados/hospitalizados.dart';
-import 'package:covidmt/ui/shared/ui_style.dart';
-import 'package:covidmt/ui/covid/obito/obitos.dart';
-import 'package:covidmt/ui/widgets/card_indicador_simples.dart';
+import 'package:coronavirusmt/core/models/boletim_model.dart';
+import 'package:coronavirusmt/ui/covid/confirmados/confirmados.dart';
+import 'package:coronavirusmt/ui/covid/hospitalizados/hospitalizados.dart';
+import 'package:coronavirusmt/ui/shared/ui_style.dart';
+import 'package:coronavirusmt/ui/covid/obito/obitos.dart';
+import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
 
 class CovidIndicadores extends StatelessWidget {

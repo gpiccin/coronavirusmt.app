@@ -1,9 +1,9 @@
-import 'package:covidmt/core/enum/viewstate.dart';
-import 'package:covidmt/core/locator.dart';
-import 'package:covidmt/core/models/covid_historico.dart';
-import 'package:covidmt/core/models/key_value.dart';
-import 'package:covidmt/core/services/covid_service.dart';
-import 'package:covidmt/core/viewmodels/base_view_model.dart';
+import 'package:coronavirusmt/core/enum/viewstate.dart';
+import 'package:coronavirusmt/core/locator.dart';
+import 'package:coronavirusmt/core/models/covid_historico.dart';
+import 'package:coronavirusmt/core/models/key_value.dart';
+import 'package:coronavirusmt/core/services/covid_service.dart';
+import 'package:coronavirusmt/core/viewmodels/base_view_model.dart';
 
 class ConfirmadosViewModel extends BaseViewModel {
   CovidService _covidService = locator<CovidService>();

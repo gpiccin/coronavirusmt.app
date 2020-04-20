@@ -1,6 +1,6 @@
-import 'package:covidmt/core/locator.dart';
-import 'package:covidmt/core/models/boletim_lista.dart';
-import 'package:covidmt/core/services/api.dart';
+import 'package:coronavirusmt/core/locator.dart';
+import 'package:coronavirusmt/core/models/boletim_lista.dart';
+import 'package:coronavirusmt/core/services/api.dart';
 
 class BoletinsService {
   Api _api = locator<Api>();

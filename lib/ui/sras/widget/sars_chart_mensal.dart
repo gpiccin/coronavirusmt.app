@@ -1,6 +1,6 @@
-import 'package:covidmt/ui/shared/ui_style.dart';
-import 'package:covidmt/ui/sras/srars_controller.dart';
-import 'package:covidmt/ui/sras/tempo_relatorio_sras.dart';
+import 'package:coronavirusmt/ui/shared/ui_style.dart';
+import 'package:coronavirusmt/ui/sras/srars_controller.dart';
+import 'package:coronavirusmt/ui/sras/tempo_relatorio_sras.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

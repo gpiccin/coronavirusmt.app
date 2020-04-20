@@ -1,11 +1,11 @@
-import 'package:covidmt/core/enum/viewstate.dart';
-import 'package:covidmt/core/viewmodels/covid/indicadores_view_model.dart';
-import 'package:covidmt/ui/shared/base_view.dart';
-import 'package:covidmt/ui/covid/widgets/covid_indicadores.dart';
-import 'package:covidmt/ui/shared/ui_typography.dart';
-import 'package:covidmt/ui/shared/ui_helpers.dart';
-import 'package:covidmt/ui/shared/ui_style.dart';
-import 'package:covidmt/ui/sras/widget/card_srag_indicador.dart';
+import 'package:coronavirusmt/core/enum/viewstate.dart';
+import 'package:coronavirusmt/core/viewmodels/covid/indicadores_view_model.dart';
+import 'package:coronavirusmt/ui/shared/base_view.dart';
+import 'package:coronavirusmt/ui/covid/widgets/covid_indicadores.dart';
+import 'package:coronavirusmt/ui/shared/ui_typography.dart';
+import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
+import 'package:coronavirusmt/ui/shared/ui_style.dart';
+import 'package:coronavirusmt/ui/sras/widget/card_srag_indicador.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
