@@ -5,9 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   setupLocator();
 
-  test('Recupera os óbitos e verifica a idade média', () async {
+  test('Recupera a lista de óbitos', () async {
     ObitosViewModel model = ObitosViewModel();
-    await model.getObitos();
-    expect(model.obitosPorFaixaEtaria.single, 5);
+    await model.loadData();
+    assert(model.obitos.length > 0);
   });
 }

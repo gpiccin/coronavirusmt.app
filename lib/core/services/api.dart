@@ -1,12 +1,13 @@
+import 'package:coronavirusmt/core/constants.dart';
 import 'package:coronavirusmt/core/models/boletim_lista.dart';
-import 'package:coronavirusmt/core/models/boletim_model.dart';
+import 'package:coronavirusmt/core/models/boletim.dart';
 import 'package:coronavirusmt/core/models/covid_historico.dart';
 import 'package:coronavirusmt/core/models/covid_por_cidade.dart';
 import 'package:coronavirusmt/core/models/covid_por_faixa_etaria.dart';
 import 'package:coronavirusmt/core/models/covid_por_tipo_de_leito.dart';
-import 'package:coronavirusmt/core/models/obito_model.dart';
+import 'package:coronavirusmt/core/models/obito.dart';
+import 'package:coronavirusmt/core/models/srag_historico.dart';
 import 'package:dio/dio.dart';
-import '../constants.dart';
 
 class Api {
   var client = Dio(BaseOptions(baseUrl: Constants.BASE_URL_PATH));
@@ -15,27 +16,17 @@ class Api {
     return '${data.year}-${data.month.toString().padLeft(2, '0')}-${data.day.toString().padLeft(2, '0')}';
   }
 
-  Future<dynamic> getDadosSars() async {
+  Future<List<SragHistorico>> getHistoricoDeSrag() async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query{\n  boletims(sort:\"data:asc\", limit: 67){\n    data\n    srag_casos_total\n    srag_casos_novos\n    \n  }\n}"
-    });
-    await Future.delayed(Duration(milliseconds: 200));
-    var itens = response.data["data"]["boletims"];
-
-    return itens;
-  }
-
-  Future<dynamic> getUltimoRegistroDadosSars() async {
-    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
-      "query":
-          "query{\n  boletims(sort:\"data:desc\", limit: 1){\n    data\n    srag_casos_total\n    srag_casos_novos\n    \n  }\n}"
+          "query{\n  boletims(sort:\"data:desc\", limit: 67){\n    data\n    srag_casos_total\n    srag_casos_novos\n    covid_casos_total\n  }\n}"
     });
 
-    await Future.delayed(Duration(milliseconds: 200));
-    var itens = response.data["data"]["boletims"];
+    var historico = response.data["data"]["boletims"]
+        .map((boletim) => SragHistorico.fromJson(boletim))
+        .toList();
 
-    return itens;
+    return List<SragHistorico>.from(historico);
   }
 
   Future<List<Obito>> getObitos() async {
@@ -118,17 +109,17 @@ class Api {
     return List<CovidPorTipoDeLeito>.from(casosPorTipoDeLeito);
   }
 
-  Future<BoletimModel> getBoletim(String referencia) async {
+  Future<Boletim> getBoletim(String referencia) async {
     Response response = await client.get(Constants.BOLETINS_PATH,
         queryParameters: {"referencia": referencia});
 
-    return BoletimModel.fromJson(response.data[0]);
+    return Boletim.fromJson(response.data[0]);
   }
 
-  Future<BoletimModel> getUltimoBoletim() async {
+  Future<Boletim> getUltimoBoletim() async {
     Response response = await client.get(Constants.BOLETINS_PATH,
         queryParameters: {"_limit": 1, "_sort": "data:DESC"});
 
-    return BoletimModel.fromJson(response.data[0]);
+    return Boletim.fromJson(response.data[0]);
   }
 }

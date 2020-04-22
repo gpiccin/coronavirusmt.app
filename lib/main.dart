@@ -18,7 +18,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Covid MT',
+        title: 'Coronavírus MT',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

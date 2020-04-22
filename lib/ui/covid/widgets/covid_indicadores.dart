@@ -1,4 +1,4 @@
-import 'package:coronavirusmt/core/models/boletim_model.dart';
+import 'package:coronavirusmt/core/models/boletim.dart';
 import 'package:coronavirusmt/ui/covid/confirmados/confirmados.dart';
 import 'package:coronavirusmt/ui/covid/hospitalizados/hospitalizados.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class CovidIndicadores extends StatelessWidget {
   CovidIndicadores({this.boletim});
 
-  final BoletimModel boletim;
+  final Boletim boletim;
   final double defaultSizeCardSeparation = 8;
 
   @override

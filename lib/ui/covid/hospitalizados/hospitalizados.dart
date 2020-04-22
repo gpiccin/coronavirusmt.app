@@ -14,7 +14,7 @@ class HospitalizadosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<HospitalizadosViewModel>(
-        onModelReeady: (model) => model.getData(this.data),
+        onModelReady: (model) => model.loadData(this.data),
         builder: (BuildContext context, HospitalizadosViewModel model,
                 Widget child) =>
             Scaffold(

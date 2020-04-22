@@ -9,7 +9,7 @@ class BoletinsViewModel extends BaseViewModel {
 
   List<BoletimLista> get boletins => _boletimService.boletins;
 
-  getBoletins() async {
+  loadData() async {
     setState(ViewState.Busy);
     await _boletimService.getBoletins();
     setState(ViewState.Idle);

@@ -1,6 +1,7 @@
 import 'package:coronavirusmt/ui/covid/views/boletins.dart';
 import 'package:coronavirusmt/ui/home/views/situacao_atual.dart';
 import 'package:coronavirusmt/ui/home/widgets/header.dart';
+import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:flutter/material.dart';
 
@@ -28,12 +29,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Header(),
-            _widgetOptions.elementAt(_selectedIndex)
-          ]),
+      body: Column(children: <Widget>[
+        Header(),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(UIStyle.defaultPadding, 0,
+                UIStyle.defaultPadding, UIStyle.defaultPadding),
+            child: _widgetOptions.elementAt(_selectedIndex),
+          ),
+        )
+      ]),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(

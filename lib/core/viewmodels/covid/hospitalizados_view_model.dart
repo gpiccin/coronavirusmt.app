@@ -40,7 +40,7 @@ class HospitalizadosViewModel extends BaseViewModel {
     return List<CovidPorTipoDeLeito>();
   }
 
-  getData(DateTime data) async {
+  loadData(DateTime data) async {
     setState(ViewState.Busy);
     await _covidService.getCovidPorTipoDeLeito(data);
     setState(ViewState.Idle);

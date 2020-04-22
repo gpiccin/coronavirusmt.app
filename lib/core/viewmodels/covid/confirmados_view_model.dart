@@ -28,7 +28,7 @@ class ConfirmadosViewModel extends BaseViewModel {
         .toList();
   }
 
-  getData(DateTime data) async {
+  loadData(DateTime data) async {
     setState(ViewState.Busy);
     await _covidService.getHistoricoDeCovid();
     await _covidService.getCovidPorCidade(data);

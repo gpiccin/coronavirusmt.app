@@ -1,5 +1,7 @@
+import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class UIHelper {
   static String fomartDateDMY(DateTime date) {
@@ -12,8 +14,19 @@ class UIHelper {
 
   static Widget loading() {
     return Center(
-      child: CircularProgressIndicator(),
-    );
+        child: SpinKitPulse(
+      color: UIStyle.headerBackgroundColor,
+      size: 50.0,
+    ));
+  }
+
+  static openPage(BuildContext context, Widget page) {
+    if (page != null) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+      return;
+    }
+
+    UIHelper.showSnackBar(context, Text("Sem detalhes até o momento."));
   }
 
   static showSnackBar(BuildContext context, Widget content,
@@ -26,9 +39,9 @@ class UIHelper {
     ));
   }
 
-  static Widget headline(String title) {
+  static Widget headline(String title, {EdgeInsets padding}) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+      padding: padding ?? const EdgeInsets.fromLTRB(0, 20, 0, 20),
       child: Text(
         title,
         style: UITypography.headline,

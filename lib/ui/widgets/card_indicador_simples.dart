@@ -18,22 +18,13 @@ class CardIndicadorSimples extends StatelessWidget {
   final Color color;
   final Widget page;
 
-  openPage(BuildContext context) {
-    if (page != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => page));
-      return;
-    }
-
-    UIHelper.showSnackBar(context, Text("Sem detalhes até o momento."));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: cardElevation,
       color: cardBackgroundColor,
       child: InkWell(
-        onTap: () => {this.openPage(context)},
+        onTap: () => {UIHelper.openPage(context, page)},
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

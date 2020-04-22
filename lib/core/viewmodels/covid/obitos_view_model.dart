@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/locator.dart';
 import 'package:coronavirusmt/core/models/key_value.dart';
-import 'package:coronavirusmt/core/models/obito_model.dart';
+import 'package:coronavirusmt/core/models/obito.dart';
 import 'package:coronavirusmt/core/services/obitos_service.dart';
 import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 
@@ -81,7 +81,7 @@ class ObitosViewModel extends BaseViewModel {
         .toList();
   }
 
-  getObitos() async {
+  loadData() async {
     setState(ViewState.Busy);
     await _obitoService.getObitos();
     setState(ViewState.Idle);

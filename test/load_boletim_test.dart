@@ -1,5 +1,4 @@
 import 'package:coronavirusmt/core/services/api.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -35,6 +34,6 @@ void main() {
 
   test('Recupera a lista de boletins', () async {
     var boletins = await Api().getBoletins();
-    expect(boletins.length > 0, true);
+    assert(boletins.length > 0);
   });
 }

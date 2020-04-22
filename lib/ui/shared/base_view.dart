@@ -5,11 +5,11 @@ import 'package:provider/provider.dart';
 
 class BaseView<T extends BaseViewModel> extends StatefulWidget {
   final Widget Function(BuildContext context, T model, Widget child) builder;
-  final Function(T) onModelReeady;
+  final Function(T) onModelReady;
 
   BaseView({
     this.builder,
-    this.onModelReeady,
+    this.onModelReady,
   });
 
   @override
@@ -21,8 +21,8 @@ class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
 
   @override
   void initState() {
-    if (widget.onModelReeady != null) {
-      widget.onModelReeady(model);
+    if (widget.onModelReady != null) {
+      widget.onModelReady(model);
     }
     super.initState();
   }

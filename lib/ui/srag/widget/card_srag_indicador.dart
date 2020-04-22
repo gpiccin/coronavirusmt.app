@@ -1,6 +1,7 @@
 import 'package:coronavirusmt/ui/shared/card_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
+import 'package:coronavirusmt/ui/srag/srag.dart';
 import 'package:flutter/material.dart';
 
 class CardSRAGIndicador extends StatelessWidget {
@@ -23,9 +24,7 @@ class CardSRAGIndicador extends StatelessWidget {
       elevation: cardElevation,
       color: cardBackgroundColor,
       child: InkWell(
-        onTap: () => {
-          UIHelper.showSnackBar(context, Text("Sem detalhes até o momento."))
-        },
+        onTap: () => {UIHelper.openPage(context, SragPage())},
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
