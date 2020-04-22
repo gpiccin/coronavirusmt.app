@@ -37,7 +37,7 @@ class ConfirmadosPage extends StatelessWidget {
                                       flex: 1,
                                       child: CardInformacaoSimples(
                                           title: "Casos confirmados",
-                                          indicadorPrincipal:
+                                          principalIndicator:
                                               '${model.atual.casosTotais}',
                                           color: UIStyle.casosColor),
                                     ),
@@ -48,7 +48,7 @@ class ConfirmadosPage extends StatelessWidget {
                                       flex: 1,
                                       child: CardInformacaoSimples(
                                           title: "Novos casos em 1 dia",
-                                          indicadorPrincipal:
+                                          principalIndicator:
                                               '${model.atual.casos}',
                                           color: UIStyle.casosColor),
                                     ),

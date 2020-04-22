@@ -34,9 +34,9 @@ class ObitosPage extends StatelessWidget {
                                       flex: 1,
                                       child: CardInformacaoSimples(
                                           title: "Óbitos",
-                                          indicadorPrincipal:
+                                          principalIndicator:
                                               '${model.totalDeObitos}',
-                                          indicadorSecundario: "vítimas",
+                                          indicatorLabel: "vítimas",
                                           color: UIStyle.obitosColor),
                                     ),
                                     SizedBox(
@@ -46,9 +46,9 @@ class ObitosPage extends StatelessWidget {
                                       flex: 1,
                                       child: CardInformacaoSimples(
                                           title: "Média de idade",
-                                          indicadorPrincipal:
+                                          principalIndicator:
                                               '${model.mediaDeIdade}',
-                                          indicadorSecundario: "anos",
+                                          indicatorLabel: "anos",
                                           color: UIStyle.obitosColor),
                                     ),
                                   ],

@@ -5,6 +5,8 @@ class SragHistorico {
   int casos;
 
   int get covidMaisSrag => (covidCasosTotais + casosTotais);
+  double get percentualEmRelacaoAoCovid =>
+      (casosTotais / covidCasosTotais) * 100;
 
   SragHistorico(
       {this.data, this.casosTotais, this.casos, this.covidCasosTotais});

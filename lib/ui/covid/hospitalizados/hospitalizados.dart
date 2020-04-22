@@ -30,7 +30,7 @@ class HospitalizadosPage extends StatelessWidget {
                               children: <Widget>[
                                 CardInformacaoSimples(
                                     title: "Hospitalizados",
-                                    indicadorPrincipal:
+                                    principalIndicator:
                                         '${model.hospitalizados}',
                                     color: UIStyle.contaminadosColor),
                                 SizedBox(

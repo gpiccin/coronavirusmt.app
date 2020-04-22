@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 class CardIndicadorSimples extends StatelessWidget {
   CardIndicadorSimples(
       {this.title,
-      this.indicadorPrincipal,
-      this.indicadorSecundario,
+      this.principalIndicator,
+      this.secondIndicator,
       this.color = Colors.black,
       this.page});
 
   final String title;
-  final String indicadorPrincipal;
-  final String indicadorSecundario;
+  final String principalIndicator;
+  final String secondIndicator;
   final double defaultPadding = 12.0;
   final Color color;
   final Widget page;
@@ -52,7 +52,7 @@ class CardIndicadorSimples extends StatelessWidget {
                           child: FittedBox(
                               fit: BoxFit.contain,
                               child: Text(
-                                this.indicadorPrincipal,
+                                this.principalIndicator,
                                 style: UITypography.indicadorPrincipalStyle
                                     .merge(TextStyle(
                                   color: this.color,
@@ -70,11 +70,11 @@ class CardIndicadorSimples extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.only(right: this.defaultPadding),
                           child: Visibility(
-                            visible: this.indicadorSecundario != null,
+                            visible: this.secondIndicator != null,
                             child: FittedBox(
                                 fit: BoxFit.contain,
                                 child: Text(
-                                  this.indicadorSecundario ?? "",
+                                  this.secondIndicator ?? "",
                                   style: UITypography.indicadorSecundarioStyle
                                       .merge(TextStyle(color: this.color)),
                                 )),

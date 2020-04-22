@@ -31,7 +31,7 @@ class SragPage extends StatelessWidget {
                                       flex: 1,
                                       child: CardInformacaoSimples(
                                           title: "Casos confirmados",
-                                          indicadorPrincipal:
+                                          principalIndicator:
                                               '${model.atual.casosTotais}',
                                           color: UIStyle.casosColor),
                                     ),
@@ -41,9 +41,9 @@ class SragPage extends StatelessWidget {
                                     Expanded(
                                       flex: 1,
                                       child: CardInformacaoSimples(
-                                          title: "COVID + SRAG",
-                                          indicadorPrincipal:
-                                              '${model.atual.covidMaisSrag}',
+                                          title: "Novos casos em 1 dia",
+                                          principalIndicator:
+                                              '${model.atual.casos}',
                                           color: UIStyle.casosColor),
                                     ),
                                   ],
@@ -51,21 +51,15 @@ class SragPage extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       top: UIStyle.defaultPadding),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Expanded(
-                                        flex: 1,
-                                        child: CardInformacaoSimples(
-                                            title: "Novos casos em 1 dia",
-                                            indicadorPrincipal:
-                                                '${model.atual.casos}',
-                                            color: UIStyle.casosColor),
-                                      ),
-                                      SizedBox(
-                                        width: 12,
-                                      ),
-                                      Expanded(flex: 1, child: Container()),
-                                    ],
+                                  child: CardInformacaoSimples(
+                                    title: "COVID + SRAG",
+                                    principalIndicator:
+                                        '${model.atual.covidMaisSrag}',
+                                    indicatorLabel:
+                                        '= (${model.atual.casosTotais} + ${model.atual.covidCasosTotais})',
+                                    color: UIStyle.casosColor,
+                                    caption:
+                                        'O número de SRAG representa ${UIHelper.formatPercent(model.atual.percentualEmRelacaoAoCovid)} a mais do que os casos de Covid-19. SRAG são casos suspeitos de Covid-19.',
                                   ),
                                 ),
                                 UIHelper.headline("Crescimento de casos"),

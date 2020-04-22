@@ -12,6 +12,11 @@ class UIHelper {
     return "${date.day}/${date.month}";
   }
 
+  static String formatPercent(double value) {
+    return value.toStringAsFixed(value.truncateToDouble() == value ? 0 : 1) +
+        "%";
+  }
+
   static Widget loading() {
     return Center(
         child: SpinKitPulse(

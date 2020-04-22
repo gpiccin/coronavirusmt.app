@@ -5,17 +5,21 @@ import 'package:flutter/material.dart';
 class CardInformacaoSimples extends StatelessWidget {
   CardInformacaoSimples(
       {this.title,
-      this.indicadorPrincipal,
-      this.indicadorSecundario,
+      this.principalIndicator,
+      this.indicatorLabel,
       this.color = Colors.black,
-      this.page});
+      this.page,
+      this.caption,
+      this.secondCaption});
 
   final String title;
-  final String indicadorPrincipal;
-  final String indicadorSecundario;
+  final String principalIndicator;
+  final String indicatorLabel;
   final double defaultPadding = 12.0;
   final Color color;
   final Widget page;
+  final String caption;
+  final String secondCaption;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +50,7 @@ class CardInformacaoSimples extends StatelessWidget {
                         child: FittedBox(
                             fit: BoxFit.contain,
                             child: Text(
-                              this.indicadorPrincipal,
+                              this.principalIndicator,
                               style: UITypography.indicadorPrincipalStyle
                                   .merge(TextStyle(
                                 color: this.color,
@@ -61,11 +65,11 @@ class CardInformacaoSimples extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.only(left: this.defaultPadding),
                         child: Visibility(
-                          visible: this.indicadorSecundario != null,
+                          visible: this.indicatorLabel != null,
                           child: FittedBox(
                               fit: BoxFit.contain,
                               child: Text(
-                                this.indicadorSecundario ?? "",
+                                this.indicatorLabel ?? "",
                                 style: UITypography.indicadorSecundarioStyle
                                     .merge(TextStyle(color: this.color)),
                               )),
@@ -75,6 +79,35 @@ class CardInformacaoSimples extends StatelessWidget {
                   ),
                 ],
               ),
+              (this.caption != null || this.secondCaption != null)
+                  ? Padding(
+                      padding: EdgeInsets.fromLTRB(this.defaultPadding,
+                          this.defaultPadding, this.defaultPadding, 0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          (this.caption != null)
+                              ? Text(
+                                  this.caption,
+                                  style: UITypography.caption,
+                                )
+                              : Container(),
+                          (this.caption != null)
+                              ? SizedBox(
+                                  height: 4,
+                                )
+                              : Container(),
+                          (this.secondCaption != null)
+                              ? Text(
+                                  this.secondCaption,
+                                  style: UITypography.caption,
+                                )
+                              : Container(),
+                        ],
+                      ))
+                  : Container(),
               SizedBox(
                 height: this.defaultPadding + 8,
               )
