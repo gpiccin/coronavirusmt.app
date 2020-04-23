@@ -18,7 +18,7 @@ class HospitalizadosPage extends StatelessWidget {
         builder: (BuildContext context, HospitalizadosViewModel model,
                 Widget child) =>
             Scaffold(
-                appBar: UIHelper.pageAppBar("Hospitalizados"),
+                appBar: UIHelper.appBar("Hospitalizados"),
                 body: Container(
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()

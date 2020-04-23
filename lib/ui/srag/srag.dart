@@ -14,8 +14,7 @@ class SragPage extends StatelessWidget {
         onModelReady: (model) => model.loadData(),
         builder: (BuildContext context, SragViewModel model, Widget child) =>
             Scaffold(
-                appBar:
-                    UIHelper.pageAppBar("Síndrome respiratória aguda grave"),
+                appBar: UIHelper.appBar("Síndrome respiratória aguda grave"),
                 body: Container(
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()
@@ -59,7 +58,7 @@ class SragPage extends StatelessWidget {
                                         '= (${model.atual.casosTotais} + ${model.atual.covidCasosTotais})',
                                     color: UIStyle.casosColor,
                                     caption:
-                                        'O número de SRAG representa ${UIHelper.formatPercent(model.atual.percentualEmRelacaoAoCovid)} a mais do que os casos de Covid-19. SRAG são casos suspeitos de Covid-19.',
+                                        'O número de SRAG representa ${UIHelper.formatPercent(model.atual.percentualEmRelacaoAoCovid)} a mais do que os casos confirmados de Covid-19.',
                                   ),
                                 ),
                                 UIHelper.headline("Crescimento de casos"),

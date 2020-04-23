@@ -21,7 +21,7 @@ class ConfirmadosPage extends StatelessWidget {
         builder: (BuildContext context, ConfirmadosViewModel model,
                 Widget child) =>
             Scaffold(
-                appBar: UIHelper.pageAppBar("Casos confirmados"),
+                appBar: UIHelper.appBar("Casos confirmados"),
                 body: Container(
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()
@@ -53,6 +53,29 @@ class ConfirmadosPage extends StatelessWidget {
                                           color: UIStyle.casosColor),
                                     ),
                                   ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: UIStyle.defaultPadding),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Expanded(
+                                        flex: 1,
+                                        child: CardInformacaoSimples(
+                                            title: "Média de idade",
+                                            principalIndicator:
+                                                '${model.atual.mediaDeIdade}',
+                                            color: UIStyle.casosColor),
+                                      ),
+                                      SizedBox(
+                                        width: 12,
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 UIHelper.headline("Crescimento de casos"),
                                 ConfirmadosAcumuladosPorDiaChart(

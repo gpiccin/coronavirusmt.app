@@ -54,7 +54,7 @@ class UIHelper {
     );
   }
 
-  static AppBar pageAppBar(String title) {
+  static AppBar appBar(String title) {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,

@@ -25,6 +25,8 @@ class Boletim {
   int covidNovosEmIsolamento;
   double covidPercentualEmIsolamento;
 
+  double covidMediaDeIdade;
+
   Boletim(
       {this.data,
       this.referencia,
@@ -44,7 +46,8 @@ class Boletim {
       this.covidPercentualDeObitos,
       this.covidIsolamento,
       this.covidNovosEmIsolamento,
-      this.covidPercentualEmIsolamento});
+      this.covidPercentualEmIsolamento,
+      this.covidMediaDeIdade});
 
   factory Boletim.fromJson(Map<String, dynamic> json) {
     return Boletim(
@@ -69,6 +72,7 @@ class Boletim {
         covidIsolamento: json['covid_isolamento_total'],
         covidNovosEmIsolamento: json['covid_isolamento_novos'],
         covidPercentualEmIsolamento:
-            json['covid_isolamento_percentual'].toDouble());
+            json['covid_isolamento_percentual'].toDouble(),
+        covidMediaDeIdade: json['covid_media_de_idade'].toDouble());
   }
 }

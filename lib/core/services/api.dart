@@ -19,7 +19,7 @@ class Api {
   Future<List<SragHistorico>> getHistoricoDeSrag() async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query{\n  boletims(sort:\"data:desc\", limit: 67){\n    data\n    srag_casos_total\n    srag_casos_novos\n    covid_casos_total\n  }\n}"
+          "query{ boletims(sort:\"data:desc\", limit: 67){  data  srag_casos_total  srag_casos_novos  covid_casos_total }}"
     });
 
     var historico = response.data["data"]["boletims"]
@@ -32,7 +32,7 @@ class Api {
   Future<List<Obito>> getObitos() async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query {\n  obitos(sort: \"data:desc\") {\n    data\n    idade\n    cidade {nome}\n    faixaEtaria: faixa_etaria {\n      faixa\n      ordem\n    }\n    sexo {valor}\n    comorbidade\n  }\n}"
+          "query { obitos(sort: \"data:desc\") {  data  idade  cidade {nome}  faixaEtaria: faixa_etaria {   faixa   ordem  }  sexo {valor}  comorbidade }}"
     });
 
     var obitos = response.data["data"]["obitos"]
@@ -45,7 +45,7 @@ class Api {
   Future<List<BoletimLista>> getBoletins() async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query {\n  boletims(sort: \"data:desc\") {\n    data\n    referencia\n    link\n  }\n}"
+          "query { boletims(sort: \"data:desc\") {  data  referencia  link }}"
     });
 
     var boletins = response.data["data"]["boletims"]
@@ -58,7 +58,7 @@ class Api {
   Future<List<CovidHistorico>> getHistoricoDeCovid() async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query {\n  boletims(sort: \"data:desc\") {\n    data\n    covid_casos_total\n    covid_casos_novos\n  }\n}"
+          "query { boletims(sort: \"data:desc\") {  data  covid_casos_total  covid_casos_novos covid_media_de_idade}}"
     });
 
     var historico = response.data["data"]["boletims"]
@@ -71,7 +71,7 @@ class Api {
   Future<List<CovidPorCidade>> getCovidPorCidade(DateTime data) async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query {\n  casosPorCidades(where: {data:\"${this._dateParam(data)}\"}, sort: \"covid_casos_total:desc\") {\n    covid_casos_total\n    cidade {nome}\n  }\n}"
+          "query { casosPorCidades(where: {data:\"${this._dateParam(data)}\"}, sort: \"covid_casos_total:desc\") {  covid_casos_total  cidade {nome} }}"
     });
 
     var casosPorCidade = response.data["data"]["casosPorCidades"]
@@ -85,7 +85,7 @@ class Api {
       DateTime data) async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query {\n  casosPorFaixaEtarias(where: {data:\"${this._dateParam(data)}\"}) {\n    covid_casos_total\n    faixa_etaria {faixa ordem}\n  }\n}"
+          "query { casosPorFaixaEtarias(where: {data:\"${this._dateParam(data)}\"}) {  covid_casos_total  faixa_etaria {faixa ordem} }}"
     });
 
     var casosPorFaixaEtaria = response.data["data"]["casosPorFaixaEtarias"]
@@ -99,7 +99,7 @@ class Api {
       DateTime data) async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query {\n  casosPorTipoDeLeitos(where: {data:\"${this._dateParam(data)}\"}) {\n    covid_casos_total\n    leito { valor }\n    rede { valor }\n  }\n}"
+          "query { casosPorTipoDeLeitos(where: {data:\"${this._dateParam(data)}\"}) {  covid_casos_total  leito { valor }  rede { valor } }}"
     });
 
     var casosPorTipoDeLeito = response.data["data"]["casosPorTipoDeLeitos"]

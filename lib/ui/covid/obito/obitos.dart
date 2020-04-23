@@ -18,7 +18,7 @@ class ObitosPage extends StatelessWidget {
         onModelReady: (model) => model.loadData(),
         builder: (BuildContext context, ObitosViewModel model, Widget child) =>
             Scaffold(
-                appBar: UIHelper.pageAppBar("Óbitos"),
+                appBar: UIHelper.appBar("Óbitos"),
                 body: Container(
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()
