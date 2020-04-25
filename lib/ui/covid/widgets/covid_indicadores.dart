@@ -75,7 +75,16 @@ class CovidIndicadores extends StatelessWidget {
                   color: UIStyle.obitosColor,
                   page: ObitosPage()),
             ),
-            Expanded(flex: 1, child: Container())
+            Expanded(flex: 1, child: Container()
+                // Column(
+                //   children: <Widget>[
+                //     Lottie.network(
+                //         'https://assets1.lottiefiles.com/packages/lf20_Dw1d3I.json',
+                //         height: 80),
+                //     Text("Use mascaras!")
+                //   ],
+                // )
+                )
           ],
         ),
       ],

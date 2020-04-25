@@ -21,11 +21,11 @@ class BoletinsView extends StatelessWidget {
   Widget _buildRow(BoletimLista boletim) {
     return ListTile(
       title: Text(
-        "Boletim: ${boletim.referencia}",
+        "${UIHelper.fomartDateDMY(boletim.data)} - Boletim: ${boletim.referencia}",
         style: UITypography.title,
       ),
       subtitle: Text(
-          "${boletim.data.day}/${boletim.data.month}/${boletim.data.year}"),
+          "Casos confirmados: ${boletim.casosTotais}, novos: ${boletim.casosNovos}"),
       trailing: GestureDetector(
           child: Icon(Icons.launch, color: Colors.grey, size: 24.0),
           onTap: () {

@@ -45,7 +45,7 @@ class Api {
   Future<List<BoletimLista>> getBoletins() async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query { boletims(sort: \"data:desc\") {  data  referencia  link }}"
+          "query { boletims(sort: \"data:desc\") {  data  referencia  link  covid_casos_total  covid_casos_novos}}"
     });
 
     var boletins = response.data["data"]["boletims"]
