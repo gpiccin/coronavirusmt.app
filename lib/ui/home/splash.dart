@@ -29,7 +29,7 @@ Widget _splashScreen() {
         loaderColor: Colors.transparent,
       ),
       Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: UIStyle.appBackgroundColor,
           bottomNavigationBar: BottomAppBar(
             child: Padding(
               padding: const EdgeInsets.all(14.0),

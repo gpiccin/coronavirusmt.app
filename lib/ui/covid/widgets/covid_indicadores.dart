@@ -6,6 +6,7 @@ import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/covid/obito/obitos.dart';
 import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class CovidIndicadores extends StatelessWidget {
   CovidIndicadores({this.boletim});
@@ -27,9 +28,6 @@ class CovidIndicadores extends StatelessWidget {
                 color: UIStyle.casosColor,
                 page: ConfirmadosPage(boletim.data),
               ),
-            ),
-            SizedBox(
-              width: this.defaultSizeCardSeparation,
             ),
             Expanded(
               flex: 1,
@@ -54,9 +52,6 @@ class CovidIndicadores extends StatelessWidget {
                   color: UIStyle.contaminadosColor,
                   page: HospitalizadosPage(boletim.data)),
             ),
-            SizedBox(
-              width: this.defaultSizeCardSeparation,
-            ),
             Expanded(
               flex: 1,
               child: CardIndicadorSimples(
@@ -80,13 +75,7 @@ class CovidIndicadores extends StatelessWidget {
                   color: UIStyle.obitosColor,
                   page: ObitosPage()),
             ),
-            SizedBox(
-              width: this.defaultSizeCardSeparation,
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(),
-            )
+            Expanded(flex: 1, child: Container())
           ],
         ),
       ],

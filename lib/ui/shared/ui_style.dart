@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UIStyle {
-  static const appBackgroundColor = Color(0xFFFAFAFA);
+  static const appBackgroundColor = Color(0xFFFEFEFE);
   static const headerBackgroundColor = Color(0xff303F9F);
 
   static const chartLineColor = Color(0xffe7e8ec);

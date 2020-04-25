@@ -23,11 +23,15 @@ class HospitalizadosViewModel extends BaseViewModel {
   }
 
   List<CovidPorTipoDeLeito> get enfermaria {
-    return _getCasos("Enfermaria");
+    var casos = _getCasos("Enfermaria");
+    casos.sort((a, b) => a.rede.compareTo(b.rede));
+    return casos;
   }
 
   List<CovidPorTipoDeLeito> get uti {
-    return _getCasos("UTI");
+    var casos = _getCasos("UTI");
+    casos.sort((a, b) => a.rede.compareTo(b.rede));
+    return casos;
   }
 
   List<CovidPorTipoDeLeito> _getCasos(String tipoDeLeito) {

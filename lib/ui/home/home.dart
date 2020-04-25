@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: UIStyle.appBackgroundColor,
       body: Column(children: <Widget>[
         Header(),
         Expanded(

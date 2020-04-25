@@ -19,6 +19,7 @@ class ObitosPage extends StatelessWidget {
         builder: (BuildContext context, ObitosViewModel model, Widget child) =>
             Scaffold(
                 appBar: UIHelper.appBar("Óbitos"),
+                backgroundColor: UIStyle.appBackgroundColor,
                 body: Container(
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()
@@ -38,9 +39,6 @@ class ObitosPage extends StatelessWidget {
                                               '${model.totalDeObitos}',
                                           indicatorLabel: "vítimas",
                                           color: UIStyle.obitosColor),
-                                    ),
-                                    SizedBox(
-                                      width: 12,
                                     ),
                                     Expanded(
                                       flex: 1,

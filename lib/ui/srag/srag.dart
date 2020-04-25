@@ -15,6 +15,7 @@ class SragPage extends StatelessWidget {
         builder: (BuildContext context, SragViewModel model, Widget child) =>
             Scaffold(
                 appBar: UIHelper.appBar("Síndrome respiratória aguda grave"),
+                backgroundColor: UIStyle.appBackgroundColor,
                 body: Container(
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()
@@ -34,9 +35,6 @@ class SragPage extends StatelessWidget {
                                               '${model.atual.casosTotais}',
                                           color: UIStyle.casosColor),
                                     ),
-                                    SizedBox(
-                                      width: 12,
-                                    ),
                                     Expanded(
                                       flex: 1,
                                       child: CardInformacaoSimples(
@@ -47,19 +45,15 @@ class SragPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: UIStyle.defaultPadding),
-                                  child: CardInformacaoSimples(
-                                    title: "COVID + SRAG",
-                                    principalIndicator:
-                                        '${model.atual.covidMaisSrag}',
-                                    indicatorLabel:
-                                        '= (${model.atual.casosTotais} + ${model.atual.covidCasosTotais})',
-                                    color: UIStyle.casosColor,
-                                    caption:
-                                        'O número de SRAG representa ${UIHelper.formatPercent(model.atual.percentualEmRelacaoAoCovid)} a mais do que os casos confirmados de Covid-19.',
-                                  ),
+                                CardInformacaoSimples(
+                                  title: "COVID + SRAG",
+                                  principalIndicator:
+                                      '${model.atual.covidMaisSrag}',
+                                  indicatorLabel:
+                                      '= (${model.atual.casosTotais} + ${model.atual.covidCasosTotais})',
+                                  color: UIStyle.casosColor,
+                                  caption:
+                                      'O número de SRAG representa ${UIHelper.formatPercent(model.atual.percentualEmRelacaoAoCovid)} a mais do que os casos confirmados de Covid-19.',
                                 ),
                                 UIHelper.headline("Crescimento de casos"),
                                 SragAcumuladosPorDiaChart(

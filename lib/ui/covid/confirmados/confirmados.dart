@@ -22,6 +22,7 @@ class ConfirmadosPage extends StatelessWidget {
                 Widget child) =>
             Scaffold(
                 appBar: UIHelper.appBar("Casos confirmados"),
+                backgroundColor: UIStyle.appBackgroundColor,
                 body: Container(
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()
@@ -41,9 +42,6 @@ class ConfirmadosPage extends StatelessWidget {
                                               '${model.atual.casosTotais}',
                                           color: UIStyle.casosColor),
                                     ),
-                                    SizedBox(
-                                      width: 12,
-                                    ),
                                     Expanded(
                                       flex: 1,
                                       child: CardInformacaoSimples(
@@ -54,28 +52,21 @@ class ConfirmadosPage extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: UIStyle.defaultPadding),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Expanded(
-                                        flex: 1,
-                                        child: CardInformacaoSimples(
-                                            title: "Média de idade",
-                                            principalIndicator:
-                                                '${model.atual.mediaDeIdade}',
-                                            color: UIStyle.casosColor),
-                                      ),
-                                      SizedBox(
-                                        width: 12,
-                                      ),
-                                      Expanded(
-                                        flex: 1,
-                                        child: Container(),
-                                      ),
-                                    ],
-                                  ),
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      flex: 1,
+                                      child: CardInformacaoSimples(
+                                          title: "Média de idade",
+                                          principalIndicator:
+                                              '${model.atual.mediaDeIdade}',
+                                          color: UIStyle.casosColor),
+                                    ),
+                                    Expanded(
+                                      flex: 1,
+                                      child: Container(),
+                                    ),
+                                  ],
                                 ),
                                 UIHelper.headline("Crescimento de casos"),
                                 ConfirmadosAcumuladosPorDiaChart(
@@ -83,11 +74,11 @@ class ConfirmadosPage extends StatelessWidget {
                                 UIHelper.headline("Casos por faixa etária"),
                                 ConfirmadosPorFaixaEtariaChart(
                                     model.covidPorFaixaEtaria),
-                                UIHelper.headline(
-                                    "Top 10 cidades em número de casos"),
+                                UIHelper.headline("Casos por cidade"),
                                 ConfirmadosPorCidadeChart(
                                   model.covidPorCidade,
-                                  height: 400,
+                                  height: (model.covidPorCidade.length * 22)
+                                      .toDouble(),
                                 ),
                               ],
                             ),

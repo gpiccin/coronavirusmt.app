@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 
 class UITypography {
   static const display4 =
-      TextStyle(fontSize: 108.0, fontWeight: FontWeight.w200);
+      TextStyle(fontSize: 100.0, fontWeight: FontWeight.w200);
   static const display3 =
-      TextStyle(fontSize: 52.0, fontWeight: FontWeight.normal);
+      TextStyle(fontSize: 50.0, fontWeight: FontWeight.normal);
   static const display2 =
-      TextStyle(fontSize: 42.0, fontWeight: FontWeight.normal);
+      TextStyle(fontSize: 40.0, fontWeight: FontWeight.normal);
   static const display1 =
-      TextStyle(fontSize: 32.0, fontWeight: FontWeight.normal);
+      TextStyle(fontSize: 30.0, fontWeight: FontWeight.normal);
   static const headline =
-      TextStyle(fontSize: 22.0, fontWeight: FontWeight.normal);
-  static const title = TextStyle(fontSize: 18.0, fontWeight: FontWeight.w400);
+      TextStyle(fontSize: 20.0, fontWeight: FontWeight.normal);
+  static const title = TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400);
   static const subhead =
       TextStyle(fontSize: 16.0, fontWeight: FontWeight.normal);
   static const subtitle =
@@ -25,9 +25,9 @@ class UITypography {
       TextStyle(fontSize: 10.0, fontWeight: FontWeight.normal);
 
   static const indicadorPrincipalStyle =
-      TextStyle(fontSize: 40.0, fontWeight: FontWeight.w500);
+      TextStyle(fontSize: 38.0, fontWeight: FontWeight.w500);
   static const indicadorSecundarioStyle =
-      TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500);
+      TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500);
 
   static const splashTitle = TextStyle(
       fontSize: 50, fontFamily: "Russo One", color: Color(0xfff1E347C));

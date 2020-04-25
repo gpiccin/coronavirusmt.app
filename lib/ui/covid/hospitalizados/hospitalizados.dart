@@ -19,6 +19,7 @@ class HospitalizadosPage extends StatelessWidget {
                 Widget child) =>
             Scaffold(
                 appBar: UIHelper.appBar("Hospitalizados"),
+                backgroundColor: UIStyle.appBackgroundColor,
                 body: Container(
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()
@@ -33,9 +34,6 @@ class HospitalizadosPage extends StatelessWidget {
                                     principalIndicator:
                                         '${model.hospitalizados}',
                                     color: UIStyle.contaminadosColor),
-                                SizedBox(
-                                  height: UIStyle.defaultPadding,
-                                ),
                                 Row(
                                   children: <Widget>[
                                     Expanded(
@@ -46,9 +44,6 @@ class HospitalizadosPage extends StatelessWidget {
                                         color: UIStyle.utiColor,
                                         casos: model.uti,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: 12,
                                     ),
                                     Expanded(
                                       flex: 1,

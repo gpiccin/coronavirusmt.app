@@ -1,4 +1,4 @@
-import 'package:coronavirusmt/ui/shared/card_style.dart';
+import 'package:coronavirusmt/ui/shared/card_helper.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:coronavirusmt/ui/srag/srag.dart';
@@ -19,26 +19,40 @@ class CardSRAGIndicador extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Card(
-      elevation: cardElevation,
-      color: cardBackgroundColor,
-      child: InkWell(
+    return CardHelper.touchableCard(
+      InkWell(
         onTap: () => {UIHelper.openPage(context, SragPage())},
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.fromLTRB(this.defaultPadding,
-                    this.defaultPadding, this.defaultPadding, 0),
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    "SRAG - Síndrome respiratória aguda grave",
-                    style: UITypography.title,
+              Row(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(top: this.defaultPadding),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: this.color,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20.0),
+                        ),
+                      ),
+                      width: 3,
+                      height: 20,
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(this.defaultPadding,
+                        this.defaultPadding, this.defaultPadding, 0),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        "SRAG - Síndrome respiratória aguda grave",
+                        style: UITypography.title,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Row(
                 children: <Widget>[
@@ -113,6 +127,6 @@ class CardSRAGIndicador extends StatelessWidget {
           ),
         ),
       ),
-    ));
+    );
   }
 }
