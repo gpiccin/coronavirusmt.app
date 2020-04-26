@@ -18,10 +18,7 @@ pipeline {
             folder: "coronavirusmt.app",
             zipFile: "$ZIP_FILE"
         )
-        heelalConfigureProxy(
-            folder: "coronavirusmt.app",
-            file: "coronavirusmt.app.conf"
-        )
+        heelalReloadProxy()
       }
     }
     stage('Reload proxy') {
