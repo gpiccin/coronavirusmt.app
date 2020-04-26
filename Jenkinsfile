@@ -2,7 +2,7 @@
 pipeline {
   agent any
   environment {
-    ZIP_FILE = "/web-release/coronavirusmt.app.zip"
+    ZIP_FILE = "web-release/coronavirusmt.app.zip"
   }
   stages { 
     stage('Backup'){
