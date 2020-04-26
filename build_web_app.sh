@@ -2,7 +2,7 @@
 
 flutter build web
 
-rm ./web-release/coronavirusmt.app.zip
+rm ./coronavirusmt.web.app.build.zip
 cd build/web
-zip -r ../../web-release/coronavirusmt.app.zip .
+zip -r ../../coronavirusmt.web.app.build.zip .
 cd ../../
