@@ -30,7 +30,7 @@ class SragPage extends StatelessWidget {
                                     Expanded(
                                       flex: 1,
                                       child: CardInformacaoSimples(
-                                          title: "Casos confirmados",
+                                          title: "Confirmados",
                                           principalIndicator:
                                               '${model.atual.casosTotais}',
                                           color: UIStyle.casosColor),
@@ -38,7 +38,7 @@ class SragPage extends StatelessWidget {
                                     Expanded(
                                       flex: 1,
                                       child: CardInformacaoSimples(
-                                          title: "Novos casos em 1 dia",
+                                          title: "Novos em 1 dia",
                                           principalIndicator:
                                               '${model.atual.casos}',
                                           color: UIStyle.casosColor),

@@ -60,7 +60,7 @@ class CardSRAGIndicador extends StatelessWidget {
                     flex: 1,
                     child: Container(
                         margin: EdgeInsets.only(left: this.defaultPadding),
-                        height: 50,
+                        height: 60,
                         child: Align(
                           alignment: Alignment.bottomLeft,
                           child: FittedBox(
@@ -69,7 +69,6 @@ class CardSRAGIndicador extends StatelessWidget {
                                 this.indicadorPrincipal,
                                 style: UITypography.indicadorPrincipalStyle
                                     .merge(TextStyle(
-                                  height: 0.5,
                                   color: this.color,
                                 )),
                               )),
@@ -78,7 +77,7 @@ class CardSRAGIndicador extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Container(
-                      height: 50,
+                      height: 60,
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Padding(

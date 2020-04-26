@@ -61,7 +61,7 @@ class CardIndicadorSimples extends StatelessWidget {
                     flex: 1,
                     child: Container(
                         margin: EdgeInsets.only(left: this.defaultPadding),
-                        height: 50,
+                        height: 60,
                         child: Align(
                           alignment: Alignment.bottomLeft,
                           child: FittedBox(
@@ -71,7 +71,6 @@ class CardIndicadorSimples extends StatelessWidget {
                                 style: UITypography.indicadorPrincipalStyle
                                     .merge(TextStyle(
                                   color: this.color,
-                                  height: 0.5,
                                 )),
                               )),
                         )),
@@ -79,7 +78,7 @@ class CardIndicadorSimples extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: Container(
-                      height: 50,
+                      height: 60,
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Padding(

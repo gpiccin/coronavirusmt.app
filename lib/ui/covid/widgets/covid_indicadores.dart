@@ -23,7 +23,7 @@ class CovidIndicadores extends StatelessWidget {
             Expanded(
               flex: 1,
               child: CardIndicadorSimples(
-                title: "Casos confirmados",
+                title: "Confirmados",
                 principalIndicator: boletim.covidCasos.toString(),
                 color: UIStyle.casosColor,
                 page: ConfirmadosPage(boletim.data),
@@ -55,7 +55,7 @@ class CovidIndicadores extends StatelessWidget {
             Expanded(
               flex: 1,
               child: CardIndicadorSimples(
-                  title: "Isolamento domiciliar",
+                  title: "Em isolamento",
                   principalIndicator: boletim.covidIsolamento.toString(),
                   secondIndicator: UIHelper.formatPercent(
                       boletim.covidPercentualEmIsolamento),

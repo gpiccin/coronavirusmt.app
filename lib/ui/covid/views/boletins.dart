@@ -25,7 +25,7 @@ class BoletinsView extends StatelessWidget {
         style: UITypography.title,
       ),
       subtitle: Text(
-          "Casos confirmados: ${boletim.casosTotais}, novos: ${boletim.casosNovos}"),
+          "${boletim.casosTotais} casos confirmados, ${boletim.casosNovos} novos "),
       trailing: GestureDetector(
           child: Icon(Icons.launch, color: Colors.grey, size: 24.0),
           onTap: () {
