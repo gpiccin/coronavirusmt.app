@@ -41,17 +41,34 @@ class CardSRAGIndicador extends StatelessWidget {
                       height: 20,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(this.defaultPadding,
-                        this.defaultPadding, this.defaultPadding, 0),
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        "SRAG - Síndrome respiratória aguda grave",
-                        style: UITypography.title,
+                  Container(
+                    height: 29,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(this.defaultPadding - 2,
+                          this.defaultPadding, this.defaultPadding, 0),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          "SRAG - Síndrome respiratória aguda grave",
+                          style: UITypography.title,
+                        ),
                       ),
                     ),
                   ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          0, this.defaultPadding, this.defaultPadding, 0),
+                      child: Container(
+                        width: 100,
+                        alignment: Alignment.centerRight,
+                        child: Icon(
+                          Icons.zoom_in,
+                          size: 18,
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
               Row(
@@ -60,7 +77,7 @@ class CardSRAGIndicador extends StatelessWidget {
                     flex: 1,
                     child: Container(
                         margin: EdgeInsets.only(left: this.defaultPadding),
-                        height: 60,
+                        height: 56,
                         child: Align(
                           alignment: Alignment.bottomLeft,
                           child: FittedBox(
@@ -96,7 +113,7 @@ class CardSRAGIndicador extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: 14,
+                height: this.defaultPadding,
               ),
               Padding(
                 padding: EdgeInsets.only(left: this.defaultPadding),

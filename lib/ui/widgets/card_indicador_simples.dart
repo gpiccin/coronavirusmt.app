@@ -42,17 +42,35 @@ class CardIndicadorSimples extends StatelessWidget {
                       height: 20,
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(this.defaultPadding - 2,
-                        this.defaultPadding, this.defaultPadding, 0),
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child: Text(
-                        this.title,
-                        style: UITypography.title,
+                  Container(
+                    height: 30,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(this.defaultPadding - 2,
+                          this.defaultPadding, this.defaultPadding, 0),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          this.title,
+                          style: UITypography.title,
+                        ),
                       ),
                     ),
                   ),
+                  (this.page != null)
+                      ? Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(
+                                0, this.defaultPadding, this.defaultPadding, 0),
+                            child: Container(
+                              alignment: Alignment.centerRight,
+                              child: Icon(
+                                Icons.zoom_in,
+                                size: 18,
+                              ),
+                            ),
+                          ),
+                        )
+                      : Container(),
                 ],
               ),
               Row(
@@ -61,7 +79,7 @@ class CardIndicadorSimples extends StatelessWidget {
                     flex: 1,
                     child: Container(
                         margin: EdgeInsets.only(left: this.defaultPadding),
-                        height: 60,
+                        height: 56,
                         child: Align(
                           alignment: Alignment.bottomLeft,
                           child: FittedBox(
@@ -100,7 +118,7 @@ class CardIndicadorSimples extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: this.defaultPadding + 8,
+                height: this.defaultPadding,
               )
             ],
           ),
