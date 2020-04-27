@@ -13,7 +13,7 @@ class UIStyle {
   static const casosColorHex = "#1976d2";
   static const contaminadosColor = Color(0xFFef6d00);
   static const utiColor = Color(0xFFD84315);
-  static const recuperadosColor = Color(0xFFAF4CAA);
+  static const recuperadosColor = Color(0xFF4CAF50);
 
   static const double defaultPadding = 12.0;
 }
