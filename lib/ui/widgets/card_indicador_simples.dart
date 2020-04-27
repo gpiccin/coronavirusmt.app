@@ -78,7 +78,7 @@ class CardIndicadorSimples extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: Container(
-                      height: 60,
+                      height: 48,
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Padding(

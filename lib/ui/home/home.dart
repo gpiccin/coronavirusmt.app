@@ -2,7 +2,6 @@ import 'package:coronavirusmt/ui/covid/views/boletins.dart';
 import 'package:coronavirusmt/ui/home/views/situacao_atual.dart';
 import 'package:coronavirusmt/ui/home/widgets/header.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
-import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 
 // Somewhere in your widgets...

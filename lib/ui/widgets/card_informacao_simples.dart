@@ -56,7 +56,7 @@ class CardInformacaoSimples extends StatelessWidget {
                       )),
                 )),
             Container(
-              height: 50,
+              height: 48,
               child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Padding(

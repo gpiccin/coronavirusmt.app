@@ -77,7 +77,7 @@ class CardSRAGIndicador extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Container(
-                      height: 60,
+                      height: 48,
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Padding(
