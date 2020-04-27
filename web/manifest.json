@@ -5,17 +5,17 @@
     "display": "minimal-ui",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "App para ficar por dentro da situação da pandemia em MT.",
+    "description": "App para ficar por dentro da situação da pandemia de coronavírus em Mato Grosso.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
         {
-            "src": "icons/Icon-192.png",
+            "src": "static/icons/Icon-192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "icons/Icon-512.png",
+            "src": "static/icons/Icon-512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
