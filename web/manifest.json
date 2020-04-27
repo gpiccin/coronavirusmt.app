@@ -1,11 +1,11 @@
 {
-    "name": "coronavirusmt_flutter",
-    "short_name": "coronavirusmt_flutter",
+    "name": "Coronavírus em MT",
+    "short_name": "Coronavírus em MT",
     "start_url": ".",
     "display": "minimal-ui",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "App para ficar por dentro da situação da pandemia em MT.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

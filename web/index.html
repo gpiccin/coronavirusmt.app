@@ -3,18 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="coronavirusmt_flutter">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <link rel="apple-touch-icon" href="static/icons/Icon-192.png">
 
+  <meta name="apple-mobile-web-app-title" content="Coronavírus em MT"/>
+  <meta property="og:site_name" content="Coronavírus em MT"/>
+  <meta property="og:title" content="Coronavírus em MT" />
+
+  <title>Coronavírus em MT</title>
+  
+  <meta
+    name="description"
+    content="Fique por dentro da situação em MT"
+  />
+  <meta
+    property="og:description"
+    content="Fique por dentro da situação em MT"
+  />
+  <meta
+    property="og:image"
+    itemprop="image"
+    content="static/img/wapp.png"
+  />
+  
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="favicon.png"/>
-
-  <title>coronavirusmt_flutter</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -28,6 +44,26 @@
       });
     }
   </script>
+  
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyByv1zkWEWYkzEwZEJy6m8V6gTazba1RqY",
+      authDomain: "coronavirus-mt.firebaseapp.com",
+      databaseURL: "https://coronavirus-mt.firebaseio.com",
+      projectId: "coronavirus-mt",
+      storageBucket: "coronavirus-mt.appspot.com",
+      messagingSenderId: "904030042950",
+      appId: "1:904030042950:web:8a2c3e3ed109adbe7ac347",
+      measurementId: "G-WM75CHE98N"
+    };
+  
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>

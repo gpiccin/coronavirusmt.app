@@ -7,9 +7,6 @@ main() {
 
   setupLocator();
   runApp(AppWidget());
-  // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-  //     .then((_) {
-  // });
 }
 
 class AppWidget extends StatelessWidget {
@@ -17,7 +14,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Coronavírus MT',
+        title: 'Coronavírus em MT',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

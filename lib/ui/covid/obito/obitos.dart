@@ -15,6 +15,7 @@ class ObitosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<ObitosViewModel>(
+        name: "Óbitos",
         onModelReady: (model) => model.loadData(),
         builder: (BuildContext context, ObitosViewModel model, Widget child) =>
             Scaffold(

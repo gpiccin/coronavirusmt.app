@@ -37,6 +37,7 @@ class BoletinsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<BoletinsViewModel>(
+        name: "Boletins",
         onModelReady: (model) => model.loadData(),
         builder:
             (BuildContext context, BoletinsViewModel model, Widget child) =>

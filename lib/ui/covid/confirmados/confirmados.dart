@@ -17,6 +17,7 @@ class ConfirmadosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<ConfirmadosViewModel>(
+        name: "Confirmados",
         onModelReady: (model) => model.loadData(data),
         builder: (BuildContext context, ConfirmadosViewModel model,
                 Widget child) =>

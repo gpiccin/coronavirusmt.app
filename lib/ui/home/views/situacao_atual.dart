@@ -12,6 +12,7 @@ class SituacaoAtualView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<IndicadoresViewModel>(
+      name: "Situação atual",
       onModelReady: (model) => model.loadData(),
       builder:
           (BuildContext context, IndicadoresViewModel model, Widget child) =>

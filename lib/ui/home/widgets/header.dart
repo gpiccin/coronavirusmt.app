@@ -20,7 +20,7 @@ class Header extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           SizedBox(
-            height: 60,
+            height: 40,
           ),
           Center(
             child: Text(

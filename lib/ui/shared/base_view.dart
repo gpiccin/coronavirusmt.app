@@ -6,8 +6,10 @@ import 'package:provider/provider.dart';
 class BaseView<T extends BaseViewModel> extends StatefulWidget {
   final Widget Function(BuildContext context, T model, Widget child) builder;
   final Function(T) onModelReady;
+  final String name;
 
   BaseView({
+    this.name,
     this.builder,
     this.onModelReady,
   });
@@ -24,6 +26,7 @@ class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
     if (widget.onModelReady != null) {
       widget.onModelReady(model);
     }
+
     super.initState();
   }
 
