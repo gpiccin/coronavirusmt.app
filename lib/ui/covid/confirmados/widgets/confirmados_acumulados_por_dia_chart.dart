@@ -10,7 +10,7 @@ class ConfirmadosAcumuladosPorDiaChart extends StatelessWidget {
   final List<KeyValue> casos;
 
   ConfirmadosAcumuladosPorDiaChart(this.casos,
-      {this.height = 200, this.animate = true});
+      {this.height = 220, this.animate = true});
 
   @override
   Widget build(BuildContext context) {

@@ -4,12 +4,13 @@ import 'package:coronavirusmt/core/models/key_value.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:flutter/material.dart';
 
-class ObitosPorComorbidade extends StatelessWidget {
+class ObitosPorComorbidadeChart extends StatelessWidget {
   final double height;
   final bool animate;
   final List<KeyValue> obitos;
 
-  ObitosPorComorbidade(this.obitos, {this.height = 200, this.animate = true});
+  ObitosPorComorbidadeChart(this.obitos,
+      {this.height = 200, this.animate = true});
 
   @override
   Widget build(BuildContext context) {

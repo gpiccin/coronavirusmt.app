@@ -57,14 +57,23 @@ class ObitosPage extends StatelessWidget {
                                     model.obitosAcumuladosPorDia),
                                 UIHelper.headline("Óbitos por faixa etária"),
                                 ObitosPorFaixaEtariaChart(
-                                    model.obitosPorFaixaEtaria),
+                                    model.obitosPorFaixaEtaria,
+                                    height: (model.obitosPorFaixaEtaria.length *
+                                            UIStyle.barChartBarHeight)
+                                        .toDouble()),
                                 UIHelper.headline("Óbitos por cidade"),
-                                ObitosPorCidadeChart(model.obitosPorCidade),
+                                ObitosPorCidadeChart(model.obitosPorCidade,
+                                    height: (model.obitosPorCidade.length *
+                                            UIStyle.barChartBarHeight)
+                                        .toDouble()),
                                 UIHelper.headline("Óbitos por sexo"),
                                 ObitosPorSexoChart(model.obitosPorSexo),
                                 UIHelper.headline("Óbitos por comorbidade"),
-                                ObitosPorComorbidade(
-                                    model.obitosPorComorbidade),
+                                ObitosPorComorbidadeChart(
+                                    model.obitosPorComorbidade,
+                                    height: (model.obitosPorComorbidade.length *
+                                            UIStyle.barChartBarHeight)
+                                        .toDouble()),
                               ],
                             ),
                           ]),

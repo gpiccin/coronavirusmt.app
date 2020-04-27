@@ -1,4 +1,5 @@
 import 'package:coronavirusmt/ui/shared/card_helper.dart';
+import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,6 @@ class CardInformacaoSimples extends StatelessWidget {
   final String title;
   final String principalIndicator;
   final String indicatorLabel;
-  final double defaultPadding = 12.0;
   final Color color;
   final Widget page;
   final String caption;
@@ -27,8 +27,8 @@ class CardInformacaoSimples extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.fromLTRB(
-              this.defaultPadding, this.defaultPadding, this.defaultPadding, 0),
+          padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding,
+              UIStyle.defaultPadding, UIStyle.defaultPadding, 0),
           child: FittedBox(
             fit: BoxFit.contain,
             child: Text(
@@ -40,7 +40,7 @@ class CardInformacaoSimples extends StatelessWidget {
         Row(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.only(left: this.defaultPadding),
+                margin: EdgeInsets.only(left: UIStyle.defaultPadding),
                 height: 50,
                 child: Align(
                   alignment: Alignment.bottomLeft,
@@ -60,7 +60,7 @@ class CardInformacaoSimples extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(left: this.defaultPadding),
+                  padding: EdgeInsets.only(left: UIStyle.defaultPadding),
                   child: Visibility(
                     visible: this.indicatorLabel != null,
                     child: FittedBox(
@@ -78,8 +78,8 @@ class CardInformacaoSimples extends StatelessWidget {
         ),
         (this.caption != null || this.secondCaption != null)
             ? Padding(
-                padding: EdgeInsets.fromLTRB(this.defaultPadding,
-                    this.defaultPadding, this.defaultPadding, 0),
+                padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding,
+                    UIStyle.defaultPadding, UIStyle.defaultPadding, 0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -106,7 +106,7 @@ class CardInformacaoSimples extends StatelessWidget {
                 ))
             : Container(),
         SizedBox(
-          height: this.defaultPadding + 8,
+          height: UIStyle.defaultPadding + 8,
         )
       ],
     ));

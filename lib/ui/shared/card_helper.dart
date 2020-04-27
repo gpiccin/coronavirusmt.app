@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 class CardHelper {
 // const cardBackgroundColor = Color(0xffF0F0F0);
+
+// 757575
+  static const Color iconColor = Color(0xff757575);
   static const Color color = Colors.white;
   static const double elevation = 0.3;
   static RoundedRectangleBorder shape = new RoundedRectangleBorder(

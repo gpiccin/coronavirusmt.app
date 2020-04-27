@@ -15,7 +15,6 @@ class CardLeito extends StatelessWidget {
   final List<CovidPorTipoDeLeito> casos;
   final String title;
   final String indicadorPrincipal;
-  final double defaultPadding = 12.0;
   final Color color;
   final Widget page;
 
@@ -36,8 +35,8 @@ class CardLeito extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(this.defaultPadding,
-                this.defaultPadding, this.defaultPadding, 0),
+            padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding,
+                UIStyle.defaultPadding, UIStyle.defaultPadding, 0),
             child: FittedBox(
               fit: BoxFit.contain,
               child: Text(
@@ -47,7 +46,7 @@ class CardLeito extends StatelessWidget {
             ),
           ),
           Container(
-              margin: EdgeInsets.only(left: this.defaultPadding),
+              margin: EdgeInsets.only(left: UIStyle.defaultPadding),
               height: 50,
               child: Align(
                 alignment: Alignment.bottomLeft,
@@ -63,8 +62,8 @@ class CardLeito extends StatelessWidget {
                     )),
               )),
           Padding(
-            padding: EdgeInsets.fromLTRB(this.defaultPadding,
-                this.defaultPadding + 8, this.defaultPadding, 0),
+            padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding,
+                UIStyle.defaultPadding + 8, UIStyle.defaultPadding, 0),
             child: FittedBox(
               fit: BoxFit.contain,
               child: Text(
@@ -84,7 +83,7 @@ class CardLeito extends StatelessWidget {
             child: ListView.builder(
               itemCount: casos.length,
               padding: EdgeInsets.fromLTRB(
-                  this.defaultPadding, 0, this.defaultPadding, 0),
+                  UIStyle.defaultPadding, 0, UIStyle.defaultPadding, 0),
               itemBuilder: (BuildContext context, int i) {
                 return _buildRow(casos.elementAt(i));
               },

@@ -57,7 +57,8 @@ class SragPage extends StatelessWidget {
                                 ),
                                 UIHelper.headline("Crescimento de casos"),
                                 SragAcumuladosPorDiaChart(
-                                    model.historicoPorDia),
+                                  model.historicoPorDia,
+                                ),
                               ],
                             ),
                           ]),

@@ -8,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BoletinsView extends StatelessWidget {
-  final double defaultPadding = 12.0;
-
   _launchBoletimURL(boletimUrl) async {
     if (await canLaunch(boletimUrl)) {
       await launch(boletimUrl);

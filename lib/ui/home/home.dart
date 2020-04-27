@@ -12,8 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final double defaultPadding = 12.0;
-
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[

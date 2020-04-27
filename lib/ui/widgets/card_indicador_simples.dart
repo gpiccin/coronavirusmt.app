@@ -1,5 +1,6 @@
 import 'package:coronavirusmt/ui/shared/card_helper.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
+import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,6 @@ class CardIndicadorSimples extends StatelessWidget {
   final String title;
   final String principalIndicator;
   final String secondIndicator;
-  final double defaultPadding = 12.0;
   final Color color;
   final Widget page;
 
@@ -30,7 +30,7 @@ class CardIndicadorSimples extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(top: this.defaultPadding),
+                    padding: EdgeInsets.only(top: UIStyle.defaultPadding),
                     child: Container(
                       decoration: BoxDecoration(
                         color: this.color,
@@ -45,8 +45,8 @@ class CardIndicadorSimples extends StatelessWidget {
                   Container(
                     height: 30,
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(this.defaultPadding - 2,
-                          this.defaultPadding, this.defaultPadding, 0),
+                      padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding - 2,
+                          UIStyle.defaultPadding, UIStyle.defaultPadding, 0),
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
@@ -60,12 +60,16 @@ class CardIndicadorSimples extends StatelessWidget {
                       ? Expanded(
                           child: Padding(
                             padding: EdgeInsets.fromLTRB(
-                                0, this.defaultPadding, this.defaultPadding, 0),
+                                0,
+                                UIStyle.defaultPadding,
+                                UIStyle.defaultPadding,
+                                0),
                             child: Container(
                               alignment: Alignment.centerRight,
                               child: Icon(
                                 Icons.zoom_in,
                                 size: 18,
+                                color: CardHelper.iconColor,
                               ),
                             ),
                           ),
@@ -78,7 +82,7 @@ class CardIndicadorSimples extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: Container(
-                        margin: EdgeInsets.only(left: this.defaultPadding),
+                        margin: EdgeInsets.only(left: UIStyle.defaultPadding),
                         height: 56,
                         child: Align(
                           alignment: Alignment.bottomLeft,
@@ -100,7 +104,8 @@ class CardIndicadorSimples extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Padding(
-                          padding: EdgeInsets.only(right: this.defaultPadding),
+                          padding:
+                              EdgeInsets.only(right: UIStyle.defaultPadding),
                           child: Visibility(
                             visible: this.secondIndicator != null,
                             child: FittedBox(
@@ -118,7 +123,7 @@ class CardIndicadorSimples extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: this.defaultPadding,
+                height: UIStyle.defaultPadding,
               )
             ],
           ),

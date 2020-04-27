@@ -71,14 +71,19 @@ class ConfirmadosPage extends StatelessWidget {
                                 ),
                                 UIHelper.headline("Crescimento de casos"),
                                 ConfirmadosAcumuladosPorDiaChart(
-                                    model.historicoPorDia),
+                                  model.historicoPorDia,
+                                ),
                                 UIHelper.headline("Casos por faixa etária"),
                                 ConfirmadosPorFaixaEtariaChart(
-                                    model.covidPorFaixaEtaria),
+                                    model.covidPorFaixaEtaria,
+                                    height: (model.covidPorFaixaEtaria.length *
+                                            UIStyle.barChartBarHeight)
+                                        .toDouble()),
                                 UIHelper.headline("Casos por cidade"),
                                 ConfirmadosPorCidadeChart(
                                   model.covidPorCidade,
-                                  height: (model.covidPorCidade.length * 22)
+                                  height: (model.covidPorCidade.length *
+                                          UIStyle.barChartBarHeight)
                                       .toDouble(),
                                 ),
                               ],
