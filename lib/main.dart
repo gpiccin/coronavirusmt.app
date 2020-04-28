@@ -1,5 +1,5 @@
 import 'package:coronavirusmt/core/locator.dart';
-import 'package:coronavirusmt/ui/home/splash.dart';
+import 'package:coronavirusmt/ui/home/home.dart';
 import 'package:flutter/material.dart';
 
 main() {
@@ -18,6 +18,6 @@ class AppWidget extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: SplashScreenPage());
+        home: SafeArea(top: true, bottom: true, child: HomePage()));
   }
 }

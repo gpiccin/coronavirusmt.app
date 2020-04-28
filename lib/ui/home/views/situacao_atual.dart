@@ -19,29 +19,6 @@ class SituacaoAtualView extends StatelessWidget {
               model.state == ViewState.Busy
                   ? UIHelper.loading()
                   : ListView(padding: EdgeInsets.all(0), children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: Text(
-                                "Covid-19",
-                                style: UITypography.headline,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 4.0),
-                              child: Text(
-                                  UIHelper.fomartDateDMY(model.boletim.data),
-                                  style: UITypography.subtitle),
-                            ),
-                            Icon(Icons.event, color: Colors.grey, size: 20)
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: UIStyle.padding,
-                      ),
                       CovidIndicadores(
                         boletim: model.boletim,
                       ),
@@ -60,7 +37,7 @@ class SituacaoAtualView extends StatelessWidget {
                           padding: const EdgeInsets.fromLTRB(
                               UIStyle.padding, 0, UIStyle.padding, 0),
                           child: Text(
-                            "* Atualização diária próxima das 18h de acordo com a diponibilidade do boletim oficial da Secretária de  Saúde de Mato Grosso.",
+                            "* Dados de ${UIHelper.fomartDateDMY(model.boletim.data)}. Atualização diária próxima das 18h de acordo com a diponibilidade do boletim oficial da Secretária de Saúde de Mato Grosso.",
                             style: UITypography.overline,
                           )),
                     ]),

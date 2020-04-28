@@ -1,5 +1,4 @@
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
-import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,49 +11,33 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(0),
-      margin: EdgeInsets.all(0),
-      color: UIStyle.headerBackgroundColor,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          SizedBox(
-            height: 40,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          height: 60,
+          child: Row(
+            children: <Widget>[
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: UIStyle.padding),
+                  child: Text(
+                    "CORONAVÍRUS EM MT",
+                    style: GoogleFonts.rubik(
+                        color: Color(0xFF353535),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+              ),
+            ],
           ),
-          Center(
-            child: Text(
-              "CORONAVÍRUS EM MT",
-              style: GoogleFonts.rubik(
-                  color: Colors.white,
-                  fontSize: 28,
-                  fontWeight: FontWeight.w500),
-            ),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Center(
-            child: Text(
-              "Situação epidemologica SRAG e COVID-19",
-              style: UITypography.title.merge(TextStyle(
-                color: Colors.white,
-              )),
-            ),
-          ),
-          SizedBox(
-            height: 40,
-          ),
-          Container(
-            height: 25,
-            decoration: BoxDecoration(
-                color: UIStyle.appBackgroundColor,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(35),
-                    topRight: Radius.circular(35))),
-          ),
-        ],
-      ),
+        ),
+        SizedBox(
+          height: 5,
+        ),
+      ],
     );
   }
 }

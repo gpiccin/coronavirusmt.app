@@ -2,6 +2,7 @@ import 'package:coronavirusmt/ui/covid/views/boletins.dart';
 import 'package:coronavirusmt/ui/home/views/situacao_atual.dart';
 import 'package:coronavirusmt/ui/home/widgets/header.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
+import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
 
 // Somewhere in your widgets...
@@ -25,6 +26,23 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  BottomNavigationBarItem _navigationBarItem(IconData icon, String text) {
+    return BottomNavigationBarItem(
+      icon: Icon(
+        icon,
+        size: 20,
+      ),
+      title: Padding(
+        padding: const EdgeInsets.only(top: 2.0),
+        child: Text(
+          text,
+          style: UITypography.caption
+              .merge(TextStyle(fontWeight: FontWeight.w500)),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,18 +58,12 @@ class _HomePageState extends State<HomePage> {
         )
       ]),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.show_chart),
-            title: Text('Situação atual'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            title: Text('Boletins'),
-          ),
+        items: <BottomNavigationBarItem>[
+          this._navigationBarItem(Icons.show_chart, "Situação atual"),
+          this._navigationBarItem(Icons.library_books, "Boletins"),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: UIStyle.headerBackgroundColor,
+        selectedItemColor: UIStyle.casosColor,
         onTap: _onItemTapped,
       ),
     );
