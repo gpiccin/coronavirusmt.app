@@ -40,16 +40,12 @@ class SituacaoAtualView extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: UIStyle.defaultPadding,
+                        height: UIStyle.padding,
                       ),
                       CovidIndicadores(
                         boletim: model.boletim,
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding + 4,
-                            0, UIStyle.defaultPadding + 4, 0),
-                        child: Divider(),
-                      ),
+                      UIHelper.divider(),
                       CardSRAGIndicador(
                         title: "SRAG - 01/01/2020 até " +
                             UIHelper.fomartDateDMY(model.boletim.data),
@@ -59,6 +55,14 @@ class SituacaoAtualView extends StatelessWidget {
                                 .toString(),
                         color: Color(0xFF1976d2),
                       ),
+                      UIHelper.divider(),
+                      Padding(
+                          padding: const EdgeInsets.fromLTRB(
+                              UIStyle.padding, 0, UIStyle.padding, 0),
+                          child: Text(
+                            "* Atualização diária próxima das 18h de acordo com a diponibilidade do boletim oficial da Secretária de  Saúde de Mato Grosso.",
+                            style: UITypography.overline,
+                          )),
                     ]),
     );
   }

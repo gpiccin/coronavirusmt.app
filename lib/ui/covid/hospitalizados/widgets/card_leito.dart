@@ -35,8 +35,8 @@ class CardLeito extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding,
-                UIStyle.defaultPadding, UIStyle.defaultPadding, 0),
+            padding: EdgeInsets.fromLTRB(
+                UIStyle.padding, UIStyle.padding, UIStyle.padding, 0),
             child: FittedBox(
               fit: BoxFit.contain,
               child: Text(
@@ -46,7 +46,7 @@ class CardLeito extends StatelessWidget {
             ),
           ),
           Container(
-              margin: EdgeInsets.only(left: UIStyle.defaultPadding),
+              margin: EdgeInsets.only(left: UIStyle.padding),
               height: 50,
               child: Align(
                 alignment: Alignment.bottomLeft,
@@ -62,8 +62,8 @@ class CardLeito extends StatelessWidget {
                     )),
               )),
           Padding(
-            padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding,
-                UIStyle.defaultPadding + 8, UIStyle.defaultPadding, 0),
+            padding: EdgeInsets.fromLTRB(
+                UIStyle.padding, UIStyle.padding + 8, UIStyle.padding, 0),
             child: FittedBox(
               fit: BoxFit.contain,
               child: Text(
@@ -74,7 +74,7 @@ class CardLeito extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(
-                UIStyle.defaultPadding + 4, 0, UIStyle.defaultPadding + 4, 0),
+                UIStyle.padding + 4, 0, UIStyle.padding + 4, 0),
             child: Divider(),
           ),
           Container(
@@ -82,8 +82,8 @@ class CardLeito extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: ListView.builder(
               itemCount: casos.length,
-              padding: EdgeInsets.fromLTRB(
-                  UIStyle.defaultPadding, 0, UIStyle.defaultPadding, 0),
+              padding:
+                  EdgeInsets.fromLTRB(UIStyle.padding, 0, UIStyle.padding, 0),
               itemBuilder: (BuildContext context, int i) {
                 return _buildRow(casos.elementAt(i));
               },

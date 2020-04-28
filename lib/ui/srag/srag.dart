@@ -20,7 +20,7 @@ class SragPage extends StatelessWidget {
                   child: model.state == ViewState.Busy
                       ? UIHelper.loading()
                       : Padding(
-                          padding: const EdgeInsets.all(UIStyle.defaultPadding),
+                          padding: const EdgeInsets.all(UIStyle.padding),
                           child: ListView(children: <Widget>[
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,

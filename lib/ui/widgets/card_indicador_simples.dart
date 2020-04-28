@@ -30,7 +30,7 @@ class CardIndicadorSimples extends StatelessWidget {
               Row(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.only(top: UIStyle.defaultPadding),
+                    padding: EdgeInsets.only(top: UIStyle.padding),
                     child: Container(
                       decoration: BoxDecoration(
                         color: this.color,
@@ -45,8 +45,8 @@ class CardIndicadorSimples extends StatelessWidget {
                   Container(
                     height: 30,
                     child: Padding(
-                      padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding - 2,
-                          UIStyle.defaultPadding, UIStyle.defaultPadding, 0),
+                      padding: EdgeInsets.fromLTRB(UIStyle.padding - 2,
+                          UIStyle.padding, UIStyle.padding, 0),
                       child: FittedBox(
                         fit: BoxFit.scaleDown,
                         child: Text(
@@ -60,10 +60,7 @@ class CardIndicadorSimples extends StatelessWidget {
                       ? Expanded(
                           child: Padding(
                             padding: EdgeInsets.fromLTRB(
-                                0,
-                                UIStyle.defaultPadding,
-                                UIStyle.defaultPadding,
-                                0),
+                                0, UIStyle.padding, UIStyle.padding, 0),
                             child: Container(
                               alignment: Alignment.centerRight,
                               child: Icon(
@@ -82,7 +79,7 @@ class CardIndicadorSimples extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: Container(
-                        margin: EdgeInsets.only(left: UIStyle.defaultPadding),
+                        margin: EdgeInsets.only(left: UIStyle.padding),
                         height: 56,
                         child: Align(
                           alignment: Alignment.bottomLeft,
@@ -104,8 +101,7 @@ class CardIndicadorSimples extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Padding(
-                          padding:
-                              EdgeInsets.only(right: UIStyle.defaultPadding),
+                          padding: EdgeInsets.only(right: UIStyle.padding),
                           child: Visibility(
                             visible: this.secondIndicator != null,
                             child: FittedBox(
@@ -123,7 +119,7 @@ class CardIndicadorSimples extends StatelessWidget {
                 ],
               ),
               SizedBox(
-                height: UIStyle.defaultPadding,
+                height: UIStyle.padding,
               )
             ],
           ),

@@ -27,8 +27,8 @@ class CardInformacaoSimples extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding,
-              UIStyle.defaultPadding, UIStyle.defaultPadding, 0),
+          padding: EdgeInsets.fromLTRB(
+              UIStyle.padding, UIStyle.padding, UIStyle.padding, 0),
           child: FittedBox(
             fit: BoxFit.contain,
             child: Text(
@@ -40,7 +40,7 @@ class CardInformacaoSimples extends StatelessWidget {
         Row(
           children: <Widget>[
             Container(
-                margin: EdgeInsets.only(left: UIStyle.defaultPadding),
+                margin: EdgeInsets.only(left: UIStyle.padding),
                 height: 50,
                 child: Align(
                   alignment: Alignment.bottomLeft,
@@ -60,7 +60,7 @@ class CardInformacaoSimples extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Padding(
-                  padding: EdgeInsets.only(left: UIStyle.defaultPadding),
+                  padding: EdgeInsets.only(left: UIStyle.padding),
                   child: Visibility(
                     visible: this.indicatorLabel != null,
                     child: FittedBox(
@@ -78,8 +78,8 @@ class CardInformacaoSimples extends StatelessWidget {
         ),
         (this.caption != null || this.secondCaption != null)
             ? Padding(
-                padding: EdgeInsets.fromLTRB(UIStyle.defaultPadding,
-                    UIStyle.defaultPadding, UIStyle.defaultPadding, 0),
+                padding: EdgeInsets.fromLTRB(
+                    UIStyle.padding, UIStyle.padding, UIStyle.padding, 0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -106,7 +106,7 @@ class CardInformacaoSimples extends StatelessWidget {
                 ))
             : Container(),
         SizedBox(
-          height: UIStyle.defaultPadding + 8,
+          height: UIStyle.padding + 8,
         )
       ],
     ));

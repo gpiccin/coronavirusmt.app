@@ -15,6 +15,6 @@ class UIStyle {
   static const utiColor = Color(0xFFD84315);
   static const recuperadosColor = Color(0xFF4CAF50);
 
-  static const double defaultPadding = 12.0;
-  static const double barChartBarHeight = 32.0;
+  static const double padding = 12.0;
+  static const double barChartBarHeight = 34.0;
 }

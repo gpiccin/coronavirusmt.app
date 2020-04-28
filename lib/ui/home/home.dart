@@ -33,8 +33,8 @@ class _HomePageState extends State<HomePage> {
         Header(),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(UIStyle.defaultPadding, 0,
-                UIStyle.defaultPadding, UIStyle.defaultPadding),
+            padding: const EdgeInsets.fromLTRB(
+                UIStyle.padding, 0, UIStyle.padding, UIStyle.padding),
             child: _widgetOptions.elementAt(_selectedIndex),
           ),
         )

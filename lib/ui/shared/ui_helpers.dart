@@ -12,6 +12,14 @@ class UIHelper {
     return "${date.day}/${date.month}";
   }
 
+  static Widget divider() {
+    return Padding(
+      padding:
+          EdgeInsets.fromLTRB(UIStyle.padding + 4, 0, UIStyle.padding + 4, 0),
+      child: Divider(),
+    );
+  }
+
   static String formatPercent(double value) {
     return value.toStringAsFixed(value.truncateToDouble() == value ? 0 : 1) +
         "%";

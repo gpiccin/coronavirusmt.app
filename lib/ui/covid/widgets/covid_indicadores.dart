@@ -6,7 +6,6 @@ import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/covid/obito/obitos.dart';
 import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class CovidIndicadores extends StatelessWidget {
   CovidIndicadores({this.boletim});
@@ -75,16 +74,7 @@ class CovidIndicadores extends StatelessWidget {
                   color: UIStyle.obitosColor,
                   page: ObitosPage()),
             ),
-            Expanded(flex: 1, child: Container()
-                // Column(
-                //   children: <Widget>[
-                //     Lottie.network(
-                //         'https://assets1.lottiefiles.com/packages/lf20_Dw1d3I.json',
-                //         height: 80),
-                //     Text("Use mascaras!")
-                //   ],
-                // )
-                )
+            Expanded(flex: 1, child: Container())
           ],
         ),
       ],

@@ -12,43 +12,46 @@ class CardHelper {
   );
 
   static Widget touchableCard(Widget child) {
-    return Container(
-      margin: EdgeInsets.all(4.0),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey[100], width: 1.0),
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(10.0),
-        ),
-        boxShadow: <BoxShadow>[
-          new BoxShadow(
-            color: Colors.grey[200],
-            blurRadius: 4.0,
-            offset: new Offset(0.0, 0.0),
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey[200], width: 1.0),
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.0),
           ),
-        ],
+          boxShadow: <BoxShadow>[
+            new BoxShadow(
+              color: Colors.grey[200],
+              blurRadius: 4.0,
+            ),
+          ],
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 
   static Widget informationCard(Widget child) {
-    return Container(
-      margin: EdgeInsets.all(4.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(10.0),
-        ),
-        boxShadow: <BoxShadow>[
-          new BoxShadow(
-            color: Colors.grey[200],
-            blurRadius: 4.0,
-            offset: new Offset(0.0, 0.0),
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(
+            Radius.circular(10.0),
           ),
-        ],
+          boxShadow: <BoxShadow>[
+            new BoxShadow(
+              color: Colors.grey[300],
+              blurRadius: 4.0,
+              offset: new Offset(0.0, 0.0),
+            ),
+          ],
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 }
