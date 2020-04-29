@@ -19,20 +19,17 @@ class ConfirmadosPage extends StatelessWidget {
     return BaseView<ConfirmadosViewModel>(
         name: "Confirmados",
         onModelReady: (model) => model.loadData(data),
-        builder: (BuildContext context, ConfirmadosViewModel model,
-                Widget child) =>
-            Scaffold(
-                appBar: UIHelper.appBar("Casos confirmados"),
-                backgroundColor: UIStyle.appBackgroundColor,
-                body: Container(
-                  child: model.state == ViewState.Busy
-                      ? UIHelper.loading()
-                      : Padding(
-                          padding: const EdgeInsets.all(UIStyle.padding),
-                          child: ListView(children: <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              children: <Widget>[
+        builder:
+            (BuildContext context, ConfirmadosViewModel model, Widget child) =>
+                Scaffold(
+                    appBar: UIHelper.appBar("Casos confirmados"),
+                    backgroundColor: UIStyle.appBackgroundColor,
+                    body: Container(
+                      child: model.state == ViewState.Busy
+                          ? UIHelper.loading()
+                          : Padding(
+                              padding: const EdgeInsets.all(UIStyle.padding),
+                              child: ListView(children: <Widget>[
                                 Row(
                                   children: <Widget>[
                                     Expanded(
@@ -86,10 +83,8 @@ class ConfirmadosPage extends StatelessWidget {
                                           UIStyle.barChartBarHeight)
                                       .toDouble(),
                                 ),
-                              ],
+                              ]),
                             ),
-                          ]),
-                        ),
-                )));
+                    )));
   }
 }

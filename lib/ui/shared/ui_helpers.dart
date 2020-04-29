@@ -26,11 +26,14 @@ class UIHelper {
   }
 
   static Widget loading() {
-    return Center(
-        child: SpinKitPulse(
-      color: UIStyle.headerBackgroundColor,
-      size: 50.0,
-    ));
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 40, 0, 40),
+      child: Center(
+          child: SpinKitRipple(
+        color: UIStyle.headerBackgroundColor,
+        size: 50.0,
+      )),
+    );
   }
 
   static openPage(BuildContext context, Widget page) {
@@ -54,7 +57,8 @@ class UIHelper {
 
   static Widget headline(String title, {EdgeInsets padding}) {
     return Padding(
-      padding: padding ?? const EdgeInsets.fromLTRB(0, 20, 0, 20),
+      padding: padding ??
+          const EdgeInsets.fromLTRB(0, UIStyle.padding, 0, UIStyle.padding),
       child: Text(
         title,
         style: UITypography.headline,

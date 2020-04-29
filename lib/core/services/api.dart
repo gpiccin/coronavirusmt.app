@@ -5,6 +5,7 @@ import 'package:coronavirusmt/core/models/covid_historico.dart';
 import 'package:coronavirusmt/core/models/covid_por_cidade.dart';
 import 'package:coronavirusmt/core/models/covid_por_faixa_etaria.dart';
 import 'package:coronavirusmt/core/models/covid_por_tipo_de_leito.dart';
+import 'package:coronavirusmt/core/models/noticia.dart';
 import 'package:coronavirusmt/core/models/obito.dart';
 import 'package:coronavirusmt/core/models/srag_historico.dart';
 import 'package:dio/dio.dart';
@@ -27,6 +28,19 @@ class Api {
         .toList();
 
     return List<SragHistorico>.from(historico);
+  }
+
+  Future<List<Noticia>> getNoticias(int start, int limit) async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "\n  \nquery {\n  noticias(sort: \"data:desc,id:desc\", start: $start, limit: $limit) {\n    titulo \n    descricao\n    url\n    imagem_url\n    data\n    fonte_de_noticia {nome}\n  }\n}"
+    });
+
+    var noticias = response.data["data"]["noticias"]
+        .map((noticia) => Noticia.fromJson(noticia))
+        .toList();
+
+    return List<Noticia>.from(noticias);
   }
 
   Future<List<Obito>> getObitos() async {

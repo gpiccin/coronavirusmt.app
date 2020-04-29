@@ -2,6 +2,7 @@ import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/models/boletim_lista.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/boletins_view_model.dart';
 import 'package:coronavirusmt/ui/shared/base_view.dart';
+import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,8 @@ class BoletinsView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           UIHelper.headline("Boletins oficiais do governo",
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 20)),
+                              padding: EdgeInsets.fromLTRB(
+                                  0, UIStyle.padding, 0, UIStyle.padding)),
                           Expanded(
                             child: ListView.builder(
                               itemCount: model.boletins.length,

@@ -27,55 +27,50 @@ class ObitosPage extends StatelessWidget {
                       : Padding(
                           padding: const EdgeInsets.all(UIStyle.padding),
                           child: ListView(children: <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                            Row(
                               children: <Widget>[
-                                Row(
-                                  children: <Widget>[
-                                    Expanded(
-                                      flex: 1,
-                                      child: CardInformacaoSimples(
-                                          title: "Óbitos",
-                                          principalIndicator:
-                                              '${model.totalDeObitos}',
-                                          indicatorLabel: "vítimas",
-                                          color: UIStyle.obitosColor),
-                                    ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: CardInformacaoSimples(
-                                          title: "Média de idade",
-                                          principalIndicator:
-                                              '${model.mediaDeIdade}',
-                                          indicatorLabel: "anos",
-                                          color: UIStyle.obitosColor),
-                                    ),
-                                  ],
+                                Expanded(
+                                  flex: 1,
+                                  child: CardInformacaoSimples(
+                                      title: "Óbitos",
+                                      principalIndicator:
+                                          '${model.totalDeObitos}',
+                                      indicatorLabel: "vítimas",
+                                      color: UIStyle.obitosColor),
                                 ),
-                                UIHelper.headline("Óbitos acumulados por dia"),
-                                ObitosAcumuladosPorDiaChart(
-                                    model.obitosAcumuladosPorDia),
-                                UIHelper.headline("Óbitos por faixa etária"),
-                                ObitosPorFaixaEtariaChart(
-                                    model.obitosPorFaixaEtaria,
-                                    height: (model.obitosPorFaixaEtaria.length *
-                                            UIStyle.barChartBarHeight)
-                                        .toDouble()),
-                                UIHelper.headline("Óbitos por cidade"),
-                                ObitosPorCidadeChart(model.obitosPorCidade,
-                                    height: (model.obitosPorCidade.length *
-                                            UIStyle.barChartBarHeight)
-                                        .toDouble()),
-                                UIHelper.headline("Óbitos por sexo"),
-                                ObitosPorSexoChart(model.obitosPorSexo),
-                                UIHelper.headline("Óbitos por comorbidade"),
-                                ObitosPorComorbidadeChart(
-                                    model.obitosPorComorbidade,
-                                    height: (model.obitosPorComorbidade.length *
-                                            UIStyle.barChartBarHeight)
-                                        .toDouble()),
+                                Expanded(
+                                  flex: 1,
+                                  child: CardInformacaoSimples(
+                                      title: "Média de idade",
+                                      principalIndicator:
+                                          '${model.mediaDeIdade}',
+                                      indicatorLabel: "anos",
+                                      color: UIStyle.obitosColor),
+                                ),
                               ],
                             ),
+                            UIHelper.headline("Óbitos acumulados por dia"),
+                            ObitosAcumuladosPorDiaChart(
+                                model.obitosAcumuladosPorDia),
+                            UIHelper.headline("Óbitos por faixa etária"),
+                            ObitosPorFaixaEtariaChart(
+                                model.obitosPorFaixaEtaria,
+                                height: (model.obitosPorFaixaEtaria.length *
+                                        UIStyle.barChartBarHeight)
+                                    .toDouble()),
+                            UIHelper.headline("Óbitos por cidade"),
+                            ObitosPorCidadeChart(model.obitosPorCidade,
+                                height: (model.obitosPorCidade.length *
+                                        UIStyle.barChartBarHeight)
+                                    .toDouble()),
+                            UIHelper.headline("Óbitos por sexo"),
+                            ObitosPorSexoChart(model.obitosPorSexo),
+                            UIHelper.headline("Óbitos por comorbidade"),
+                            ObitosPorComorbidadeChart(
+                                model.obitosPorComorbidade,
+                                height: (model.obitosPorComorbidade.length *
+                                        UIStyle.barChartBarHeight)
+                                    .toDouble()),
                           ]),
                         ),
                 )));

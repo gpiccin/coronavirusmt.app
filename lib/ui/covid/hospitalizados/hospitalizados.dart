@@ -27,37 +27,31 @@ class HospitalizadosPage extends StatelessWidget {
                       : Padding(
                           padding: const EdgeInsets.all(UIStyle.padding),
                           child: ListView(children: <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                            CardInformacaoSimples(
+                                title: "Hospitalizados",
+                                principalIndicator: '${model.hospitalizados}',
+                                color: UIStyle.contaminadosColor),
+                            Row(
                               children: <Widget>[
-                                CardInformacaoSimples(
-                                    title: "Hospitalizados",
-                                    principalIndicator:
-                                        '${model.hospitalizados}',
-                                    color: UIStyle.contaminadosColor),
-                                Row(
-                                  children: <Widget>[
-                                    Expanded(
-                                      flex: 1,
-                                      child: CardLeito(
-                                        title: "UTI",
-                                        indicadorPrincipal: '${model.utiTotal}',
-                                        color: UIStyle.utiColor,
-                                        casos: model.uti,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: CardLeito(
-                                        title: "Enfermaria",
-                                        indicadorPrincipal:
-                                            '${model.enfermariaTotal}',
-                                        color: UIStyle.contaminadosColor,
-                                        casos: model.enfermaria,
-                                      ),
-                                    ),
-                                  ],
-                                )
+                                Expanded(
+                                  flex: 1,
+                                  child: CardLeito(
+                                    title: "UTI",
+                                    indicadorPrincipal: '${model.utiTotal}',
+                                    color: UIStyle.utiColor,
+                                    casos: model.uti,
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: CardLeito(
+                                    title: "Enfermaria",
+                                    indicadorPrincipal:
+                                        '${model.enfermariaTotal}',
+                                    color: UIStyle.contaminadosColor,
+                                    casos: model.enfermaria,
+                                  ),
+                                ),
                               ],
                             ),
                           ]),

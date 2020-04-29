@@ -1,6 +1,7 @@
 import 'package:coronavirusmt/ui/covid/views/boletins.dart';
 import 'package:coronavirusmt/ui/home/views/situacao_atual.dart';
 import 'package:coronavirusmt/ui/home/widgets/header.dart';
+import 'package:coronavirusmt/ui/noticias/noticias.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   static List<Widget> _widgetOptions = <Widget>[
     SituacaoAtualView(),
+    NoticiasView(),
     BoletinsView(),
   ];
 
@@ -60,6 +62,7 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           this._navigationBarItem(Icons.show_chart, "Situação atual"),
+          this._navigationBarItem(Icons.public, "Notícias"),
           this._navigationBarItem(Icons.library_books, "Boletins"),
         ],
         currentIndex: _selectedIndex,
