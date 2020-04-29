@@ -38,26 +38,26 @@ class BoletinsView extends StatelessWidget {
     return BaseView<BoletinsViewModel>(
         name: "Boletins",
         onModelReady: (model) => model.loadData(),
-        builder:
-            (BuildContext context, BoletinsViewModel model, Widget child) =>
-                model.state == ViewState.Busy
-                    ? UIHelper.loading()
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          UIHelper.headline("Boletins oficiais do governo",
-                              padding: EdgeInsets.fromLTRB(
-                                  0, UIStyle.padding, 0, UIStyle.padding)),
-                          Expanded(
-                            child: ListView.builder(
-                              itemCount: model.boletins.length,
-                              padding: const EdgeInsets.all(0),
-                              itemBuilder: (BuildContext context, int i) {
-                                return _buildRow(model.boletins.elementAt(i));
-                              },
-                            ),
-                          )
-                        ],
-                      ));
+        builder: (BuildContext context, BoletinsViewModel model,
+                Widget child) =>
+            model.state == ViewState.Busy
+                ? UIHelper.loading()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      UIHelper.headline("Boletins oficiais do governo",
+                          padding:
+                              EdgeInsets.fromLTRB(0, 0, 0, UIStyle.padding)),
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: model.boletins.length,
+                          padding: const EdgeInsets.all(0),
+                          itemBuilder: (BuildContext context, int i) {
+                            return _buildRow(model.boletins.elementAt(i));
+                          },
+                        ),
+                      )
+                    ],
+                  ));
   }
 }

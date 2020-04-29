@@ -58,20 +58,22 @@ Widget _splashScreen() {
                 height: 30,
               ),
               Text(
-                "CORONAVÍRUS MT",
+                "CORONAVÍRUS EM MT",
                 textAlign: TextAlign.center,
-                style: GoogleFonts.rubik(
+                style: TextStyle(
                     color: UIStyle.headerBackgroundColor,
                     fontSize: 32,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.1),
               ),
               Text(
                 "Vamos vencer esta luta!",
                 textAlign: TextAlign.center,
-                style: GoogleFonts.rubik(
+                style: TextStyle(
                     color: UIStyle.headerBackgroundColor,
                     fontSize: 16,
-                    fontWeight: FontWeight.w500),
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 0.1),
               ),
             ],
           ))

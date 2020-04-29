@@ -24,8 +24,7 @@ class _NoticiasViewState extends State<NoticiasView> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         UIHelper.headline("Notícias",
-            padding:
-                EdgeInsets.fromLTRB(0, UIStyle.padding, 0, UIStyle.padding)),
+            padding: EdgeInsets.fromLTRB(0, 0, 0, UIStyle.padding)),
         Expanded(
           child: PagewiseListView(
             pageSize: 10,

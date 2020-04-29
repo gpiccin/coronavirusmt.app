@@ -24,10 +24,11 @@ class Header extends StatelessWidget {
                   padding: const EdgeInsets.only(left: UIStyle.padding),
                   child: Text(
                     "CORONAVÍRUS EM MT",
-                    style: GoogleFonts.rubik(
+                    style: TextStyle(
                         color: Color(0xFF353535),
                         fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: 0.1),
                   ),
                 ),
               ),
