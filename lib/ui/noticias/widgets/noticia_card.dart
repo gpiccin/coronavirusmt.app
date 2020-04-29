@@ -44,8 +44,11 @@ class NoticiaCard extends StatelessWidget {
                 padding: const EdgeInsets.all(UIStyle.padding),
                 child: ClipRRect(
                     borderRadius: BorderRadius.circular(12.0),
-                    child: Image.network(noticia.imagemUrl,
-                        height: 100, width: 100, fit: BoxFit.fitHeight)),
+                    child: Image(
+                        image: NetworkImage(noticia.imagemUrl),
+                        height: 100,
+                        width: 100,
+                        fit: BoxFit.fitHeight)),
               ),
               Flexible(
                 child: Column(
