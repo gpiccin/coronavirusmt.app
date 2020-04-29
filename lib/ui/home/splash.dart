@@ -2,7 +2,6 @@ import 'package:coronavirusmt/ui/home/home.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 class SplashScreenPage extends StatefulWidget {
