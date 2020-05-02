@@ -23,7 +23,8 @@ class CovidIndicadores extends StatelessWidget {
               flex: 1,
               child: CardIndicadorSimples(
                 title: "Confirmados",
-                principalIndicator: boletim.covidCasos.toString(),
+                leftIndicator: boletim.covidCasos.toString(),
+                rightIndicator: UIHelper.formatDifference(boletim.covidNovos),
                 color: UIStyle.casosColor,
                 page: ConfirmadosPage(boletim.data),
               ),
@@ -32,9 +33,9 @@ class CovidIndicadores extends StatelessWidget {
               flex: 1,
               child: CardIndicadorSimples(
                   title: "Recuperados",
-                  principalIndicator: boletim.covidRecuperados.toString(),
-                  secondIndicator: UIHelper.formatPercent(
-                      boletim.covidPercentualDeRecuperados),
+                  leftIndicator: boletim.covidRecuperados.toString(),
+                  rightIndicator:
+                      UIHelper.formatDifference(boletim.covidNovosRecuperados),
                   color: UIStyle.recuperadosColor),
             )
           ],
@@ -45,9 +46,9 @@ class CovidIndicadores extends StatelessWidget {
               flex: 1,
               child: CardIndicadorSimples(
                   title: "Hospitalizados",
-                  principalIndicator: boletim.covidHospitalizados.toString(),
-                  secondIndicator: UIHelper.formatPercent(
-                      boletim.covidPercentualDeHospitalizados),
+                  leftIndicator: boletim.covidHospitalizados.toString(),
+                  rightIndicator: UIHelper.formatDifference(
+                      boletim.covidNovosHospitalizados),
                   color: UIStyle.contaminadosColor,
                   page: HospitalizadosPage(boletim.data)),
             ),
@@ -55,9 +56,9 @@ class CovidIndicadores extends StatelessWidget {
               flex: 1,
               child: CardIndicadorSimples(
                   title: "Em isolamento",
-                  principalIndicator: boletim.covidIsolamento.toString(),
-                  secondIndicator: UIHelper.formatPercent(
-                      boletim.covidPercentualEmIsolamento),
+                  leftIndicator: boletim.covidIsolamento.toString(),
+                  rightIndicator:
+                      UIHelper.formatDifference(boletim.covidNovosEmIsolamento),
                   color: UIStyle.contaminadosColor),
             )
           ],
@@ -68,9 +69,9 @@ class CovidIndicadores extends StatelessWidget {
               flex: 1,
               child: CardIndicadorSimples(
                   title: "Óbitos",
-                  principalIndicator: boletim.covidObitos.toString(),
-                  secondIndicator:
-                      UIHelper.formatPercent(boletim.covidPercentualDeObitos),
+                  leftIndicator: boletim.covidObitos.toString(),
+                  rightIndicator:
+                      UIHelper.formatDifference(boletim.covidNovosObitos),
                   color: UIStyle.obitosColor,
                   page: ObitosPage()),
             ),

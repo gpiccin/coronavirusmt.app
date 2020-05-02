@@ -1,16 +1,19 @@
 import 'package:collection/collection.dart';
 import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/locator.dart';
+import 'package:coronavirusmt/core/models/boletim.dart';
 import 'package:coronavirusmt/core/models/covid_por_tipo_de_leito.dart';
+import 'package:coronavirusmt/core/services/boletim_service.dart';
 import 'package:coronavirusmt/core/services/covid_service.dart';
 import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 
 class HospitalizadosViewModel extends BaseViewModel {
-  CovidService _covidService = locator<CovidService>();
+  List<CovidPorTipoDeLeito> _covidPorTipoDeLeito;
+  Boletim _boletim;
 
-  int get hospitalizados => _covidService.covidPorTipoDeLeito
-      .map((m) => m.casosTotais)
-      .reduce((a, b) => a + b);
+  int get hospitalizados => _boletim.covidHospitalizados;
+  int get novos => _boletim.covidNovosHospitalizados;
+  double get percentual => _boletim.covidPercentualDeHospitalizados;
 
   int get utiTotal {
     return _getCasos("UTI").map((m) => m.casosTotais).reduce((a, b) => a + b);
@@ -35,8 +38,7 @@ class HospitalizadosViewModel extends BaseViewModel {
   }
 
   List<CovidPorTipoDeLeito> _getCasos(String tipoDeLeito) {
-    var grupoPorLeito =
-        groupBy(_covidService.covidPorTipoDeLeito, (caso) => caso.leito);
+    var grupoPorLeito = groupBy(_covidPorTipoDeLeito, (caso) => caso.leito);
 
     if (grupoPorLeito.containsKey(tipoDeLeito))
       return grupoPorLeito[tipoDeLeito];
@@ -46,7 +48,13 @@ class HospitalizadosViewModel extends BaseViewModel {
 
   loadData(DateTime data) async {
     setState(ViewState.Busy);
-    await _covidService.getCovidPorTipoDeLeito(data);
+
+    CovidService covidService = locator<CovidService>();
+    _covidPorTipoDeLeito = await covidService.getCovidPorTipoDeLeito(data);
+
+    BoletimService boletimService = locator<BoletimService>();
+    _boletim = await boletimService.getUltimoBoletim();
+
     setState(ViewState.Idle);
   }
 }

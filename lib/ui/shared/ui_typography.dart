@@ -22,10 +22,10 @@ class UITypography {
   static const caption =
       TextStyle(fontSize: 12.0, fontWeight: FontWeight.normal);
   static const overline =
-      TextStyle(fontSize: 10.0, fontWeight: FontWeight.normal);
+      TextStyle(fontSize: 11.0, fontWeight: FontWeight.normal);
 
   static const indicadorPrincipalStyle =
-      TextStyle(fontSize: 38.0, fontWeight: FontWeight.w500);
+      TextStyle(fontSize: 38.0, fontWeight: FontWeight.w400);
   static const indicadorSecundarioStyle =
       TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500);
 

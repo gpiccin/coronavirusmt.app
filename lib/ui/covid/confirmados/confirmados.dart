@@ -1,12 +1,11 @@
 import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/confirmados_view_model.dart';
 import 'package:coronavirusmt/ui/covid/confirmados/widgets/confirmados_acumulados_por_dia_chart.dart';
-import 'package:coronavirusmt/ui/covid/confirmados/widgets/confirmados_por_cidade_chart.dart';
 import 'package:coronavirusmt/ui/covid/confirmados/widgets/confirmados_por_faixa_etaria_chart.dart';
 import 'package:coronavirusmt/ui/shared/base_view.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
-import 'package:coronavirusmt/ui/widgets/card_informacao_simples.dart';
+import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmadosPage extends StatelessWidget {
@@ -34,18 +33,17 @@ class ConfirmadosPage extends StatelessWidget {
                                   children: <Widget>[
                                     Expanded(
                                       flex: 1,
-                                      child: CardInformacaoSimples(
+                                      child: CardIndicadorSimples(
                                           title: "Confirmados",
-                                          principalIndicator:
+                                          leftIndicator:
                                               '${model.atual.casosTotais}',
                                           color: UIStyle.casosColor),
                                     ),
                                     Expanded(
                                       flex: 1,
-                                      child: CardInformacaoSimples(
+                                      child: CardIndicadorSimples(
                                           title: "Novos em 1 dia",
-                                          principalIndicator:
-                                              '${model.atual.casos}',
+                                          leftIndicator: '${model.atual.casos}',
                                           color: UIStyle.casosColor),
                                     ),
                                   ],
@@ -54,9 +52,9 @@ class ConfirmadosPage extends StatelessWidget {
                                   children: <Widget>[
                                     Expanded(
                                       flex: 1,
-                                      child: CardInformacaoSimples(
+                                      child: CardIndicadorSimples(
                                           title: "Média de idade",
-                                          principalIndicator:
+                                          leftIndicator:
                                               '${model.atual.mediaDeIdade}',
                                           color: UIStyle.casosColor),
                                     ),
@@ -75,14 +73,7 @@ class ConfirmadosPage extends StatelessWidget {
                                     model.covidPorFaixaEtaria,
                                     height: (model.covidPorFaixaEtaria.length *
                                             UIStyle.barChartBarHeight)
-                                        .toDouble()),
-                                UIHelper.headline("Casos por cidade"),
-                                ConfirmadosPorCidadeChart(
-                                  model.covidPorCidade,
-                                  height: (model.covidPorCidade.length *
-                                          UIStyle.barChartBarHeight)
-                                      .toDouble(),
-                                ),
+                                        .toDouble())
                               ]),
                             ),
                     )));

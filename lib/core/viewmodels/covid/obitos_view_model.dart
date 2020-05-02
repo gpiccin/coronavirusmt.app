@@ -1,15 +1,19 @@
 import 'package:collection/collection.dart';
 import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/locator.dart';
+import 'package:coronavirusmt/core/models/boletim.dart';
 import 'package:coronavirusmt/core/models/key_value.dart';
 import 'package:coronavirusmt/core/models/obito.dart';
+import 'package:coronavirusmt/core/services/boletim_service.dart';
 import 'package:coronavirusmt/core/services/obitos_service.dart';
 import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 
 class ObitosViewModel extends BaseViewModel {
-  ObitosService _obitoService = locator<ObitosService>();
+  List<Obito> _obitos;
+  Boletim _boletim;
 
-  List<Obito> get obitos => _obitoService.obitos;
+  Boletim get boletim => _boletim;
+  List<Obito> get obitos => _obitos;
 
   int get mediaDeIdade =>
       obitos.map((m) => m.idade).reduce((a, b) => a + b) ~/ obitos.length;
@@ -83,7 +87,12 @@ class ObitosViewModel extends BaseViewModel {
 
   loadData() async {
     setState(ViewState.Busy);
-    await _obitoService.getObitos();
+    ObitosService obitoService = locator<ObitosService>();
+    _obitos = await obitoService.getObitos();
+
+    BoletimService boletimService = locator<BoletimService>();
+    _boletim = await boletimService.getUltimoBoletim();
+
     setState(ViewState.Idle);
   }
 }

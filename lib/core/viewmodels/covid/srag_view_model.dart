@@ -6,19 +6,19 @@ import 'package:coronavirusmt/core/services/srag_service.dart';
 import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 
 class SragViewModel extends BaseViewModel {
-  SragService _sragService = locator<SragService>();
-
-  SragHistorico get atual => _sragService.historico.first;
+  List<SragHistorico> _historico;
+  SragHistorico get atual => _historico.first;
 
   List<KeyValue> get historicoPorDia {
-    return _sragService.historico
+    return _historico
         .map((caso) => KeyValue(key: caso.data, value: caso.casosTotais))
         .toList();
   }
 
   loadData() async {
     setState(ViewState.Busy);
-    await _sragService.getHistoricoDeSrag();
+    SragService sragService = locator<SragService>();
+    _historico = await sragService.getHistoricoDeSrag();
     setState(ViewState.Idle);
   }
 }

@@ -8,7 +8,7 @@ import 'package:coronavirusmt/ui/covid/obito/widgets/obitos_por_cidade_chart.dar
 import 'package:coronavirusmt/ui/covid/obito/widgets/obitos_por_comorbidade_chart.dart';
 import 'package:coronavirusmt/ui/covid/obito/widgets/obitos_por_faixa_etaria_chart.dart';
 import 'package:coronavirusmt/ui/covid/obito/widgets/obitos_por_sexo_chart.dart';
-import 'package:coronavirusmt/ui/widgets/card_informacao_simples.dart';
+import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
 
 class ObitosPage extends StatelessWidget {
@@ -31,21 +31,35 @@ class ObitosPage extends StatelessWidget {
                               children: <Widget>[
                                 Expanded(
                                   flex: 1,
-                                  child: CardInformacaoSimples(
-                                      title: "Óbitos",
-                                      principalIndicator:
-                                          '${model.totalDeObitos}',
-                                      indicatorLabel: "vítimas",
-                                      color: UIStyle.obitosColor),
+                                  child: CardIndicadorSimples(
+                                    title: "Óbitos",
+                                    leftIndicator: '${model.totalDeObitos}',
+                                    color: UIStyle.obitosColor,
+                                  ),
                                 ),
                                 Expanded(
                                   flex: 1,
-                                  child: CardInformacaoSimples(
+                                  child: CardIndicadorSimples(
                                       title: "Média de idade",
-                                      principalIndicator:
-                                          '${model.mediaDeIdade}',
-                                      indicatorLabel: "anos",
+                                      leftIndicator: '${model.mediaDeIdade}',
                                       color: UIStyle.obitosColor),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 1,
+                                  child: CardIndicadorSimples(
+                                    title: "Taxa de mortalidade",
+                                    leftIndicator: UIHelper.formatPercent(
+                                        model.boletim.covidPercentualDeObitos),
+                                    color: UIStyle.obitosColor,
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(),
                                 ),
                               ],
                             ),

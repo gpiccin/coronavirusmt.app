@@ -4,7 +4,7 @@ import 'package:coronavirusmt/ui/covid/hospitalizados/widgets/card_leito.dart';
 import 'package:coronavirusmt/ui/shared/base_view.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
-import 'package:coronavirusmt/ui/widgets/card_informacao_simples.dart';
+import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
 
 class HospitalizadosPage extends StatelessWidget {
@@ -27,10 +27,27 @@ class HospitalizadosPage extends StatelessWidget {
                       : Padding(
                           padding: const EdgeInsets.all(UIStyle.padding),
                           child: ListView(children: <Widget>[
-                            CardInformacaoSimples(
-                                title: "Hospitalizados",
-                                principalIndicator: '${model.hospitalizados}',
-                                color: UIStyle.contaminadosColor),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 1,
+                                  child: CardIndicadorSimples(
+                                    title: "Hospitalizados",
+                                    leftIndicator: '${model.hospitalizados}',
+                                    color: UIStyle.contaminadosColor,
+                                    rightIndicator: UIHelper.formatPercent(
+                                        model.percentual),
+                                  ),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: CardIndicadorSimples(
+                                      title: "Novos em 1 dia",
+                                      leftIndicator: '${model.novos}',
+                                      color: UIStyle.contaminadosColor),
+                                ),
+                              ],
+                            ),
                             Row(
                               children: <Widget>[
                                 Expanded(

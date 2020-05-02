@@ -5,13 +5,14 @@ import 'package:coronavirusmt/core/services/boletim_service.dart';
 import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 
 class IndicadoresViewModel extends BaseViewModel {
-  BoletimService _boletimService = locator<BoletimService>();
+  Boletim _boletim;
 
-  Boletim get boletim => _boletimService.boletim;
+  Boletim get boletim => _boletim;
 
   Future loadData() async {
     setState(ViewState.Busy);
-    await _boletimService.getUltimoBoletim();
+    BoletimService boletimService = locator<BoletimService>();
+    _boletim = await boletimService.getUltimoBoletim();
     setState(ViewState.Idle);
   }
 }

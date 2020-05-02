@@ -5,8 +5,5 @@ import 'package:coronavirusmt/core/services/api.dart';
 class ObitosService {
   Api _api = locator<Api>();
 
-  List<Obito> _obitos;
-  List<Obito> get obitos => _obitos;
-
-  getObitos() async => _obitos = await _api.getObitos();
+  Future<List<Obito>> getObitos() => _api.getObitos();
 }

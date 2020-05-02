@@ -7,14 +7,16 @@ import 'package:flutter/material.dart';
 class CardIndicadorSimples extends StatelessWidget {
   CardIndicadorSimples(
       {this.title,
-      this.principalIndicator,
-      this.secondIndicator,
+      this.leftIndicator,
+      this.rightIndicator,
+      this.caption,
       this.color = Colors.black,
       this.page});
 
   final String title;
-  final String principalIndicator;
-  final String secondIndicator;
+  final String caption;
+  final String leftIndicator;
+  final String rightIndicator;
   final Color color;
   final Widget page;
 
@@ -42,16 +44,20 @@ class CardIndicadorSimples extends StatelessWidget {
                       height: 20,
                     ),
                   ),
-                  Container(
-                    height: 30,
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(UIStyle.padding - 2,
-                          UIStyle.padding, UIStyle.padding, 0),
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Text(
-                          this.title,
-                          style: UITypography.title,
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      alignment: Alignment.centerLeft,
+                      height: 30,
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(UIStyle.padding - 2,
+                            UIStyle.padding, UIStyle.padding, 0),
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            this.title,
+                            style: UITypography.title,
+                          ),
                         ),
                       ),
                     ),
@@ -71,7 +77,9 @@ class CardIndicadorSimples extends StatelessWidget {
                             ),
                           ),
                         )
-                      : Container(),
+                      : Expanded(
+                          child: Container(),
+                        ),
                 ],
               ),
               Row(
@@ -80,13 +88,13 @@ class CardIndicadorSimples extends StatelessWidget {
                     flex: 1,
                     child: Container(
                         margin: EdgeInsets.only(left: UIStyle.padding),
-                        height: 56,
+                        height: 52,
                         child: Align(
                           alignment: Alignment.bottomLeft,
                           child: FittedBox(
                               fit: BoxFit.contain,
                               child: Text(
-                                this.principalIndicator,
+                                this.leftIndicator,
                                 style: UITypography.indicadorPrincipalStyle
                                     .merge(TextStyle(
                                   color: this.color,
@@ -97,17 +105,17 @@ class CardIndicadorSimples extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: Container(
-                      height: 48,
+                      height: 44,
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: Padding(
                           padding: EdgeInsets.only(right: UIStyle.padding),
                           child: Visibility(
-                            visible: this.secondIndicator != null,
+                            visible: this.rightIndicator != null,
                             child: FittedBox(
                                 fit: BoxFit.contain,
                                 child: Text(
-                                  this.secondIndicator ?? "",
+                                  this.rightIndicator ?? "",
                                   style: UITypography.indicadorSecundarioStyle
                                       .merge(TextStyle(color: this.color)),
                                 )),
@@ -118,6 +126,15 @@ class CardIndicadorSimples extends StatelessWidget {
                   ),
                 ],
               ),
+              (this.caption != null)
+                  ? Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          UIStyle.padding, UIStyle.padding, UIStyle.padding, 0),
+                      child: Text(
+                        this.caption,
+                        softWrap: true,
+                      ))
+                  : Container(),
               SizedBox(
                 height: UIStyle.padding,
               )

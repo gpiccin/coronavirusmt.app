@@ -5,8 +5,6 @@ import 'package:coronavirusmt/core/services/api.dart';
 class BoletinsService {
   Api _api = locator<Api>();
 
-  List<BoletimLista> _boletins;
-  List<BoletimLista> get boletins => _boletins;
-
-  getBoletins() async => _boletins = await _api.getBoletins();
+  Future<List<BoletimLista>> getBoletins(int start, int limit) =>
+      _api.getBoletins(start, limit);
 }

@@ -4,7 +4,7 @@ import 'package:coronavirusmt/ui/shared/base_view.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/srag/widget/srag_acumulados_por_dia_chart.dart';
-import 'package:coronavirusmt/ui/widgets/card_informacao_simples.dart';
+import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
 
 class SragPage extends StatelessWidget {
@@ -29,28 +29,26 @@ class SragPage extends StatelessWidget {
                                   children: <Widget>[
                                     Expanded(
                                       flex: 1,
-                                      child: CardInformacaoSimples(
+                                      child: CardIndicadorSimples(
                                           title: "Confirmados",
-                                          principalIndicator:
+                                          leftIndicator:
                                               '${model.atual.casosTotais}',
                                           color: UIStyle.casosColor),
                                     ),
                                     Expanded(
                                       flex: 1,
-                                      child: CardInformacaoSimples(
+                                      child: CardIndicadorSimples(
                                           title: "Novos em 1 dia",
-                                          principalIndicator:
-                                              '${model.atual.casos}',
+                                          leftIndicator: '${model.atual.casos}',
                                           color: UIStyle.casosColor),
                                     ),
                                   ],
                                 ),
-                                CardInformacaoSimples(
+                                CardIndicadorSimples(
                                   title: "COVID + SRAG",
-                                  principalIndicator:
-                                      '${model.atual.covidMaisSrag}',
-                                  indicatorLabel:
-                                      '= (${model.atual.casosTotais} + ${model.atual.covidCasosTotais})',
+                                  leftIndicator: '${model.atual.covidMaisSrag}',
+                                  rightIndicator:
+                                      '(${model.atual.casosTotais} + ${model.atual.covidCasosTotais})',
                                   color: UIStyle.casosColor,
                                   caption:
                                       'O número de SRAG representa ${UIHelper.formatPercent(model.atual.percentualEmRelacaoAoCovid)} a mais do que os casos confirmados de Covid-19.',

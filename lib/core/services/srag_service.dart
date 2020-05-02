@@ -5,8 +5,5 @@ import 'package:coronavirusmt/core/services/api.dart';
 class SragService {
   Api _api = locator<Api>();
 
-  List<SragHistorico> _historico;
-  List<SragHistorico> get historico => _historico;
-
-  getHistoricoDeSrag() async => _historico = await _api.getHistoricoDeSrag();
+  Future<List<SragHistorico>> getHistoricoDeSrag() => _api.getHistoricoDeSrag();
 }

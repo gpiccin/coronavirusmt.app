@@ -1,6 +1,7 @@
 import 'package:coronavirusmt/core/constants.dart';
 import 'package:coronavirusmt/core/models/boletim_lista.dart';
 import 'package:coronavirusmt/core/models/boletim.dart';
+import 'package:coronavirusmt/core/models/covid_cidades_casos_x_ativos.dart';
 import 'package:coronavirusmt/core/models/covid_historico.dart';
 import 'package:coronavirusmt/core/models/covid_por_cidade.dart';
 import 'package:coronavirusmt/core/models/covid_por_faixa_etaria.dart';
@@ -20,7 +21,7 @@ class Api {
   Future<List<SragHistorico>> getHistoricoDeSrag() async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query{ boletims(sort:\"data:desc\", limit: 67){  data  srag_casos_total  srag_casos_novos  covid_casos_total }}"
+          "query{ boletims(sort:\"data:desc\", limit: 45){  data  srag_casos_total  srag_casos_novos  covid_casos_total }}"
     });
 
     var historico = response.data["data"]["boletims"]
@@ -56,10 +57,10 @@ class Api {
     return List<Obito>.from(obitos);
   }
 
-  Future<List<BoletimLista>> getBoletins() async {
+  Future<List<BoletimLista>> getBoletins(int start, int limit) async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query { boletims(sort: \"data:desc\") {  data  referencia  link  covid_casos_total  covid_casos_novos}}"
+          "query { boletims(sort: \"data:desc\", start: $start, limit: $limit) {  data  referencia  link  covid_casos_total  covid_casos_novos}}"
     });
 
     var boletins = response.data["data"]["boletims"]
@@ -82,10 +83,11 @@ class Api {
     return List<CovidHistorico>.from(historico);
   }
 
-  Future<List<CovidPorCidade>> getCovidPorCidade(DateTime data) async {
+  Future<List<CovidPorCidade>> getCovidPorCidade(
+      DateTime data, int start, int limit) async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query { casosPorCidades(where: {data:\"${this._dateParam(data)}\"}, sort: \"covid_casos_total:desc\") {  covid_casos_total  cidade {nome} }}"
+          "query { casosPorCidades(where: {data:\"${this._dateParam(data)}\"}, start: $start, limit: $limit, sort: \"covid_casos_total:desc,id:asc\") {  covid_casos_total  covid_casos covid_obitos covid_recuperados cidade {nome} }}"
     });
 
     var casosPorCidade = response.data["data"]["casosPorCidades"]
@@ -135,5 +137,22 @@ class Api {
         queryParameters: {"_limit": 1, "_sort": "data:DESC"});
 
     return Boletim.fromJson(response.data[0]);
+  }
+
+  Future<DateTime> getDataDoUltimoBoletim() async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query": "query { boletims(limit: 1, sort: \"data:desc\") { data }}"
+    });
+
+    return DateTime.parse(response.data['data']['boletims'][0]['data']);
+  }
+
+  Future<CovidCidadesCasosXAtivos> getCidadesCasosXAtivos(DateTime data) async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "query { \n  casos: casosPorCidadesConnection(limit: 1, where: {data:\"${this._dateParam(data)}\"}, \n  sort: \"data:desc\") { aggregate {count} }\n\n  ativos: casosPorCidadesConnection(limit: 1, where: {data:\"${this._dateParam(data)}\", covid_casos_gt: 0}, \n  sort: \"data:desc\") { aggregate {count} }\n obitos: casosPorCidadesConnection(limit: 1, where: {data:\"${this._dateParam(data)}\", covid_obitos_gt: 0}, \n  sort: \"data:desc\") { aggregate {count} }}"
+    });
+
+    return CovidCidadesCasosXAtivos.fromMap(response.data['data']);
   }
 }

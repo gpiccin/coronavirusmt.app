@@ -25,6 +25,14 @@ class UIHelper {
         "%";
   }
 
+  static String formatDifference(int value) {
+    if (value > 0) return "+ " + value.toString();
+
+    if (value < 0) return "- " + value.toString();
+
+    return "0";
+  }
+
   static Widget loading() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 40, 0, 40),
@@ -41,8 +49,6 @@ class UIHelper {
       Navigator.push(context, MaterialPageRoute(builder: (context) => page));
       return;
     }
-
-    UIHelper.showSnackBar(context, Text("Sem detalhes até o momento."));
   }
 
   static showSnackBar(BuildContext context, Widget content,

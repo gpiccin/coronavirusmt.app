@@ -2,6 +2,7 @@ import 'package:coronavirusmt/core/locator.dart';
 import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+// import 'package:firebase/firebase.dart' as Firebase;
 
 class BaseView<T extends BaseViewModel> extends StatefulWidget {
   final Widget Function(BuildContext context, T model, Widget child) builder;
@@ -26,6 +27,9 @@ class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
     if (widget.onModelReady != null) {
       widget.onModelReady(model);
     }
+
+    // Firebase.analytics().setCurrentScreen(widget.name);
+    // Firebase.analytics().logEvent("${widget.name}_initState", {});
 
     super.initState();
   }

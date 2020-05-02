@@ -33,6 +33,7 @@ dependencies:
   collection: ^1.14.11
   flutter_spinkit: "^4.1.2"
   flutter_pagewise: ^1.2.3
+  firebase: ^7.3.0
 
 dev_dependencies:
   flutter_test:

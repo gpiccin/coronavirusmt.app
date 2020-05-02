@@ -1,4 +1,5 @@
 import 'package:coronavirusmt/core/locator.dart';
+import 'package:coronavirusmt/core/models/covid_cidades_casos_x_ativos.dart';
 import 'package:coronavirusmt/core/models/covid_historico.dart';
 import 'package:coronavirusmt/core/models/covid_por_cidade.dart';
 import 'package:coronavirusmt/core/models/covid_por_faixa_etaria.dart';
@@ -8,30 +9,27 @@ import 'package:coronavirusmt/core/services/api.dart';
 class CovidService {
   Api _api = locator<Api>();
 
-  List<CovidHistorico> _historico;
-  List<CovidHistorico> get historico => _historico;
+  Future<DateTime> getDataDoUltimoBoletim() => _api.getDataDoUltimoBoletim();
+  Future<CovidCidadesCasosXAtivos> getCidadesCasosXAtivos(DateTime data) =>
+      _api.getCidadesCasosXAtivos(data);
 
-  List<CovidPorCidade> _covidPorCidade;
-  List<CovidPorCidade> get covidPorCidade => _covidPorCidade;
+  Future<List<CovidHistorico>> getHistoricoDeCovid() =>
+      _api.getHistoricoDeCovid();
 
-  List<CovidPorFaixaEtaria> _covidPorFaixaEtaria;
-  List<CovidPorFaixaEtaria> get covidPorFaixaEtaria => _covidPorFaixaEtaria;
+  Future<List<CovidPorCidade>> getCovidPorCidade(
+          DateTime data, int start, int limit) =>
+      _api.getCovidPorCidade(data, start, limit);
 
-  List<CovidPorTipoDeLeito> _covidPorTipoDeLeito;
-  List<CovidPorTipoDeLeito> get covidPorTipoDeLeito => _covidPorTipoDeLeito;
+  Future<List<CovidPorTipoDeLeito>> getCovidPorTipoDeLeito(DateTime data) =>
+      _api.getCovidPorTipoDeLeito(data);
 
-  getHistoricoDeCovid() async => _historico = await _api.getHistoricoDeCovid();
+  Future<List<CovidPorFaixaEtaria>> getCovidPorFaixaEtaria(
+      DateTime data) async {
+    var covidPorFaixaEtaria = await _api.getCovidPorFaixaEtaria(data);
 
-  getCovidPorCidade(DateTime data) async =>
-      _covidPorCidade = await _api.getCovidPorCidade(data);
-
-  getCovidPorFaixaEtaria(DateTime data) async {
-    _covidPorFaixaEtaria = await _api.getCovidPorFaixaEtaria(data);
-
-    _covidPorFaixaEtaria
+    covidPorFaixaEtaria
         .sort((a, b) => a.ordemDaFaixaEtaria.compareTo(b.ordemDaFaixaEtaria));
-  }
 
-  getCovidPorTipoDeLeito(DateTime data) async =>
-      _covidPorTipoDeLeito = await _api.getCovidPorTipoDeLeito(data);
+    return covidPorFaixaEtaria;
+  }
 }

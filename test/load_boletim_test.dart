@@ -33,7 +33,7 @@ void main() {
   });
 
   test('Recupera a lista de boletins', () async {
-    var boletins = await Api().getBoletins();
+    var boletins = await Api().getBoletins(0, 1);
     assert(boletins.length > 0);
   });
 }
