@@ -37,7 +37,7 @@ class CovidIndicadores extends StatelessWidget {
                   rightIndicator:
                       UIHelper.formatDifference(boletim.covidNovosRecuperados),
                   color: UIStyle.recuperadosColor),
-            )
+            ),
           ],
         ),
         Row(
@@ -75,7 +75,7 @@ class CovidIndicadores extends StatelessWidget {
                   color: UIStyle.obitosColor,
                   page: ObitosPage()),
             ),
-            Expanded(flex: 1, child: Container())
+            Expanded(flex: 1, child: Container()),
           ],
         ),
       ],

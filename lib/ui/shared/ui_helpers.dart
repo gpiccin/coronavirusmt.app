@@ -14,10 +14,10 @@ class UIHelper {
     return "${date.day}/${date.month}";
   }
 
-  static Widget divider() {
+  static Widget divider({double paddingLeft, double paddingRight}) {
     return Padding(
-      padding:
-          EdgeInsets.fromLTRB(UIStyle.padding + 4, 0, UIStyle.padding + 4, 0),
+      padding: EdgeInsets.fromLTRB(paddingLeft ?? UIStyle.padding + 4, 0,
+          paddingRight ?? UIStyle.padding + 4, 0),
       child: Divider(),
     );
   }

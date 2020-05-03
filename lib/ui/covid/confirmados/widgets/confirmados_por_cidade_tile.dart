@@ -10,11 +10,14 @@ class ConfirmadosPorCidadeTile extends StatelessWidget {
 
   Widget _buildCard() {
     return ListTile(
-      contentPadding: const EdgeInsets.all(0),
-      title: Text('${covidPorCidade.cidade}'),
+      contentPadding: const EdgeInsets.only(left: 0),
+      title: Padding(
+        padding: const EdgeInsets.only(left: UIStyle.padding),
+        child: Text('${covidPorCidade.cidade}'),
+      ),
       subtitle: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           _buildIndicator(
             '${covidPorCidade.casosTotais}',
@@ -23,7 +26,7 @@ class ConfirmadosPorCidadeTile extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(
-                UIStyle.padding + 4, 8, UIStyle.padding + 4, 8),
+                UIStyle.padding, 8, UIStyle.padding, 8),
             child: Text(
               "=",
             ),

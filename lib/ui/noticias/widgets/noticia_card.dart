@@ -1,4 +1,5 @@
 import 'package:coronavirusmt/core/models/noticia.dart';
+import 'package:coronavirusmt/ui/shared/card_helper.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
@@ -10,7 +11,7 @@ class NoticiaCard extends StatelessWidget {
 
   NoticiaCard({this.noticia});
 
-  _launchBoletimURL(noticiaUrl) async {
+  _launchNoticiaURL(noticiaUrl) async {
     if (await canLaunch(noticiaUrl)) {
       await launch(noticiaUrl);
     } else {
@@ -21,23 +22,11 @@ class NoticiaCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
       child: InkWell(
-        onTap: () => this._launchBoletimURL(noticia.url),
+        onTap: () => this._launchNoticiaURL(noticia.url),
         child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.all(
-              Radius.circular(10.0),
-            ),
-            boxShadow: <BoxShadow>[
-              new BoxShadow(
-                color: Colors.grey[300],
-                blurRadius: 4.0,
-                offset: new Offset(0.0, 0.0),
-              ),
-            ],
-          ),
+          decoration: CardHelper.boxDecoration(),
           child: Row(
             children: <Widget>[
               Padding(

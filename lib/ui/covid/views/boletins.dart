@@ -1,6 +1,7 @@
 import 'package:coronavirusmt/core/locator.dart';
 import 'package:coronavirusmt/core/models/boletim_lista.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/boletins_view_model.dart';
+import 'package:coronavirusmt/ui/shared/card_helper.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
@@ -29,18 +30,54 @@ class _BoletinsViewState extends State<BoletinsView> {
   }
 
   Widget _buildRow(BoletimLista boletim) {
-    return ListTile(
-      title: Text(
-        "${UIHelper.fomartDateDMY(boletim.data)} - Boletim: ${boletim.referencia}",
-        style: UITypography.title,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 4, 0, 4),
+      child: InkWell(
+        onTap: () => this._launchBoletimURL(boletim.link),
+        child: Container(
+          decoration: CardHelper.boxDecoration(),
+          child: Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(UIStyle.padding),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.0),
+                    child: Container(
+                      child: Icon(
+                        Icons.open_in_new,
+                        size: 36,
+                      ),
+                      height: 60,
+                      width: 60,
+                    )),
+              ),
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        '${UIHelper.fomartDateDMY(boletim.data)} - Boletim: ${boletim.referencia}',
+                        style: UITypography.title,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                      child: Text(
+                        "${boletim.casosTotais} casos confirmados, ${boletim.casosNovos} novos ",
+                        style: UITypography.subtitle
+                            .merge(TextStyle(color: UIStyle.casosColor)),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
-      subtitle: Text(
-          "${boletim.casosTotais} casos confirmados, ${boletim.casosNovos} novos "),
-      trailing: GestureDetector(
-          child: Icon(Icons.launch, color: Colors.grey, size: 24.0),
-          onTap: () {
-            _launchBoletimURL(boletim.link);
-          }),
     );
   }
 

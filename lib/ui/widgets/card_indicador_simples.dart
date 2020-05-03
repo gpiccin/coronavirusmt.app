@@ -72,7 +72,7 @@ class CardIndicadorSimples extends StatelessWidget {
                               child: Icon(
                                 Icons.zoom_in,
                                 size: 18,
-                                color: CardHelper.iconColor,
+                                color: UIStyle.iconColor,
                               ),
                             ),
                           ),
