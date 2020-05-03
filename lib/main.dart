@@ -1,11 +1,15 @@
 import 'package:coronavirusmt/core/locator.dart';
 import 'package:coronavirusmt/ui/home/home.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-main() {
+main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   setupLocator();
+
+  await Hive.initFlutter();
 
   runApp(AppWidget());
 }
