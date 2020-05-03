@@ -10,6 +10,7 @@ class CovidService {
   Api _api = locator<Api>();
 
   Future<DateTime> getDataDoUltimoBoletim() => _api.getDataDoUltimoBoletim();
+
   Future<CovidCidadesCasosXAtivos> getCidadesCasosXAtivos(DateTime data) =>
       _api.getCidadesCasosXAtivos(data);
 

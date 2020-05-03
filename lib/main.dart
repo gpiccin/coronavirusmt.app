@@ -6,6 +6,7 @@ main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   setupLocator();
+
   runApp(AppWidget());
 }
 

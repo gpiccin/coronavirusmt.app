@@ -40,9 +40,12 @@ class ObitosPage extends StatelessWidget {
                                 Expanded(
                                   flex: 1,
                                   child: CardIndicadorSimples(
-                                      title: "Média de idade",
-                                      leftIndicator: '${model.mediaDeIdade}',
-                                      color: UIStyle.obitosColor),
+                                    title: "Novos em 1 dia",
+                                    leftIndicator: model
+                                        .boletim.covidNovosObitos
+                                        .toString(),
+                                    color: UIStyle.obitosColor,
+                                  ),
                                 ),
                               ],
                             ),
@@ -59,7 +62,10 @@ class ObitosPage extends StatelessWidget {
                                 ),
                                 Expanded(
                                   flex: 1,
-                                  child: Container(),
+                                  child: CardIndicadorSimples(
+                                      title: "Média de idade",
+                                      leftIndicator: '${model.mediaDeIdade}',
+                                      color: UIStyle.obitosColor),
                                 ),
                               ],
                             ),

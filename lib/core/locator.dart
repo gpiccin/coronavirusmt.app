@@ -8,6 +8,7 @@ import 'package:coronavirusmt/core/services/srag_service.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/boletins_view_model.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/cidades_view_model.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/confirmados_view_model.dart';
+import 'package:coronavirusmt/core/viewmodels/covid/data_boletim_view_model.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/hospitalizados_view_model.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/indicadores_view_model.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/obitos_view_model.dart';
@@ -37,5 +38,6 @@ void setupLocator() {
   locator.registerFactory(() => SragViewModel());
   locator.registerFactory(() => NoticiasViewModel());
   locator.registerFactory(() => CidadesViewModel());
+  locator.registerLazySingleton(() => DataBoletimViewModel());
   // locator.registerFactory(() => CommentsModel());
 }

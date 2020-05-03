@@ -48,7 +48,7 @@ class SragPage extends StatelessWidget {
                                   title: "COVID + SRAG",
                                   leftIndicator: '${model.atual.covidMaisSrag}',
                                   rightIndicator:
-                                      '(${model.atual.casosTotais} + ${model.atual.covidCasosTotais})',
+                                      'SRAG: ${model.atual.casosTotais} + COVID: ${model.atual.covidCasosTotais}',
                                   color: UIStyle.casosColor,
                                   caption:
                                       'O número de SRAG representa ${UIHelper.formatPercent(model.atual.percentualEmRelacaoAoCovid)} a mais do que os casos confirmados de Covid-19.',

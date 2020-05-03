@@ -5,10 +5,12 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class UIHelper {
   static String fomartDateDMY(DateTime date) {
+    if (date == null) return "";
     return "${date.day}/${date.month}/${date.year}";
   }
 
   static String fomartDateDM(DateTime date) {
+    if (date == null) return "";
     return "${date.day}/${date.month}";
   }
 
