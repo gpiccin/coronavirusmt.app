@@ -36,11 +36,7 @@ class _HomePageState extends State<HomePage> {
       ),
       title: Padding(
         padding: const EdgeInsets.only(top: 2.0),
-        child: Text(
-          text,
-          style: UITypography.caption
-              .merge(TextStyle(fontWeight: FontWeight.w500)),
-        ),
+        child: Text(text, style: UITypography.button),
       ),
     );
   }

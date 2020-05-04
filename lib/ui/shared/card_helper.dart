@@ -12,15 +12,15 @@ class CardHelper {
       border: Border.all(color: Colors.grey[200], width: 1.0),
       color: Colors.white,
       borderRadius: BorderRadius.all(
-        Radius.circular(10.0),
+        Radius.circular(5.0),
       ),
-      boxShadow: <BoxShadow>[
-        new BoxShadow(
-          color: Colors.grey[200],
-          blurRadius: 1.0,
-          offset: new Offset(0.5, 0.5),
-        ),
-      ],
+      // boxShadow: <BoxShadow>[
+      //   new BoxShadow(
+      //     color: Colors.grey[200],
+      //     blurRadius: 1.0,
+      //     offset: new Offset(0.5, 0.5),
+      //   ),
+      // ],
     );
   }
 

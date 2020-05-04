@@ -31,12 +31,15 @@ class ConfirmadosPorCidadeTile extends StatelessWidget {
               "=",
             ),
           ),
-          _buildIndicator(
-              '${covidPorCidade.casos}', "Ativos", UIStyle.contaminadosColor),
-          _buildIndicator(
-              '${covidPorCidade.obitos}', "Óbitos", UIStyle.obitosColor),
-          _buildIndicator('${covidPorCidade.recuperados}', "Recuperados",
-              UIStyle.recuperadosColor)
+          Expanded(
+              child: _buildIndicator('${covidPorCidade.casos}', "Ativos",
+                  UIStyle.contaminadosColor)),
+          Expanded(
+              child: _buildIndicator(
+                  '${covidPorCidade.obitos}', "Óbitos", UIStyle.obitosColor)),
+          Expanded(
+              child: _buildIndicator('${covidPorCidade.recuperados}',
+                  "Recuperados", UIStyle.recuperadosColor))
         ],
       ),
     );
@@ -54,10 +57,13 @@ class ConfirmadosPorCidadeTile extends StatelessWidget {
           SizedBox(
             height: 4,
           ),
-          Text(
-            label,
-            style: UITypography.caption,
-          )
+          FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                label,
+                style: UITypography.caption,
+                softWrap: false,
+              ))
         ],
       ),
     );

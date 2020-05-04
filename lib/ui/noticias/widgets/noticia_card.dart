@@ -1,5 +1,4 @@
 import 'package:coronavirusmt/core/models/noticia.dart';
-import 'package:coronavirusmt/ui/shared/card_helper.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
@@ -26,13 +25,12 @@ class NoticiaCard extends StatelessWidget {
       child: InkWell(
         onTap: () => this._launchNoticiaURL(noticia.url),
         child: Container(
-          decoration: CardHelper.boxDecoration(),
           child: Row(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(UIStyle.padding),
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(12.0),
+                    borderRadius: BorderRadius.circular(5.0),
                     child: Image(
                         image: NetworkImage(noticia.imagemUrl),
                         height: 100,

@@ -23,7 +23,7 @@ class Header extends StatelessWidget {
                     child: Text(
                       "CORONAVÍRUS EM MT",
                       style: TextStyle(
-                          color: Color(0xFF353535),
+                          color: UIStyle.fontColor,
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.1),

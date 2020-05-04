@@ -1,7 +1,6 @@
 import 'package:coronavirusmt/core/locator.dart';
 import 'package:coronavirusmt/core/models/boletim_lista.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/boletins_view_model.dart';
-import 'package:coronavirusmt/ui/shared/card_helper.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
@@ -35,7 +34,6 @@ class _BoletinsViewState extends State<BoletinsView> {
       child: InkWell(
         onTap: () => this._launchBoletimURL(boletim.link),
         child: Container(
-          decoration: CardHelper.boxDecoration(),
           child: Row(
             children: <Widget>[
               Padding(
@@ -46,6 +44,7 @@ class _BoletinsViewState extends State<BoletinsView> {
                       child: Icon(
                         Icons.open_in_new,
                         size: 36,
+                        color: UIStyle.iconColor,
                       ),
                       height: 60,
                       width: 60,

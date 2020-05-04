@@ -60,7 +60,7 @@ Widget _splashScreen() {
                 "CORONAVÍRUS EM MT",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: UIStyle.headerBackgroundColor,
+                    color: UIStyle.casosColor,
                     fontSize: 32,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.1),
@@ -69,7 +69,7 @@ Widget _splashScreen() {
                 "Vamos vencer esta luta!",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: UIStyle.headerBackgroundColor,
+                    color: UIStyle.casosColor,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                     letterSpacing: 0.1),

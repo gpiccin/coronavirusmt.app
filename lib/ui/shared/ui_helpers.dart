@@ -40,7 +40,7 @@ class UIHelper {
       padding: const EdgeInsets.fromLTRB(0, 40, 0, 40),
       child: Center(
           child: SpinKitRipple(
-        color: UIStyle.headerBackgroundColor,
+        color: UIStyle.loadingColor,
         size: 50.0,
       )),
     );
