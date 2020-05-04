@@ -76,14 +76,14 @@ class UIHelper {
 
   static AppBar appBar(String title) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: UIStyle.appBackgroundColor,
       elevation: 0,
       title: Text(
         title,
         style: TextStyle(color: Colors.black),
       ),
       iconTheme: IconThemeData(
-        color: Colors.black,
+        color: UIStyle.iconColor,
       ),
     );
   }

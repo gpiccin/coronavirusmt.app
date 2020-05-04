@@ -50,6 +50,7 @@ class Header extends StatelessWidget {
                             Icon(
                               Icons.calendar_today,
                               size: 16,
+                              color: UIStyle.iconColor,
                             )
                           ],
                         ),
