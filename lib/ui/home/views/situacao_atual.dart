@@ -24,7 +24,7 @@ class SituacaoAtualView extends StatelessWidget {
         child: Column(
           children: <Widget>[
             TabBar(
-              labelColor: Colors.black,
+              labelColor: UIStyle.fontColor,
               tabs: [
                 _tab("Estado"),
                 _tab("Cidades"),

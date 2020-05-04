@@ -80,7 +80,7 @@ class UIHelper {
       elevation: 0,
       title: Text(
         title,
-        style: TextStyle(color: Colors.black),
+        style: TextStyle(color: UIStyle.fontColor),
       ),
       iconTheme: IconThemeData(
         color: UIStyle.iconColor,
