@@ -30,7 +30,7 @@ class UIHelper {
   static String formatDifference(int value) {
     if (value > 0) return "+ " + value.toString();
 
-    if (value < 0) return "- " + value.toString();
+    if (value < 0) return "- " + (value * -1).toString();
 
     return "0";
   }
