@@ -29,6 +29,9 @@ class UITypography {
   static const overline = TextStyle(
       fontSize: 11.0, fontWeight: FontWeight.normal, color: UIStyle.fontColor);
 
+  static const suboverline = TextStyle(
+      fontSize: 10.0, fontWeight: FontWeight.normal, color: UIStyle.fontColor);
+
   static const indicadorPrincipalStyle = TextStyle(
       fontSize: 38.0, fontWeight: FontWeight.w400, color: UIStyle.fontColor);
   static const indicadorSecundarioStyle = TextStyle(

@@ -28,20 +28,20 @@ class SituacaoAtualCidadesView extends StatelessWidget {
                             Expanded(
                               flex: 1,
                               child: CardIndicadorSimples(
-                                title: "Ativas",
-                                leftIndicator: model
-                                    .totais.cidadesComCasosAtivos
-                                    .toString(),
-                                color: UIStyle.contaminadosColor,
+                                title: "Afetadas",
+                                leftIndicator:
+                                    model.totais.cidadesComCasos.toString(),
+                                color: UIStyle.casosColor,
                               ),
                             ),
                             Expanded(
                               flex: 1,
                               child: CardIndicadorSimples(
-                                title: "Afetadas",
-                                leftIndicator:
-                                    model.totais.cidadesComCasos.toString(),
-                                color: UIStyle.casosColor,
+                                title: "Ativas",
+                                leftIndicator: model
+                                    .totais.cidadesComCasosAtivos
+                                    .toString(),
+                                color: UIStyle.contaminadosColor,
                               ),
                             ),
                             Expanded(
@@ -56,31 +56,27 @@ class SituacaoAtualCidadesView extends StatelessWidget {
                           ],
                         ),
                         Expanded(
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.only(top: UIStyle.padding),
-                            child: PagewiseListView(
-                              pageSize: 10,
-                              itemBuilder: (context, covidPorCidade, index) {
-                                return AnimationConfiguration.staggeredList(
-                                  position: index,
-                                  duration: const Duration(milliseconds: 375),
-                                  child: SlideAnimation(
-                                    verticalOffset: 50.0,
-                                    child: FadeInAnimation(
-                                      child: ConfirmadosPorCidadeTile(
-                                          covidPorCidade),
-                                    ),
+                          child: PagewiseListView(
+                            pageSize: 10,
+                            itemBuilder: (context, covidPorCidade, index) {
+                              return AnimationConfiguration.staggeredList(
+                                position: index,
+                                duration: const Duration(milliseconds: 375),
+                                child: SlideAnimation(
+                                  verticalOffset: 50.0,
+                                  child: FadeInAnimation(
+                                    child: ConfirmadosPorCidadeTile(
+                                        covidPorCidade),
                                   ),
-                                ); //ConfirmadosPorCidadeTile(covidPorCidade);
-                              },
-                              pageFuture: (pageIndex) {
-                                return model.getCovidPorCidade(10, pageIndex);
-                              },
-                              loadingBuilder: (context) {
-                                return UIHelper.loading();
-                              },
-                            ),
+                                ),
+                              ); //ConfirmadosPorCidadeTile(covidPorCidade);
+                            },
+                            pageFuture: (pageIndex) {
+                              return model.getCovidPorCidade(10, pageIndex);
+                            },
+                            loadingBuilder: (context) {
+                              return UIHelper.loading();
+                            },
                           ),
                         ),
                       ],

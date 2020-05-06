@@ -14,7 +14,7 @@ class UIStyle {
   static const obitosColorHex = "#F44236";
   static const casosColor = Color(0xFF2196F3);
   static const casosColorHex = "#2196F3";
-  static const contaminadosColor = Color(0xFFF57C00);
+  static const contaminadosColor = Color(0xFFFFB006);
   static const utiColor = Color(0xFFFE5722);
   static const recuperadosColor = Color(0xFF4CB050);
 

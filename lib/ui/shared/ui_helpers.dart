@@ -22,8 +22,9 @@ class UIHelper {
     );
   }
 
-  static String formatPercent(double value) {
-    return value.toStringAsFixed(value.truncateToDouble() == value ? 0 : 1) +
+  static String formatPercent(double value, {int decimal = 1}) {
+    return value
+            .toStringAsFixed(value.truncateToDouble() == value ? 0 : decimal) +
         "%";
   }
 

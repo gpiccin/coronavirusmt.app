@@ -87,11 +87,12 @@ class Api {
       DateTime data, int start, int limit) async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
-          "query { casosPorCidades(where: {data:\"${this._dateParam(data)}\"}, start: $start, limit: $limit, sort: \"covid_casos_total:desc,id:asc\") {  covid_casos_total  covid_casos covid_obitos covid_recuperados cidade {nome} }}"
+          "query { casosPorCidades(where: {data:\"${this._dateParam(data)}\"}, start: $start, limit: $limit, sort: \"covid_casos_total:desc,id:asc\") {  covid_casos_total  covid_casos covid_obitos covid_recuperados cidade {nome} } boletims(where: {data:\"${this._dateParam(data)}\"}) {\n    covid_casos_total\n  }}"
     });
 
+    int covidTotal = response.data["data"]["boletims"][0]['covid_casos_total'];
     var casosPorCidade = response.data["data"]["casosPorCidades"]
-        .map((cidade) => CovidPorCidade.fromJson(cidade))
+        .map((cidade) => CovidPorCidade.fromJson(cidade, covidTotal))
         .toList();
 
     return List<CovidPorCidade>.from(casosPorCidade);
