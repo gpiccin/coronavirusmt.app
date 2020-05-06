@@ -35,6 +35,8 @@ dependencies:
   flutter_pagewise: ^1.2.3
   hive: ^1.4.1+1
   hive_flutter: ^0.3.0+2
+  cached_network_image: ^2.2.0+1
+  flutter_staggered_animations: "^0.1.2"
 
 dev_dependencies:
   flutter_test:

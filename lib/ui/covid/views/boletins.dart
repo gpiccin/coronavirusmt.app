@@ -6,6 +6,7 @@ import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pagewise/flutter_pagewise.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BoletinsView extends StatefulWidget {
@@ -91,8 +92,16 @@ class _BoletinsViewState extends State<BoletinsView> {
           child: PagewiseListView(
             pageSize: 10,
             itemBuilder: (context, boletimLista, index) {
-              return _buildRow(
-                  boletimLista); //ConfirmadosPorCidadeTile(covidPorCidade);
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 375),
+                child: SlideAnimation(
+                  verticalOffset: 50.0,
+                  child: FadeInAnimation(
+                    child: _buildRow(boletimLista),
+                  ),
+                ),
+              ); //ConfirmadosPorCidadeTile(covidPorCidade);
             },
             pageFuture: (pageIndex) {
               return this.viewModel.getBoletins(10, pageIndex);

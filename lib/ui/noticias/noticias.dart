@@ -5,6 +5,7 @@ import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pagewise/flutter_pagewise.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class NoticiasView extends StatefulWidget {
   @override
@@ -29,7 +30,16 @@ class _NoticiasViewState extends State<NoticiasView> {
           child: PagewiseListView(
             pageSize: 10,
             itemBuilder: (context, noticia, index) {
-              return NoticiaCard(noticia: noticia);
+              return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 375),
+                child: SlideAnimation(
+                  verticalOffset: 50.0,
+                  child: FadeInAnimation(
+                    child: NoticiaCard(noticia: noticia),
+                  ),
+                ),
+              );
             },
             pageFuture: (pageIndex) {
               return this.viewModel.getNoticias(10, pageIndex);

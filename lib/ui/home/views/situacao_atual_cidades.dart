@@ -7,6 +7,7 @@ import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pagewise/flutter_pagewise.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class SituacaoAtualCidadesView extends StatelessWidget {
   @override
@@ -61,8 +62,17 @@ class SituacaoAtualCidadesView extends StatelessWidget {
                             child: PagewiseListView(
                               pageSize: 10,
                               itemBuilder: (context, covidPorCidade, index) {
-                                return ConfirmadosPorCidadeTile(
-                                    covidPorCidade); //ConfirmadosPorCidadeTile(covidPorCidade);
+                                return AnimationConfiguration.staggeredList(
+                                  position: index,
+                                  duration: const Duration(milliseconds: 375),
+                                  child: SlideAnimation(
+                                    verticalOffset: 50.0,
+                                    child: FadeInAnimation(
+                                      child: ConfirmadosPorCidadeTile(
+                                          covidPorCidade),
+                                    ),
+                                  ),
+                                ); //ConfirmadosPorCidadeTile(covidPorCidade);
                               },
                               pageFuture: (pageIndex) {
                                 return model.getCovidPorCidade(10, pageIndex);
