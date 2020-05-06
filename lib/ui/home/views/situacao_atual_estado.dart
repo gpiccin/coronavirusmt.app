@@ -34,7 +34,7 @@ class SituacaoAtualEstadoView extends StatelessWidget {
                       leftIndicator: model.boletim.sragCasos.toString(),
                       rightIndicator:
                           UIHelper.formatDifference(model.boletim.sragNovos),
-                      color: Color(0xFF1976d2),
+                      color: UIStyle.casosColor,
                       page: SragPage(),
                     ),
                     UIHelper.divider(),
