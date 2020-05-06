@@ -5,10 +5,12 @@ import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
 
-class ConfirmadosPorCidadeTile extends StatelessWidget {
+class ConfirmadosPorCidadeCard extends StatelessWidget {
   final CovidPorCidade covidPorCidade;
+  final Radius barRadius = Radius.circular(360);
+  final Radius zeroBarRadius = Radius.zero;
 
-  ConfirmadosPorCidadeTile(this.covidPorCidade);
+  ConfirmadosPorCidadeCard(this.covidPorCidade);
 
   Widget _buildCard(BuildContext context) {
     return CardHelper.touchableCard(
@@ -29,18 +31,18 @@ class ConfirmadosPorCidadeTile extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(
               UIStyle.padding, 0, UIStyle.padding, UIStyle.padding),
-          child: _buildBar(),
+          child: _buildSituation(),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(
               UIStyle.padding, 0, UIStyle.padding, UIStyle.padding),
-          child: _buildBarA(),
+          child: _buildSituationBar(),
         ),
       ]),
     );
   }
 
-  Widget _buildBar() {
+  Widget _buildSituation() {
     return Row(
       children: <Widget>[
         _buildLabel(this.covidPorCidade.recuperados.toString(), "Recuperados",
@@ -53,15 +55,34 @@ class ConfirmadosPorCidadeTile extends StatelessWidget {
     );
   }
 
-  Widget _buildBarA() {
+  Widget _buildSituationBar() {
     return Row(
       children: <Widget>[
         _buildCaseBar(this.covidPorCidade.percentualDeRecuperados,
-            UIStyle.recuperadosColor),
+            UIStyle.recuperadosColor,
+            border: BorderRadius.horizontal(
+                left: barRadius,
+                right:
+                    (covidPorCidade.ativos == 0 && covidPorCidade.obitos == 0)
+                        ? barRadius
+                        : zeroBarRadius)),
         _buildCaseBar(this.covidPorCidade.percentualDeCasosAtivos,
-            UIStyle.contaminadosColor),
+            UIStyle.contaminadosColor,
+            border: BorderRadius.horizontal(
+                left: (covidPorCidade.recuperados == 0)
+                    ? barRadius
+                    : zeroBarRadius,
+                right:
+                    (covidPorCidade.obitos == 0) ? barRadius : zeroBarRadius)),
         _buildCaseBar(
-            this.covidPorCidade.percentualDeObitos, UIStyle.obitosColor),
+            this.covidPorCidade.percentualDeObitos, UIStyle.obitosColor,
+            border: BorderRadius.horizontal(
+              left: (covidPorCidade.ativos == 0 &&
+                      covidPorCidade.recuperados == 0)
+                  ? barRadius
+                  : zeroBarRadius,
+              right: barRadius,
+            )),
       ],
     );
   }
@@ -94,16 +115,16 @@ class ConfirmadosPorCidadeTile extends StatelessWidget {
     );
   }
 
-  Widget _buildCaseBar(double percent, Color color) {
+  Widget _buildCaseBar(double percent, Color color,
+      {BorderRadiusGeometry border}) {
     double width = _barWidth(percent);
 
     if (width == 0) return Container();
 
     return Container(
-      height: 10,
-      width: width,
-      color: color,
-    );
+        height: 10,
+        width: width,
+        decoration: BoxDecoration(color: color, borderRadius: border));
   }
 
   Widget _buildCases(double percent, Color color) {
@@ -117,10 +138,7 @@ class ConfirmadosPorCidadeTile extends StatelessWidget {
             height: 10,
             width: width,
             decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(360),
-                ))),
+                color: color, borderRadius: BorderRadius.all(barRadius))),
         Padding(
           padding: const EdgeInsets.only(left: UIStyle.padding),
           child: Row(

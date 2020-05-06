@@ -1,6 +1,6 @@
 import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/cidades_view_model.dart';
-import 'package:coronavirusmt/ui/covid/confirmados/widgets/confirmados_por_cidade_tile.dart';
+import 'package:coronavirusmt/ui/covid/confirmados/widgets/confirmados_por_cidade_card.dart';
 import 'package:coronavirusmt/ui/shared/base_view.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
@@ -65,7 +65,7 @@ class SituacaoAtualCidadesView extends StatelessWidget {
                                 child: SlideAnimation(
                                   verticalOffset: 50.0,
                                   child: FadeInAnimation(
-                                    child: ConfirmadosPorCidadeTile(
+                                    child: ConfirmadosPorCidadeCard(
                                         covidPorCidade),
                                   ),
                                 ),
