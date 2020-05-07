@@ -1,16 +1,16 @@
 import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/locator.dart';
-import 'package:coronavirusmt/core/models/covid_historico.dart';
+import 'package:coronavirusmt/core/models/covid_confirmado_historico.dart';
 import 'package:coronavirusmt/core/models/covid_por_faixa_etaria.dart';
 import 'package:coronavirusmt/core/models/key_value.dart';
 import 'package:coronavirusmt/core/services/covid_service.dart';
 import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 
 class ConfirmadosViewModel extends BaseViewModel {
-  List<CovidHistorico> _historico;
+  List<CovidConfirmadoHistorico> _historico;
   List<CovidPorFaixaEtaria> _covidPorFaixaEtaria;
 
-  CovidHistorico get atual => _historico.first;
+  CovidConfirmadoHistorico get atual => _historico.first;
 
   List<KeyValue> get covidPorFaixaEtaria {
     return _covidPorFaixaEtaria
@@ -29,7 +29,7 @@ class ConfirmadosViewModel extends BaseViewModel {
 
     CovidService covidService = locator<CovidService>();
 
-    _historico = await covidService.getHistoricoDeCovid();
+    _historico = await covidService.getCasosConfirmadosDeCovidHistorico();
     _covidPorFaixaEtaria = await covidService.getCovidPorFaixaEtaria(data);
 
     setState(ViewState.Idle);

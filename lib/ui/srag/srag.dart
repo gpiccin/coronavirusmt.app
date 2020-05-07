@@ -3,7 +3,7 @@ import 'package:coronavirusmt/core/viewmodels/covid/srag_view_model.dart';
 import 'package:coronavirusmt/ui/shared/base_view.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
-import 'package:coronavirusmt/ui/srag/widget/srag_acumulados_por_dia_chart.dart';
+import 'package:coronavirusmt/ui/widgets/acumulados_por_dia_chart.dart';
 import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
 
@@ -53,10 +53,9 @@ class SragPage extends StatelessWidget {
                                   caption:
                                       'O número de SRAG representa ${UIHelper.formatPercent(model.atual.percentualEmRelacaoAoCovid)} a mais do que os casos confirmados de Covid-19.',
                                 ),
-                                UIHelper.headline("Crescimento de casos"),
-                                SragAcumuladosPorDiaChart(
-                                  model.historicoPorDia,
-                                ),
+                                UIHelper.headline("Histórico de casos"),
+                                AcumuladosPorDiaChart(model.historicoPorDia,
+                                    UIStyle.casosColorHex),
                               ],
                             ),
                           ]),

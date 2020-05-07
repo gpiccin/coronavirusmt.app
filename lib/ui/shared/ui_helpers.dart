@@ -16,13 +16,14 @@ class UIHelper {
 
   static Widget divider({double paddingLeft, double paddingRight}) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(paddingLeft ?? UIStyle.padding + 4, 0,
-          paddingRight ?? UIStyle.padding + 4, 0),
+      padding: EdgeInsets.fromLTRB(paddingLeft ?? 0, 0, paddingRight ?? 0, 0),
       child: Divider(),
     );
   }
 
   static String formatPercent(double value, {int decimal = 1}) {
+    if (value == null) return "";
+
     return value
             .toStringAsFixed(value.truncateToDouble() == value ? 0 : decimal) +
         "%";
@@ -70,7 +71,7 @@ class UIHelper {
           const EdgeInsets.fromLTRB(0, UIStyle.padding, 0, UIStyle.padding),
       child: Text(
         title,
-        style: UITypography.headline,
+        style: UITypography.title,
       ),
     );
   }

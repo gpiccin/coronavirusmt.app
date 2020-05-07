@@ -4,6 +4,7 @@ import 'package:coronavirusmt/ui/covid/hospitalizados/widgets/card_leito.dart';
 import 'package:coronavirusmt/ui/shared/base_view.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
+import 'package:coronavirusmt/ui/widgets/acumulados_por_dia_chart.dart';
 import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
 
@@ -71,6 +72,9 @@ class HospitalizadosPage extends StatelessWidget {
                                 ),
                               ],
                             ),
+                            UIHelper.headline("Histórico de casos"),
+                            AcumuladosPorDiaChart(model.historicoPorDia,
+                                UIStyle.contaminadosColorHex)
                           ]),
                         ),
                 )));

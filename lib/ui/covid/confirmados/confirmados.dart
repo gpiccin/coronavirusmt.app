@@ -1,10 +1,10 @@
 import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/confirmados_view_model.dart';
-import 'package:coronavirusmt/ui/covid/confirmados/widgets/confirmados_acumulados_por_dia_chart.dart';
 import 'package:coronavirusmt/ui/covid/confirmados/widgets/confirmados_por_faixa_etaria_chart.dart';
 import 'package:coronavirusmt/ui/shared/base_view.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
+import 'package:coronavirusmt/ui/widgets/acumulados_por_dia_chart.dart';
 import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:flutter/material.dart';
 
@@ -18,64 +18,63 @@ class ConfirmadosPage extends StatelessWidget {
     return BaseView<ConfirmadosViewModel>(
         name: "Confirmados",
         onModelReady: (model) => model.loadData(data),
-        builder:
-            (BuildContext context, ConfirmadosViewModel model, Widget child) =>
-                Scaffold(
-                    appBar: UIHelper.appBar("Casos confirmados"),
-                    backgroundColor: UIStyle.appBackgroundColor,
-                    body: Container(
-                      child: model.state == ViewState.Busy
-                          ? UIHelper.loading()
-                          : Padding(
-                              padding: const EdgeInsets.all(UIStyle.padding),
-                              child: ListView(children: <Widget>[
-                                Row(
-                                  children: <Widget>[
-                                    Expanded(
-                                      flex: 1,
-                                      child: CardIndicadorSimples(
-                                          title: "Confirmados",
-                                          leftIndicator:
-                                              '${model.atual.casosTotais}',
-                                          color: UIStyle.casosColor),
-                                    ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: CardIndicadorSimples(
-                                          title: "Novos em 1 dia",
-                                          leftIndicator: '${model.atual.casos}',
-                                          color: UIStyle.casosColor),
-                                    ),
-                                  ],
+        builder: (BuildContext context, ConfirmadosViewModel model,
+                Widget child) =>
+            Scaffold(
+                appBar: UIHelper.appBar("Casos confirmados"),
+                backgroundColor: UIStyle.appBackgroundColor,
+                body: Container(
+                  child: model.state == ViewState.Busy
+                      ? UIHelper.loading()
+                      : Padding(
+                          padding: const EdgeInsets.all(UIStyle.padding),
+                          child: ListView(children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 1,
+                                  child: CardIndicadorSimples(
+                                      title: "Confirmados",
+                                      leftIndicator:
+                                          '${model.atual.casosTotais}',
+                                      color: UIStyle.casosColor),
                                 ),
-                                Row(
-                                  children: <Widget>[
-                                    Expanded(
-                                      flex: 1,
-                                      child: CardIndicadorSimples(
-                                          title: "Média de idade",
-                                          leftIndicator:
-                                              '${model.atual.mediaDeIdade}',
-                                          color: UIStyle.casosColor),
-                                    ),
-                                    Expanded(
-                                      flex: 1,
-                                      child: Container(),
-                                    ),
-                                  ],
+                                Expanded(
+                                  flex: 1,
+                                  child: CardIndicadorSimples(
+                                      title: "Novos em 1 dia",
+                                      leftIndicator: '${model.atual.casos}',
+                                      color: UIStyle.casosColor),
                                 ),
-                                UIHelper.headline("Crescimento de casos"),
-                                ConfirmadosAcumuladosPorDiaChart(
-                                  model.historicoPorDia,
-                                ),
-                                UIHelper.headline("Casos por faixa etária"),
-                                ConfirmadosPorFaixaEtariaChart(
-                                    model.covidPorFaixaEtaria,
-                                    height: (model.covidPorFaixaEtaria.length *
-                                            UIStyle.barChartBarHeight)
-                                        .toDouble())
-                              ]),
+                              ],
                             ),
-                    )));
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  flex: 1,
+                                  child: CardIndicadorSimples(
+                                      title: "Média de idade",
+                                      leftIndicator:
+                                          '${model.atual.mediaDeIdade}',
+                                      color: UIStyle.casosColor),
+                                ),
+                                Expanded(
+                                  flex: 1,
+                                  child: Container(),
+                                ),
+                              ],
+                            ),
+                            UIHelper.headline("Histórico de casos"),
+                            AcumuladosPorDiaChart(
+                                model.historicoPorDia, UIStyle.casosColorHex),
+                            UIHelper.headline("Casos por faixa etária"),
+                            ConfirmadosPorFaixaEtariaChart(
+                                model.covidPorFaixaEtaria,
+                                height: (model.covidPorFaixaEtaria.length *
+                                        UIStyle.barChartBarHeight)
+                                    .toDouble())
+                          ]),
+                        ),
+                )));
   }
 }

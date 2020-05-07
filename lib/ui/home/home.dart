@@ -55,7 +55,6 @@ class _HomePageState extends State<HomePage> {
         ]),
         bottomNavigationBar: BottomNavyBar(
           backgroundColor: UIStyle.appBackgroundColor,
-
           selectedIndex: _selectedIndex,
           showElevation: true, // use this to remove appBar's elevation
           onItemSelected: (index) => setState(() {

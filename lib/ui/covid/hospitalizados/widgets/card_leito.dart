@@ -57,7 +57,6 @@ class CardLeito extends StatelessWidget {
                       style:
                           UITypography.indicadorPrincipalStyle.merge(TextStyle(
                         color: this.color,
-                        height: 0.5,
                       )),
                     )),
               )),

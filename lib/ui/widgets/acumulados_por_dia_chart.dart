@@ -1,15 +1,16 @@
 /// Horizontal bar chart example
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:coronavirusmt/core/models/key_value.dart';
-import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:flutter/material.dart';
 
-class ConfirmadosAcumuladosPorDiaChart extends StatelessWidget {
+class AcumuladosPorDiaChart extends StatelessWidget {
   final double height;
   final bool animate;
   final List<KeyValue> casos;
 
-  ConfirmadosAcumuladosPorDiaChart(this.casos,
+  final String hexColor;
+
+  AcumuladosPorDiaChart(this.casos, this.hexColor,
       {this.height = 220, this.animate = true});
 
   @override
@@ -31,7 +32,7 @@ class ConfirmadosAcumuladosPorDiaChart extends StatelessWidget {
           domainFn: (KeyValue caso, _) => caso.key,
           measureFn: (KeyValue caso, _) => caso.value,
           data: this.casos,
-          colorFn: (_, __) => charts.Color.fromHex(code: UIStyle.casosColorHex),
+          colorFn: (_, __) => charts.Color.fromHex(code: this.hexColor),
           labelAccessorFn: (KeyValue caso, _) => '${caso.value}')
     ];
   }

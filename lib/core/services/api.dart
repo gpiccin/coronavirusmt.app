@@ -2,10 +2,13 @@ import 'package:coronavirusmt/core/constants.dart';
 import 'package:coronavirusmt/core/models/boletim_lista.dart';
 import 'package:coronavirusmt/core/models/boletim.dart';
 import 'package:coronavirusmt/core/models/covid_cidades_casos_x_ativos.dart';
-import 'package:coronavirusmt/core/models/covid_historico.dart';
+import 'package:coronavirusmt/core/models/covid_confirmado_historico.dart';
+import 'package:coronavirusmt/core/models/covid_hospitalizado_historico.dart';
+import 'package:coronavirusmt/core/models/covid_isolamento_historico.dart';
 import 'package:coronavirusmt/core/models/covid_por_cidade.dart';
 import 'package:coronavirusmt/core/models/covid_por_faixa_etaria.dart';
 import 'package:coronavirusmt/core/models/covid_por_tipo_de_leito.dart';
+import 'package:coronavirusmt/core/models/covid_recuperado_historico.dart';
 import 'package:coronavirusmt/core/models/noticia.dart';
 import 'package:coronavirusmt/core/models/obito.dart';
 import 'package:coronavirusmt/core/models/srag_historico.dart';
@@ -70,17 +73,60 @@ class Api {
     return List<BoletimLista>.from(boletins);
   }
 
-  Future<List<CovidHistorico>> getHistoricoDeCovid() async {
+  Future<List<CovidConfirmadoHistorico>>
+      getCasosConfirmadosDeCovidHistorico() async {
     Response response = await client.post(Constants.GRAPHQL_PATH, data: {
       "query":
           "query { boletims(sort: \"data:desc\") {  data  covid_casos_total  covid_casos_novos covid_media_de_idade}}"
     });
 
     var historico = response.data["data"]["boletims"]
-        .map((boletim) => CovidHistorico.fromJson(boletim))
+        .map((boletim) => CovidConfirmadoHistorico.fromJson(boletim))
         .toList();
 
-    return List<CovidHistorico>.from(historico);
+    return List<CovidConfirmadoHistorico>.from(historico);
+  }
+
+  Future<List<CovidIsolamentoHistorico>>
+      getCasosEmIsolamentoDeCovidHistorico() async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "query { boletims(sort: \"data:desc\") {  data covid_isolamento_percentual  covid_isolamento_novos  covid_isolamento_total }}"
+    });
+
+    var historico = response.data["data"]["boletims"]
+        .map((boletim) => CovidIsolamentoHistorico.fromJson(boletim))
+        .toList();
+
+    return List<CovidIsolamentoHistorico>.from(historico);
+  }
+
+  Future<List<CovidHospitalizadoHistorico>>
+      getCasosHospitalizadosDeCovidHistorico() async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "query { boletims(sort: \"data:desc\") {  data  covid_hospitalizados_novos covid_hospitalizados_total covid_hospitalizados_percentual }}"
+    });
+
+    var historico = response.data["data"]["boletims"]
+        .map((boletim) => CovidHospitalizadoHistorico.fromJson(boletim))
+        .toList();
+
+    return List<CovidHospitalizadoHistorico>.from(historico);
+  }
+
+  Future<List<CovidRecuperadoHistorico>>
+      getCasosRecuperadosDeCovidHistorico() async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "query { boletims(sort: \"data:desc\") {  data  covid_recuperados_total covid_recuperados_percentual covid_recuperados_novos }}"
+    });
+
+    var historico = response.data["data"]["boletims"]
+        .map((boletim) => CovidRecuperadoHistorico.fromJson(boletim))
+        .toList();
+
+    return List<CovidRecuperadoHistorico>.from(historico);
   }
 
   Future<List<CovidPorCidade>> getCovidPorCidade(
@@ -134,10 +180,12 @@ class Api {
   }
 
   Future<Boletim> getUltimoBoletim() async {
-    Response response = await client.get(Constants.BOLETINS_PATH,
-        queryParameters: {"_limit": 1, "_sort": "data:DESC"});
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "query { \n  boletim: boletims (sort: \"data:desc\", limit:1) {\n    data\n    referencia\n    covid_media_de_idade\n    covid_casos_total\n    covid_casos_novos\n    covid_hospitalizados_total\n    covid_hospitalizados_novos\n    covid_hospitalizados_percentual\n    covid_recuperados_total\n    covid_recuperados_novos\n    covid_recuperados_percentual\n    covid_obitos_total\n    covid_obitos_novos\n    covid_obitos_percentual\n    covid_isolamento_total\n    covid_isolamento_novos\n    covid_isolamento_percentual    \n    srag_casos_total\n    srag_casos_novos\n  }\n  casos: boletims {\n    v: covid_casos_total\n  }\n  hospitalizados: boletims {\n    v: covid_hospitalizados_total\n  }\n  obitos: boletims {\n    v: covid_obitos_total\n  }\n  isolados: boletims {\n    v: covid_isolamento_total\n  }\n  recuperados: boletims {\n    v: covid_recuperados_total \n  }\n  srags: boletims {\n    v: srag_casos_total \n  }\n}"
+    });
 
-    return Boletim.fromJson(response.data[0]);
+    return Boletim.fromJson(response.data['data']);
   }
 
   Future<DateTime> getDataDoUltimoBoletim() async {
