@@ -46,37 +46,47 @@ class CardIndicador extends StatelessWidget {
               children: <Widget>[
                 FittedBox(
                     fit: BoxFit.contain,
-                    child: Text(
-                      UIHelper.formatPercent(percentCases) ?? "",
-                      style: UITypography.indicadorSecundarioStyle
-                          .merge(TextStyle(color: this.color)),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                          UIHelper.formatPercent(percentCases) ?? "",
+                          style: UITypography.indicadorSecundarioStyle
+                              .merge(TextStyle(color: this.color)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 1.0),
+                          child: Text(" dos casos",
+                              style: UITypography.suboverline),
+                        )
+                      ],
                     )),
                 SizedBox(
-                  width: UIStyle.padding,
+                  width: UIStyle.padding - 8,
                 )
               ],
             ),
           ),
           Visibility(
-              visible: this.newCases != null && this.newCases != 0,
-              child: Icon(
-                (this.newCases > 0)
-                    ? Icons.arrow_drop_up
-                    : Icons.arrow_drop_down,
-                color: color,
-                size: 18,
-              )),
-          Visibility(
             visible: this.newCases != null && this.newCases != 0,
-            child: FittedBox(
-                fit: BoxFit.contain,
-                child: Text(
+            child: Row(
+              children: <Widget>[
+                Icon(
+                  (this.newCases > 0)
+                      ? Icons.arrow_drop_up
+                      : Icons.arrow_drop_down,
+                  color: color,
+                  size: 18,
+                ),
+                Text(
                   (this.newCases > 0)
                       ? this.newCases.toString()
                       : (this.newCases * -1).toString(),
                   style: UITypography.indicadorSecundarioStyle
                       .merge(TextStyle(color: this.color)),
-                )),
+                ),
+              ],
+            ),
           ),
         ],
       );

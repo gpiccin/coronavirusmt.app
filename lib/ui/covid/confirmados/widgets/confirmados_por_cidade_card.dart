@@ -45,11 +45,11 @@ class ConfirmadosPorCidadeCard extends StatelessWidget {
   Widget _buildSituation() {
     return Row(
       children: <Widget>[
-        _buildLabel(this.covidPorCidade.recuperados.toString(), "Recuperados",
+        _buildLabel(this.covidPorCidade.recuperados.toString(), " recuperados",
             UIStyle.recuperadosColor),
-        _buildLabel(this.covidPorCidade.ativos.toString(), "Ativos",
+        _buildLabel(this.covidPorCidade.ativos.toString(), " ativos",
             UIStyle.contaminadosColor),
-        _buildLabel(this.covidPorCidade.obitos.toString(), "Óbitos",
+        _buildLabel(this.covidPorCidade.obitos.toString(), " óbitos",
             UIStyle.obitosColor),
       ],
     );
@@ -99,16 +99,16 @@ class ConfirmadosPorCidadeCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 4),
-            child: Text(
-              text,
-              style: UITypography.headline.merge(TextStyle(color: color)),
-            ),
-          ),
           Text(
-            caption,
-            style: UITypography.overline.merge(TextStyle(color: color)),
+            text,
+            style: UITypography.headline.merge(TextStyle(color: color)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 1.0),
+            child: Text(
+              caption,
+              style: UITypography.overline,
+            ),
           ),
         ],
       ),
@@ -122,7 +122,7 @@ class ConfirmadosPorCidadeCard extends StatelessWidget {
     if (width == 0) return Container();
 
     return Container(
-        height: 10,
+        height: 5,
         width: width,
         decoration: BoxDecoration(color: color, borderRadius: border));
   }
@@ -132,26 +132,27 @@ class ConfirmadosPorCidadeCard extends StatelessWidget {
 
     if (width == 0) return Container();
 
-    return Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Container(
-            height: 10,
-            width: width,
-            decoration: BoxDecoration(
-                color: color, borderRadius: BorderRadius.all(barRadius))),
-        Padding(
-          padding: const EdgeInsets.only(left: UIStyle.padding),
-          child: Row(
-            children: <Widget>[
-              _buildLabel(this.covidPorCidade.total.toString(), "Casos", color),
-              _buildLabel(
-                  UIHelper.formatPercent(this.covidPorCidade.percentualDaCidade,
-                      decimal: 2),
-                  "do estado",
-                  color),
-            ],
-          ),
+        Row(
+          children: <Widget>[
+            _buildLabel(this.covidPorCidade.total.toString(), " casos", color),
+            _buildLabel(
+                UIHelper.formatPercent(this.covidPorCidade.percentualDaCidade,
+                    decimal: 2),
+                " do estado",
+                color),
+          ],
         ),
+        Padding(
+            padding: const EdgeInsets.fromLTRB(
+                0, UIStyle.padding, UIStyle.padding, 0),
+            child: Container(
+                height: 5,
+                width: width,
+                decoration: BoxDecoration(
+                    color: color, borderRadius: BorderRadius.all(barRadius))))
       ],
     );
   }
