@@ -21,10 +21,10 @@ pipeline {
         heelalReloadProxy()
       }
     }
-    stage('Reload proxy') {
-      steps {
-        heelalReloadProxy()
-      }
-    }
+    // stage('Reload proxy') {
+    //   steps {
+    //     heelalReloadProxy()
+    //   }
+    // }
   }
 }
