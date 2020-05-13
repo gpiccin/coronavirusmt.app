@@ -30,7 +30,7 @@ class SituacaoAtualEstadoView extends StatelessWidget {
                           Padding(
                               padding: const EdgeInsets.fromLTRB(
                                   UIStyle.padding,
-                                  UIStyle.padding,
+                                  UIStyle.padding * 2,
                                   UIStyle.padding,
                                   0),
                               child: Text(
@@ -41,7 +41,7 @@ class SituacaoAtualEstadoView extends StatelessWidget {
                           Padding(
                               padding: const EdgeInsets.fromLTRB(
                                   UIStyle.padding,
-                                  UIStyle.padding,
+                                  UIStyle.padding * 2,
                                   UIStyle.padding,
                                   0),
                               child: Text(
