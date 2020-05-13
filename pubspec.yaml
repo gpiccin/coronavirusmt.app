@@ -37,7 +37,6 @@ dependencies:
   hive_flutter: ^0.3.0+2
   cached_network_image: ^2.2.0+1
   flutter_staggered_animations: "^0.1.2"
-  bottom_navy_bar: ^5.4.0
   flutter_sparkline: ^0.1.0
 
 dev_dependencies:

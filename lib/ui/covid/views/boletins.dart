@@ -44,7 +44,7 @@ class _BoletinsViewState extends State<BoletinsView> {
                     child: Container(
                       child: Icon(
                         Icons.open_in_new,
-                        size: 36,
+                        size: 32,
                         color: UIStyle.iconColor,
                       ),
                       height: 60,

@@ -1,4 +1,3 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:coronavirusmt/ui/covid/views/boletins.dart';
 import 'package:coronavirusmt/ui/home/views/situacao_atual.dart';
 import 'package:coronavirusmt/ui/home/widgets/header.dart';
@@ -36,6 +35,27 @@ class _HomePageState extends State<HomePage> {
     BoletinsView(),
   ];
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      _pageController.animateToPage(index,
+          duration: Duration(milliseconds: 250), curve: Curves.decelerate);
+    });
+  }
+
+  BottomNavigationBarItem _navigationBarItem(IconData icon, String text) {
+    return BottomNavigationBarItem(
+      icon: Icon(
+        icon,
+        size: 20,
+      ),
+      title: Padding(
+        padding: const EdgeInsets.only(top: 4.0),
+        child: Text(text),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,30 +73,18 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ]),
-        bottomNavigationBar: BottomNavyBar(
-          backgroundColor: UIStyle.appBackgroundColor,
-          selectedIndex: _selectedIndex,
-          showElevation: true, // use this to remove appBar's elevation
-          onItemSelected: (index) => setState(() {
-            _selectedIndex = index;
-            _pageController.animateToPage(index,
-                duration: Duration(milliseconds: 300), curve: Curves.ease);
-          }),
-          items: [
-            BottomNavyBarItem(
-              icon: Icon(Icons.show_chart),
-              title: Text('Situação', textAlign: TextAlign.center),
-              activeColor: UIStyle.casosColor,
-            ),
-            BottomNavyBarItem(
-                icon: Icon(Icons.public),
-                title: Text('Notícias', textAlign: TextAlign.center),
-                activeColor: UIStyle.casosColor),
-            BottomNavyBarItem(
-                icon: Icon(Icons.library_books),
-                title: Text('Boletins', textAlign: TextAlign.center),
-                activeColor: UIStyle.casosColor),
+        bottomNavigationBar: BottomNavigationBar(
+          items: <BottomNavigationBarItem>[
+            this._navigationBarItem(Icons.show_chart, "Situação atual"),
+            this._navigationBarItem(Icons.public, "Notícias"),
+            this._navigationBarItem(Icons.library_books, "Boletins"),
           ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: UIStyle.casosColor,
+          selectedFontSize: 12,
+          unselectedFontSize: 12,
+          selectedLabelStyle: TextStyle(color: UIStyle.casosColor),
+          onTap: _onItemTapped,
         ));
   }
 }

@@ -27,10 +27,23 @@ class SituacaoAtualEstadoView extends StatelessWidget {
                           Indicadores(
                             boletim: model.boletim,
                           ),
-                          UIHelper.divider(),
                           Padding(
                               padding: const EdgeInsets.fromLTRB(
-                                  UIStyle.padding, 0, UIStyle.padding, 0),
+                                  UIStyle.padding,
+                                  UIStyle.padding,
+                                  UIStyle.padding,
+                                  0),
+                              child: Text(
+                                "Se puder, fique em casa!",
+                                style: UITypography.title,
+                                textAlign: TextAlign.center,
+                              )),
+                          Padding(
+                              padding: const EdgeInsets.fromLTRB(
+                                  UIStyle.padding,
+                                  UIStyle.padding,
+                                  UIStyle.padding,
+                                  0),
                               child: Text(
                                 "* Dados de ${UIHelper.fomartDateDMY(model.boletim.data)}. Atualização diária próxima das 18h de acordo com a diponibilidade do boletim oficial da Secretária de Saúde de Mato Grosso.",
                                 style: UITypography.overline,
