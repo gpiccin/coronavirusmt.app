@@ -48,7 +48,7 @@ class Header extends StatelessWidget {
                               width: 4,
                             ),
                             Icon(
-                              Icons.calendar_today,
+                              Icons.library_books,
                               size: 16,
                               color: UIStyle.iconColor,
                             )
