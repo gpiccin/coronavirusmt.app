@@ -12,6 +12,6 @@ class CovidConfirmadoHistorico {
         data: DateTime.parse(json['data']),
         casos: json['covid_casos_novos'],
         casosTotais: json['covid_casos_total'],
-        mediaDeIdade: json['covid_media_de_idade']);
+        mediaDeIdade: json['covid_media_de_idade']?.toDouble());
   }
 }

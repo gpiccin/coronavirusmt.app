@@ -6,6 +6,7 @@ import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/widgets/acumulados_por_dia_chart.dart';
 import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
+import 'package:coronavirusmt/ui/widgets/novos_por_dia_chart.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmadosPage extends StatelessWidget {
@@ -66,13 +67,17 @@ class ConfirmadosPage extends StatelessWidget {
                             ),
                             UIHelper.headline("Histórico de casos"),
                             AcumuladosPorDiaChart(
-                                model.historicoPorDia, UIStyle.casosColorHex),
+                                model.acumulativoPorDia, UIStyle.casosColorHex),
+                            UIHelper.headline("Casos novos por dia"),
+                            NovosPorDiaChart(
+                                model.casosNovosPorDia, UIStyle.casosColorHex,
+                                height: 250),
                             UIHelper.headline("Casos por faixa etária"),
                             ConfirmadosPorFaixaEtariaChart(
                                 model.covidPorFaixaEtaria,
                                 height: (model.covidPorFaixaEtaria.length *
                                         UIStyle.barChartBarHeight)
-                                    .toDouble())
+                                    .toDouble()),
                           ]),
                         ),
                 )));

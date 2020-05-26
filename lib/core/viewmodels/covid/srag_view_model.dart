@@ -15,6 +15,16 @@ class SragViewModel extends BaseViewModel {
         .toList();
   }
 
+  List<KeyValue> get casosNovosPorDia {
+    var result = _historico
+        .map((caso) => KeyValue(key: caso.data, value: caso.casos))
+        .toList();
+
+    result.sort((a, b) => a.key.compareTo(b.key));
+
+    return result;
+  }
+
   loadData() async {
     setState(ViewState.Busy);
     SragService sragService = locator<SragService>();

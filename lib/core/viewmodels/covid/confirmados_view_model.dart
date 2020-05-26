@@ -18,10 +18,20 @@ class ConfirmadosViewModel extends BaseViewModel {
         .toList();
   }
 
-  List<KeyValue> get historicoPorDia {
+  List<KeyValue> get acumulativoPorDia {
     return _historico
         .map((caso) => KeyValue(key: caso.data, value: caso.casosTotais))
         .toList();
+  }
+
+  List<KeyValue> get casosNovosPorDia {
+    var result = _historico
+        .map((caso) => KeyValue(key: caso.data, value: caso.casos))
+        .toList();
+
+    result.sort((a, b) => a.key.compareTo(b.key));
+
+    return result;
   }
 
   loadData(DateTime data) async {
