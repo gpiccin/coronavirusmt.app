@@ -38,6 +38,18 @@ class ObitosViewModel extends BaseViewModel {
     return keyValues;
   }
 
+  List<KeyValue> get obitosNovosPorDia {
+    var grupoPorDia = groupBy(obitos, (obito) => obito.data).entries.toList();
+
+    grupoPorDia.sort((a, b) => a.value[0].data.compareTo(b.value[0].data));
+
+    var keyValues = grupoPorDia
+        .map((obitos) => KeyValue(key: obitos.key, value: obitos.value.length))
+        .toList();
+
+    return keyValues;
+  }
+
   List<KeyValue> get obitosPorComorbidade {
     var grupoPorComorbidade =
         groupBy(obitos, (obito) => obito.comorbidade).entries.toList();

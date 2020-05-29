@@ -9,6 +9,7 @@ import 'package:coronavirusmt/ui/covid/obito/widgets/obitos_por_comorbidade_char
 import 'package:coronavirusmt/ui/covid/obito/widgets/obitos_por_faixa_etaria_chart.dart';
 import 'package:coronavirusmt/ui/covid/obito/widgets/obitos_por_sexo_chart.dart';
 import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
+import 'package:coronavirusmt/ui/widgets/novos_por_dia_chart.dart';
 import 'package:flutter/material.dart';
 
 class ObitosPage extends StatelessWidget {
@@ -72,6 +73,10 @@ class ObitosPage extends StatelessWidget {
                             UIHelper.headline("Óbitos acumulados por dia"),
                             ObitosAcumuladosPorDiaChart(
                                 model.obitosAcumuladosPorDia),
+                            UIHelper.headline("Óbitos novos por dia"),
+                            NovosPorDiaChart(
+                                model.obitosNovosPorDia, UIStyle.obitosColorHex,
+                                height: 200),
                             UIHelper.headline("Óbitos por faixa etária"),
                             ObitosPorFaixaEtariaChart(
                                 model.obitosPorFaixaEtaria,
