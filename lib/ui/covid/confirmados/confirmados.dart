@@ -71,7 +71,7 @@ class ConfirmadosPage extends StatelessWidget {
                             UIHelper.headline("Casos novos por dia"),
                             NovosPorDiaChart(
                                 model.casosNovosPorDia, UIStyle.casosColorHex,
-                                height: 250),
+                                height: 200),
                             UIHelper.headline("Casos por faixa etária"),
                             ConfirmadosPorFaixaEtariaChart(
                                 model.covidPorFaixaEtaria,
