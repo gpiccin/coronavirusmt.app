@@ -1,6 +1,7 @@
-coronavirusmt.app.conf
-coronavirusmt.web.app.build.zip
+*.app.conf
+*.web.app.build.zip
 Jenkinsfile
+*.sh
 
 # Miscellaneous
 *.class
