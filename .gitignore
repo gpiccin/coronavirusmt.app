@@ -1,5 +1,5 @@
 *.app.conf
-*.web.app.build.zip
+coronavirusmt.web.app.build.zip
 Jenkinsfile
 build_web_app.sh
 
