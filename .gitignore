@@ -1,3 +1,7 @@
+coronavirusmt.app.conf
+coronavirusmt.web.app.build.zip
+Jenkinsfile
+
 # Miscellaneous
 *.class
 *.log
