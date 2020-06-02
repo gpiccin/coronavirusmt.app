@@ -1,7 +1,7 @@
 *.app.conf
 *.web.app.build.zip
 Jenkinsfile
-*.sh
+build_web_app.sh
 
 # Miscellaneous
 *.class
