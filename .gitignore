@@ -1,5 +1,4 @@
 *.app.conf
-Jenkinsfile
 build_web_app.sh
 
 # Miscellaneous
