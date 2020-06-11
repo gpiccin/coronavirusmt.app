@@ -55,11 +55,11 @@ class SragPage extends StatelessWidget {
                                       'O número de SRAG representa ${UIHelper.formatPercent(model.atual.percentualEmRelacaoAoCovid)} a mais do que os casos confirmados de Covid-19.',
                                 ),
                                 UIHelper.headline("Histórico de casos"),
-                                AcumuladosPorDiaChart(model.historicoPorDia,
-                                    UIStyle.casosColorHex),
+                                AcumuladosPorDiaChart(
+                                    model.historicoPorDia, UIStyle.casosColor),
                                 UIHelper.headline("Casos novos por dia"),
-                                NovosPorDiaChart(model.casosNovosPorDia,
-                                    UIStyle.casosColorHex,
+                                NovosPorDiaChart(
+                                    model.casosNovosPorDia, UIStyle.casosColor,
                                     height: 250),
                               ],
                             ),

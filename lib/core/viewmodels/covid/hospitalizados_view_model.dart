@@ -15,9 +15,13 @@ class HospitalizadosViewModel extends BaseViewModel {
   Boletim _boletim;
 
   List<KeyValue> get historicoPorDia {
-    return _historico
+    var result = _historico
         .map((caso) => KeyValue(key: caso.data, value: caso.casosTotais))
         .toList();
+
+    result.sort((a, b) => a.key.compareTo(b.key));
+
+    return result;
   }
 
   int get hospitalizados => _boletim.covidHospitalizados;

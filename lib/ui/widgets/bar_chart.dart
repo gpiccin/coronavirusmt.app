@@ -1,18 +1,16 @@
 import 'package:coronavirusmt/core/models/key_value.dart';
-import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'dart:math';
 
-class NovosPorDiaChart extends StatelessWidget {
+class BarChart extends StatelessWidget {
   final double height;
   final bool animate;
   final List<KeyValue> casos;
 
   final Color color;
 
-  NovosPorDiaChart(this.casos, this.color,
-      {this.height = 220, this.animate = true});
+  BarChart(this.casos, this.color, {this.height = 220, this.animate = true});
 
   double get maximoDeCasos =>
       this.casos.map((e) => e.value as int).reduce(max).toDouble() * 1.1;
@@ -37,15 +35,15 @@ class NovosPorDiaChart extends StatelessWidget {
         ));
   }
 
-  List<ColumnSeries<KeyValue, String>> _getSeries() {
-    return <ColumnSeries<KeyValue, String>>[
-      ColumnSeries<KeyValue, String>(
+  List<BarSeries<KeyValue, String>> _getSeries() {
+    return <BarSeries<KeyValue, String>>[
+      BarSeries<KeyValue, String>(
         enableTooltip: true,
         dataLabelSettings: DataLabelSettings(
-            isVisible: false, labelAlignment: ChartDataLabelAlignment.outer),
+            isVisible: true, labelAlignment: ChartDataLabelAlignment.auto),
         dataSource: this.casos,
         color: color,
-        xValueMapper: (KeyValue value, _) => UIHelper.fomartDateDM(value.key),
+        xValueMapper: (KeyValue value, _) => value.key,
         yValueMapper: (KeyValue value, _) => value.value,
       ),
     ];

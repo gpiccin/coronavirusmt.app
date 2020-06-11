@@ -13,15 +13,26 @@ class ConfirmadosViewModel extends BaseViewModel {
   CovidConfirmadoHistorico get atual => _historico.first;
 
   List<KeyValue> get covidPorFaixaEtaria {
-    return _covidPorFaixaEtaria
-        .map((caso) => KeyValue(key: caso.faixa, value: caso.casosTotais))
+    var result = _covidPorFaixaEtaria
+        .map((caso) => KeyValue(
+            key: caso.faixa,
+            value: caso.casosTotais,
+            tag: caso.ordemDaFaixaEtaria))
         .toList();
+
+    result.sort((a, b) => b.tag.compareTo(a.tag));
+
+    return result;
   }
 
   List<KeyValue> get acumulativoPorDia {
-    return _historico
+    var result = _historico
         .map((caso) => KeyValue(key: caso.data, value: caso.casosTotais))
         .toList();
+
+    result.sort((a, b) => a.key.compareTo(b.key));
+
+    return result;
   }
 
   List<KeyValue> get casosNovosPorDia {

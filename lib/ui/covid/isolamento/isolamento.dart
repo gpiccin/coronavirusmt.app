@@ -47,7 +47,7 @@ class IsolamentoPage extends StatelessWidget {
                             ),
                             UIHelper.headline("Histórico de casos"),
                             AcumuladosPorDiaChart(model.historicoPorDia,
-                                UIStyle.contaminadosColorHex),
+                                UIStyle.contaminadosColor),
                           ]),
                         ),
                 )));

@@ -1,10 +1,10 @@
 import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/viewmodels/covid/confirmados_view_model.dart';
-import 'package:coronavirusmt/ui/covid/confirmados/widgets/confirmados_por_faixa_etaria_chart.dart';
 import 'package:coronavirusmt/ui/shared/base_view.dart';
 import 'package:coronavirusmt/ui/shared/ui_helpers.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
 import 'package:coronavirusmt/ui/widgets/acumulados_por_dia_chart.dart';
+import 'package:coronavirusmt/ui/widgets/bar_chart.dart';
 import 'package:coronavirusmt/ui/widgets/card_indicador_simples.dart';
 import 'package:coronavirusmt/ui/widgets/novos_por_dia_chart.dart';
 import 'package:flutter/material.dart';
@@ -67,14 +67,14 @@ class ConfirmadosPage extends StatelessWidget {
                             ),
                             UIHelper.headline("Histórico de casos"),
                             AcumuladosPorDiaChart(
-                                model.acumulativoPorDia, UIStyle.casosColorHex),
+                                model.acumulativoPorDia, UIStyle.casosColor),
                             UIHelper.headline("Casos novos por dia"),
                             NovosPorDiaChart(
-                                model.casosNovosPorDia, UIStyle.casosColorHex,
+                                model.casosNovosPorDia, UIStyle.casosColor,
                                 height: 200),
                             UIHelper.headline("Casos por faixa etária"),
-                            ConfirmadosPorFaixaEtariaChart(
-                                model.covidPorFaixaEtaria,
+                            BarChart(
+                                model.covidPorFaixaEtaria, UIStyle.casosColor,
                                 height: (model.covidPorFaixaEtaria.length *
                                         UIStyle.barChartBarHeight)
                                     .toDouble()),

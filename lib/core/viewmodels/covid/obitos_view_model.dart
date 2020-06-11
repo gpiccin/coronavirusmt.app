@@ -38,7 +38,7 @@ class ObitosViewModel extends BaseViewModel {
     return keyValues;
   }
 
-  List<KeyValue> get obitosNovosPorDia {
+  List<KeyValue> get obitosPorDia {
     var grupoPorDia = groupBy(obitos, (obito) => obito.data).entries.toList();
 
     grupoPorDia.sort((a, b) => a.value[0].data.compareTo(b.value[0].data));
@@ -55,7 +55,7 @@ class ObitosViewModel extends BaseViewModel {
         groupBy(obitos, (obito) => obito.comorbidade).entries.toList();
 
     grupoPorComorbidade
-        .sort((a, b) => b.value.length.compareTo(a.value.length));
+        .sort((a, b) => a.value.length.compareTo(b.value.length));
 
     return grupoPorComorbidade
         .map((obitos) => KeyValue(key: obitos.key, value: obitos.value.length))
@@ -65,7 +65,7 @@ class ObitosViewModel extends BaseViewModel {
   List<KeyValue> get obitosPorSexo {
     var grupoPorSexo = groupBy(obitos, (obito) => obito.sexo).entries.toList();
 
-    grupoPorSexo.sort((a, b) => b.value.length.compareTo(a.value.length));
+    grupoPorSexo.sort((a, b) => a.value.length.compareTo(b.value.length));
 
     return grupoPorSexo
         .map((obitos) => KeyValue(key: obitos.key, value: obitos.value.length))
@@ -76,7 +76,7 @@ class ObitosViewModel extends BaseViewModel {
     var grupoPorCidade =
         groupBy(obitos, (obito) => obito.cidade).entries.toList();
 
-    grupoPorCidade.sort((a, b) => b.value.length.compareTo(a.value.length));
+    grupoPorCidade.sort((a, b) => a.value.length.compareTo(b.value.length));
 
     return grupoPorCidade
         .map((obitos) => KeyValue(key: obitos.key, value: obitos.value.length))
@@ -90,7 +90,7 @@ class ObitosViewModel extends BaseViewModel {
             .toList();
 
     grupoPorFaixaEtaria.sort((a, b) =>
-        a.value[0].ordemDaFaixaEtaria.compareTo(b.value[0].ordemDaFaixaEtaria));
+        b.value[0].ordemDaFaixaEtaria.compareTo(a.value[0].ordemDaFaixaEtaria));
 
     return grupoPorFaixaEtaria
         .map((obitos) => KeyValue(key: obitos.key, value: obitos.value.length))

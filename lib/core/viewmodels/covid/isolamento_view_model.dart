@@ -11,9 +11,13 @@ class IsolamentoViewModel extends BaseViewModel {
   CovidIsolamentoHistorico get atual => _historico.first;
 
   List<KeyValue> get historicoPorDia {
-    return _historico
+    var result = _historico
         .map((caso) => KeyValue(key: caso.data, value: caso.casosTotais))
         .toList();
+
+    result.sort((a, b) => a.key.compareTo(b.key));
+
+    return result;
   }
 
   loadData() async {
