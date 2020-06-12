@@ -5,6 +5,7 @@ import 'package:coronavirusmt/core/models/covid_cidades_casos_x_ativos.dart';
 import 'package:coronavirusmt/core/models/covid_confirmado_historico.dart';
 import 'package:coronavirusmt/core/models/covid_hospitalizado_historico.dart';
 import 'package:coronavirusmt/core/models/covid_isolamento_historico.dart';
+import 'package:coronavirusmt/core/models/covid_obitos_registrados_historico.dart';
 import 'package:coronavirusmt/core/models/covid_por_cidade.dart';
 import 'package:coronavirusmt/core/models/covid_por_faixa_etaria.dart';
 import 'package:coronavirusmt/core/models/covid_por_tipo_de_leito.dart';
@@ -58,6 +59,20 @@ class Api {
         .toList();
 
     return List<Obito>.from(obitos);
+  }
+
+  Future<List<CovidObitosRegistradosHitorico>>
+      getObitosRegistradosPorDia() async {
+    Response response = await client.post(Constants.GRAPHQL_PATH, data: {
+      "query":
+          "query { boletims(sort:\"data:asc\") {  data covid_obitos_novos }}"
+    });
+
+    var boletins = response.data["data"]["boletims"]
+        .map((boletim) => CovidObitosRegistradosHitorico.fromJson(boletim))
+        .toList();
+
+    return List<CovidObitosRegistradosHitorico>.from(boletins);
   }
 
   Future<List<BoletimLista>> getBoletins(int start, int limit) async {

@@ -38,7 +38,7 @@ class ObitosPage extends StatelessWidget {
                                 Expanded(
                                   flex: 1,
                                   child: CardIndicadorSimples(
-                                    title: "Novos em 1 dia",
+                                    title: "Registros em 1 dia",
                                     leftIndicator: model
                                         .boletim.covidNovosObitos
                                         .toString(),
@@ -67,7 +67,14 @@ class ObitosPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            UIHelper.headline("Óbitos acumulados por dia"),
+                            UIHelper.headline("Óbitos registrados por dia"),
+                            AcumuladosPorDiaChart(
+                                model.obitosRegistradosAcumuladosPorDia,
+                                UIStyle.obitosColor),
+                            UIHelper.headline("Óbitos registrados por dia"),
+                            NovosPorDiaChart(model.obitosRegistradosPorDia,
+                                UIStyle.obitosColor),
+                            UIHelper.headline("Óbitos por dia"),
                             AcumuladosPorDiaChart(model.obitosAcumuladosPorDia,
                                 UIStyle.obitosColor),
                             UIHelper.headline("Óbitos por dia"),

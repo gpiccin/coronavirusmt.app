@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:coronavirusmt/core/enum/viewstate.dart';
 import 'package:coronavirusmt/core/locator.dart';
 import 'package:coronavirusmt/core/models/boletim.dart';
+import 'package:coronavirusmt/core/models/covid_obitos_registrados_historico.dart';
 import 'package:coronavirusmt/core/models/key_value.dart';
 import 'package:coronavirusmt/core/models/obito.dart';
 import 'package:coronavirusmt/core/services/boletim_service.dart';
@@ -10,6 +11,7 @@ import 'package:coronavirusmt/core/viewmodels/shared/base_view_model.dart';
 
 class ObitosViewModel extends BaseViewModel {
   List<Obito> _obitos;
+  List<CovidObitosRegistradosHitorico> _obitosRegistrados;
   Boletim _boletim;
 
   Boletim get boletim => _boletim;
@@ -36,6 +38,28 @@ class ObitosViewModel extends BaseViewModel {
     }
 
     return keyValues;
+  }
+
+  List<KeyValue> get obitosRegistradosAcumuladosPorDia {
+    // grupoPorDia.sort((a, b) => a.value[0].data.compareTo(b.value[0].data));
+
+    var keyValues = _obitosRegistrados
+        .map((obito) => KeyValue(key: obito.data, value: obito.obitos))
+        .toList();
+
+    for (var i = 0; i < keyValues.length; i++) {
+      if (i == 0) continue;
+
+      keyValues[i].value += keyValues[i - 1].value;
+    }
+
+    return keyValues;
+  }
+
+  List<KeyValue> get obitosRegistradosPorDia {
+    return _obitosRegistrados
+        .map((obitos) => KeyValue(key: obitos.data, value: obitos.obitos))
+        .toList();
   }
 
   List<KeyValue> get obitosPorDia {
@@ -99,8 +123,10 @@ class ObitosViewModel extends BaseViewModel {
 
   loadData() async {
     setState(ViewState.Busy);
+
     ObitosService obitoService = locator<ObitosService>();
     _obitos = await obitoService.getObitos();
+    _obitosRegistrados = await obitoService.getObitosRegistradosPorDia();
 
     BoletimService boletimService = locator<BoletimService>();
     _boletim = await boletimService.getUltimoBoletim();
