@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
             this._navigationBarItem(Icons.show_chart, "Situação atual"),
-            // this._navigationBarItem(Icons.public, "Notícias"),
+            this._navigationBarItem(Icons.public, "Notícias"),
             this._navigationBarItem(Icons.library_books, "Boletins"),
           ],
           currentIndex: _selectedIndex,
