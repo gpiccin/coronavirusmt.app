@@ -44,7 +44,7 @@ class AcumuladosPorDiaChart extends StatelessWidget {
         dataLabelSettings: DataLabelSettings(
             isVisible: true,
             labelAlignment: ChartDataLabelAlignment.auto,
-            textStyle: ChartTextStyle(color: color)),
+            textStyle: TextStyle(color: color)),
         dataSource: this.casos,
         color: color,
         xValueMapper: (KeyValue value, _) => UIHelper.fomartDateDM(value.key),

@@ -24,6 +24,16 @@ class SituacaoAtualEstadoView extends StatelessWidget {
                         padding:
                             const EdgeInsets.fromLTRB(0, UIStyle.padding, 0, 0),
                         child: Column(children: <Widget>[
+                          SizedBox(
+                            child: Center(
+                              child: Text(
+                                  "Após constantes mudanças de formato dos dados publicados diariamente pela secretária de Saúde, a atualização deste produto se tornou inviável e esta interrompida por tempo indeterminado.",
+                                  style: TextStyle(color: Colors.red)
+                                      .merge(UITypography.body1),
+                                  textAlign: TextAlign.center),
+                            ),
+                            height: 100,
+                          ),
                           Indicadores(
                             boletim: model.boletim,
                           ),

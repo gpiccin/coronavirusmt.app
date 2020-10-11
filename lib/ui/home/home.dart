@@ -3,7 +3,6 @@ import 'package:coronavirusmt/ui/home/views/situacao_atual.dart';
 import 'package:coronavirusmt/ui/home/widgets/header.dart';
 import 'package:coronavirusmt/ui/noticias/noticias.dart';
 import 'package:coronavirusmt/ui/shared/ui_style.dart';
-import 'package:coronavirusmt/ui/shared/ui_typography.dart';
 import 'package:flutter/material.dart';
 
 // Somewhere in your widgets...
@@ -31,14 +30,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   static List<Widget> _widgetOptions = <Widget>[
-    Center(
-      child: Text(
-        "Em virtude da troca de sistemas do Governo de Mato Grosso iremos atualizar esta plataforma somente quandos os dados estiverem completos. Lamentamos pela ausência de informações tão relevantes em um momento crítico como o que vivemos!",
-        style: UITypography.headline,
-        textAlign: TextAlign.center,
-      ),
-    ),
-    // NoticiasView(),
+    SituacaoAtualView(),
+    NoticiasView(),
     BoletinsView(),
   ];
 
@@ -52,15 +45,11 @@ class _HomePageState extends State<HomePage> {
 
   BottomNavigationBarItem _navigationBarItem(IconData icon, String text) {
     return BottomNavigationBarItem(
-      icon: Icon(
-        icon,
-        size: 20,
-      ),
-      title: Padding(
-        padding: const EdgeInsets.only(top: 4.0),
-        child: Text(text),
-      ),
-    );
+        icon: Icon(
+          icon,
+          size: 20,
+        ),
+        label: text);
   }
 
   @override

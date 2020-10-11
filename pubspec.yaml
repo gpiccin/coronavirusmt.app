@@ -32,15 +32,15 @@ dependencies:
   collection: ^1.14.11
   flutter_spinkit: "^4.1.2"
   flutter_pagewise: ^1.2.3
+  hive_flutter: ^0.3.0+2
   hive: ^1.4.1+1
-  hive_flutter:
-    git:
-      url: git://github.com/gpiccin/hive.git
-      path: hive_flutter
   cached_network_image: ^2.2.0+1
   flutter_staggered_animations: "^0.1.2"
   flutter_sparkline: ^0.1.0
-  syncfusion_flutter_charts: ^18.1.56
+  syncfusion_flutter_charts: ^18.3.38
+
+dependency_overrides:
+  path: ^1.6.4
 
 dev_dependencies:
   flutter_test:
